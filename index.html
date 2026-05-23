@@ -3,598 +3,346 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Capability Lab v2.0C.4 — Coordination Engine Reinsertion</title>
+<title>Capability Lab v2.0C.4a — Coordination Output Polish and Teaching Dashboard Pass</title>
 <style>
-:root{--bg:#f7f7f4;--panel:#fff;--ink:#1f2933;--muted:#5f6b7a;--line:#d8ded7;--soft:#eef3ee;--accent:#345d4e;--warn:#8a5a1f;--good:#2f6b4f;--danger:#7a2e2e;--blue:#315c8a;--shadow:0 12px 35px rgba(31,41,51,.08);--radius:18px}*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55}.wrap{max-width:1120px;margin:0 auto;padding:22px}.hero,.card{background:var(--panel);border:1px solid var(--line);box-shadow:var(--shadow)}.hero{border-radius:24px;padding:28px;margin-bottom:18px;background:linear-gradient(135deg,#fff,#eef3ee)}.eyebrow{text-transform:uppercase;letter-spacing:.08em;font-size:.78rem;color:var(--accent);font-weight:700}h1,h2,h3,h4{line-height:1.18;margin:0 0 12px}h1{font-size:clamp(2rem,5vw,3.2rem)}p{margin:0 0 12px}.subtitle,.small{color:var(--muted)}.sequence,.tabs,.buttons,.tags{display:flex;flex-wrap:wrap;gap:8px}.sequence span,.tag{border:1px solid var(--line);border-radius:999px;padding:6px 10px;background:#fff;color:var(--muted);font-size:.86rem}.tabs{padding:10px;background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);position:sticky;top:0;z-index:10;margin-bottom:18px}.tab{border:1px solid var(--line);background:var(--soft);padding:10px 12px;border-radius:999px;cursor:pointer;font-weight:700}.tab[aria-selected=true]{background:var(--accent);color:#fff;border-color:var(--accent)}section[role=tabpanel]{display:none}section.active{display:block}.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}.card{border-radius:var(--radius);padding:18px}.span12{grid-column:span 12}.span6{grid-column:span 6}@media(max-width:860px){.span6{grid-column:span 12}.tabs{position:static}}.notice{border-left:5px solid var(--accent);background:#f4f8f5;padding:12px 14px;border-radius:12px;margin:12px 0}.warn{border-left-color:var(--warn);background:#fff8ed}.good{border-left-color:var(--good);background:#f1f8f4}.danger{border-left-color:var(--danger);background:#fff1f1}.case-list,.preset-grid,.metrics,.diagnostics{display:grid;gap:12px}.case-list{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}.preset-grid,.metrics{grid-template-columns:repeat(auto-fit,minmax(170px,1fr))}.case,.preset,.metric,.diag{border:1px solid var(--line);border-radius:14px;background:#fff;padding:12px}.case,.preset{cursor:pointer}.case.selected,.preset.active{outline:3px solid rgba(52,93,78,.18);border-color:var(--accent)}button.action{border:0;background:var(--accent);color:#fff;padding:10px 14px;border-radius:12px;font-weight:700;cursor:pointer}button.secondary{background:#fff;color:var(--accent);border:1px solid var(--accent)}button.warnbtn{background:var(--warn)}button:disabled{opacity:.45;cursor:not-allowed}label{display:block;font-weight:700;margin:10px 0 5px}input[type=range],textarea,input[type=text]{width:100%}textarea,input[type=text]{border:1px solid var(--line);border-radius:12px;padding:10px;font:inherit;background:#fff}textarea{min-height:100px;resize:vertical}.metric strong{font-size:1.35rem}.pass{border-left:5px solid var(--good)}.fail{border-left:5px solid var(--danger)}.diagnostics{margin-top:12px}.footer{margin-top:28px;text-align:center;color:var(--muted);font-size:.88rem}.schelling-wrap{display:grid;grid-template-columns:minmax(280px,1.1fr) minmax(260px,.9fr);gap:14px;align-items:start}@media(max-width:900px){.schelling-wrap{grid-template-columns:1fr}}.schelling-grid{display:grid;gap:2px;background:#cfd8d0;border:1px solid var(--line);border-radius:14px;padding:8px;max-width:620px;overflow:auto}.cell{aspect-ratio:1/1;min-width:8px;border-radius:4px;border:1px solid rgba(0,0,0,.08)}.cell.a{background:#345d4e}.cell.b{background:#7a5c2e}.cell.s{background:#e7dca8;border:2px solid #b89b35}.cell.empty{background:#fff}.cell.unsat{outline:2px solid #b83a3a;outline-offset:-2px}.legend{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}.legend span{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);border-radius:999px;background:#fff;padding:5px 8px;font-size:.85rem}.swatch{width:14px;height:14px;border-radius:4px;display:inline-block}.swatch.a{background:#345d4e}.swatch.b{background:#7a5c2e}.swatch.s{background:#e7dca8;border:1px solid #b89b35}.swatch.empty{background:#fff;border:1px solid #aaa}.swatch.unsat{background:#fff;border:2px solid #b83a3a}.model-box{border:1px solid var(--line);border-radius:14px;background:#fbfcfb;padding:12px;margin-top:12px}.contrast-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin-top:10px}.contrast-card{border:1px solid var(--line);border-radius:12px;background:#fff;padding:10px}.contrast-card strong{display:block;margin-bottom:6px}.preset-note{font-size:.9rem;color:var(--muted);margin-top:6px}.glossary-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px;margin-top:10px}.definition-card{border:1px solid var(--line);border-radius:12px;background:#fff;padding:11px}.definition-card strong{display:block;margin-bottom:5px}.definition-card .group{display:inline-block;border:1px solid var(--line);border-radius:999px;background:var(--soft);padding:3px 7px;font-size:.76rem;color:var(--muted);margin-bottom:6px}.definition-card.omitted{background:#fffdf5}.definition-card.active-def{border-color:var(--accent)}.glossary-note{font-size:.9rem;color:var(--muted);margin-top:8px}.glossary-details{border:1px solid var(--line);border-radius:14px;background:#fbfcfb;margin:10px 0 12px;overflow:hidden}.glossary-details summary{cursor:pointer;font-weight:800;padding:11px 12px;display:flex;align-items:center;justify-content:space-between;gap:10px}.glossary-details summary::-webkit-details-marker{display:none}.glossary-details summary:after{content:'open';font-size:.78rem;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:3px 8px;background:#fff}.glossary-details[open] summary:after{content:'close'}.glossary-content{padding:0 12px 12px}.compact-help{font-size:.86rem;color:var(--muted);margin:6px 0 10px}.definition-card p{margin-bottom:7px}.threshold-guide{margin-top:10px;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff}
-.threshold-guide table{width:100%;border-collapse:collapse;font-size:.9rem}
-.threshold-guide th,.threshold-guide td{border-bottom:1px solid var(--line);padding:7px 9px;text-align:left}
-.threshold-guide tr:last-child td{border-bottom:0}
-.threshold-badge{display:inline-block;margin-left:6px;padding:2px 7px;border:1px solid var(--line);border-radius:999px;background:#fff;color:var(--muted);font-size:.82rem;font-weight:700}
-.hidden{display:none!important}
+:root{
+  --bg:#f7f7f4;--panel:#fff;--ink:#1f2933;--muted:#5f6b7a;--line:#d8ded7;
+  --soft:#eef3ee;--accent:#345d4e;--warn:#8a5a1f;--good:#2f6b4f;--danger:#7a2e2e;
+  --shadow:0 12px 35px rgba(31,41,51,.08);--radius:18px
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55}
+.wrap{max-width:1180px;margin:0 auto;padding:22px}
+.hero{background:linear-gradient(135deg,#fff,#eef3ee);border:1px solid var(--line);border-radius:24px;padding:28px;box-shadow:var(--shadow);margin-bottom:18px}
+.eyebrow{text-transform:uppercase;letter-spacing:.08em;color:var(--accent);font-weight:800;font-size:.78rem;margin-bottom:8px}
+h1,h2,h3,h4{line-height:1.18;margin:0 0 12px}
+h1{font-size:clamp(2rem,5vw,3.15rem)}h2{font-size:clamp(1.45rem,3vw,2rem)}h3{font-size:1.16rem}
+p{margin:0 0 12px}.subtitle{color:var(--muted);font-size:1.05rem;max-width:900px}
+.sequence{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}.sequence span{background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 11px;font-size:.9rem}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;padding:10px;background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);position:sticky;top:0;z-index:10;margin-bottom:18px}
+.tab{border:1px solid var(--line);background:var(--soft);color:var(--ink);padding:10px 12px;border-radius:999px;cursor:pointer;font-weight:800;font-size:.92rem}
+.tab[aria-selected=true]{background:var(--accent);color:#fff;border-color:var(--accent)}
+main section{display:none}main section.active{display:block}
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)}
+.s12{grid-column:span 12}.s8{grid-column:span 8}.s6{grid-column:span 6}.s4{grid-column:span 4}
+@media(max-width:860px){.s8,.s6,.s4{grid-column:span 12}.tabs{position:static}}
+.notice{border-left:5px solid var(--accent);background:#f4f8f5;padding:12px 14px;border-radius:12px;margin:12px 0}
+.notice.warn{border-left-color:var(--warn);background:#fff8ed}.notice.good{border-left-color:var(--good);background:#f1f8f4}.notice.danger{border-left-color:var(--danger);background:#fff1f1}
+.small{font-size:.9rem;color:var(--muted)}
+.case-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
+.case-card{border:1px solid var(--line);border-radius:16px;padding:14px;background:#fff;cursor:pointer;min-height:160px}
+.case-card:hover,.case-card.selected{outline:3px solid rgba(52,93,78,.18);border-color:var(--accent)}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}.tag{display:inline-block;border-radius:999px;padding:4px 8px;background:var(--soft);color:var(--muted);font-size:.78rem;border:1px solid var(--line)}
+.button-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+button.action{border:none;background:var(--accent);color:#fff;padding:10px 14px;border-radius:12px;font-weight:800;cursor:pointer}
+button.secondary{background:#fff;color:var(--accent);border:1px solid var(--accent)}button.warn{background:var(--warn)}
+button:disabled{opacity:.45;cursor:not-allowed}
+.preset-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:8px;margin:10px 0}
+.preset{border:1px solid var(--line);background:#fff;color:var(--ink);padding:10px;border-radius:12px;cursor:pointer;font-weight:800;text-align:left}
+.preset.active{border-color:var(--accent);outline:3px solid rgba(52,93,78,.18);color:var(--accent)}
+label{display:block;font-weight:800;margin:10px 0 5px}input[type=range]{width:100%}
+textarea,input[type=text]{width:100%;border:1px solid var(--line);border-radius:12px;padding:10px;font:inherit;background:#fff}textarea{min-height:100px;resize:vertical}
+.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(165px,1fr));gap:10px;margin-top:12px}.metric{border:1px solid var(--line);border-radius:14px;background:#fff;padding:12px}.metric strong{display:block;font-size:1.35rem}
+.model-box{border:1px solid var(--line);border-radius:14px;background:#fbfcfb;padding:12px;margin-top:12px}
+.glossary-details{border:1px solid var(--line);border-radius:14px;background:#fbfcfb;margin:10px 0 12px;overflow:hidden}
+.glossary-details summary{cursor:pointer;font-weight:800;padding:11px 12px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.glossary-details summary::-webkit-details-marker{display:none}.glossary-details summary:after{content:"open";font-size:.78rem;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:3px 8px;background:#fff}.glossary-details[open] summary:after{content:"close"}
+.glossary-content{padding:0 12px 12px}.glossary-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px}.definition-card{border:1px solid var(--line);border-radius:12px;background:#fff;padding:10px}.definition-card.inactive{opacity:.78}
+.compact-help{font-size:.86rem;color:var(--muted);margin:6px 0 10px}.threshold-badge{display:inline-block;margin-left:6px;padding:2px 7px;border:1px solid var(--line);border-radius:999px;background:#fff;color:var(--muted);font-size:.82rem;font-weight:800}
+.threshold-guide{margin-top:10px;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff}.threshold-guide table{width:100%;border-collapse:collapse;font-size:.9rem}.threshold-guide th,.threshold-guide td{border-bottom:1px solid var(--line);padding:7px 9px;text-align:left}.threshold-guide tr:last-child td{border-bottom:0}
+.schelling-wrap{display:grid;grid-template-columns:minmax(260px,1.1fr) minmax(250px,.9fr);gap:16px}@media(max-width:900px){.schelling-wrap{grid-template-columns:1fr}}
+.schelling-grid{display:grid;gap:2px;background:#d2d9d1;border:1px solid var(--line);padding:4px;border-radius:12px;max-width:620px}
+.cell{aspect-ratio:1/1;border-radius:4px;border:1px solid rgba(0,0,0,.05)}.cell.a{background:#345d4e}.cell.b{background:#c28a42}.cell.empty{background:#fff}.cell.shared{background:#8aa6bf}.cell.unsat{outline:2px solid #7a2e2e;outline-offset:-2px}
+.legend{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}.legend span{font-size:.86rem;color:var(--muted)}.swatch{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:4px;vertical-align:middle}.swatch.a{background:#345d4e}.swatch.b{background:#c28a42}.swatch.empty{background:#fff;border:1px solid var(--line)}.swatch.shared{background:#8aa6bf}.swatch.unsat{border:2px solid #7a2e2e;background:#fff}
+.coord-dashboard{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-top:12px}.coord-card{border:1px solid var(--line);border-radius:14px;padding:12px;background:#fff}.bar{height:9px;background:#e6ece5;border-radius:999px;overflow:hidden;margin-top:8px}.bar>span{display:block;height:100%;background:var(--accent)}
+.diags{display:grid;gap:8px;margin-top:12px}.diag{border:1px solid var(--line);border-radius:12px;background:#fff;padding:10px}.diag.pass{border-left:5px solid var(--good)}.diag.fail{border-left:5px solid var(--danger)}
+.hidden{display:none!important}.footer{margin-top:28px;color:var(--muted);font-size:.88rem;text-align:center}
 </style>
 </head>
-<body><div class="wrap">
-<header class="hero"><div class="eyebrow">Capability Lab v2.0C.4</div><h1>Coordination Engine Reinsertion</h1><p class="subtitle">Controlled rebuild step: the Coordination Under Heat case now uses a real interpretive engine while the Warning Under Pressure case remains a shell.</p><div class="sequence"><span>GitHub Pages</span><span>Tabs</span><span>Cases</span><span>Presets</span><span>Schelling grid</span><span>Agent moves</span><span>Export</span></div></header>
-<nav class="tabs" aria-label="sections"><button class="tab" aria-selected="true" aria-controls="start">Start Here</button><button class="tab" aria-selected="false" aria-controls="studio">Simulation Studio</button><button class="tab" aria-selected="false" aria-controls="lens">Ethical Lens Audit</button><button class="tab" aria-selected="false" aria-controls="costs">Hidden Costs</button><button class="tab" aria-selected="false" aria-controls="repair">Repair Builder</button><button class="tab" aria-selected="false" aria-controls="bridge">Navigator Bridge</button><button class="tab" aria-selected="false" aria-controls="toolkit">Instructor Toolkit</button></nav>
+<body>
+<div class="wrap">
+<header class="hero">
+  <div class="eyebrow">Capability Lab v2.0C.4a</div>
+  <h1>Case-First Simulation Studio</h1>
+  <p class="subtitle">Schelling and Coordination Under Heat are now active classroom engines. This pass polishes the Coordination output so students can distinguish technical cooperation from ethical coordination, coercive compliance, dark coherence, and repair-oriented moral commons.</p>
+  <div class="sequence"><span>Schelling active</span><span>Coordination active</span><span>Teaching presets</span><span>Collapsible glossary</span><span>Moral commons dashboard</span><span>Export</span></div>
+</header>
+
+<nav class="tabs" aria-label="Capability Lab sections">
+  <button class="tab" role="tab" aria-selected="true" aria-controls="start">Start Here</button>
+  <button class="tab" role="tab" aria-selected="false" aria-controls="studio">Simulation Studio</button>
+  <button class="tab" role="tab" aria-selected="false" aria-controls="lens">Ethical Lens Audit</button>
+  <button class="tab" role="tab" aria-selected="false" aria-controls="costs">Hidden Costs</button>
+  <button class="tab" role="tab" aria-selected="false" aria-controls="repair">Repair Builder</button>
+  <button class="tab" role="tab" aria-selected="false" aria-controls="bridge">Navigator Bridge</button>
+  <button class="tab" role="tab" aria-selected="false" aria-controls="toolkit">Instructor Toolkit</button>
+</nav>
+
 <main>
-<section id="start" role="tabpanel" class="active"><div class="grid"><div class="card span12"><h2>Start Here</h2><p>This build adds only one real simulation engine: the Layered Emergence / Schelling model. The aim is to keep the deployment path stable while confirming that a real grid, movement rules, metrics, presets, and export logic all work on GitHub Pages.</p><div class="notice good"><strong>Test target:</strong><p>Open the Simulation Studio, select the Schelling case, click each teaching preset, confirm that slider values and the grid refresh, step the model, run 25 agent moves, export a summary, and run the runtime self-test.</p></div></div></div></section>
-<section id="studio" role="tabpanel"><div class="grid"><div class="card span12"><h2>Simulation Studio</h2><p>The Schelling and Coordination cases now use real classroom engines. The Warning Under Pressure case remains a shell for a later build.</p><div class="notice"><strong>Recommended teaching sequence:</strong><p>For Schelling, first run the Traditional Demo, then compare it with an expanded view. For Coordination Under Heat, first run the Traditional Coordination Demo, then compare it with Emergent Complexity, Stress Test, or Repair-Oriented View to ask what kind of cooperation is being produced.</p></div><div id="caseList" class="case-list"></div></div><div class="card span6"><h3 id="caseTitle">Selected case</h3><p id="caseSummary" class="small"></p><div id="caseTags" class="tags"></div></div><div class="card span6"><h3>Teaching Contrast Presets</h3><div id="presetPanel"></div></div><div class="card span6"><h3>Variables</h3><div id="vars"></div><div id="glossaryPanel"></div><div class="buttons"><button class="action secondary" id="initGridBtn">Initialize grid</button><button class="action secondary" id="stepGridBtn">Move one agent</button><button class="action secondary" id="run25Btn">Run 25 agent moves</button><button class="action" id="runBtn">Run placeholder simulation</button><button class="action secondary" id="resetCaseBtn">Reset grid</button></div></div><div class="card span6"><h3>Simulation result</h3><div id="result"><p class="small">Run the simulation to generate a result.</p></div></div><div class="card span12"><h3>Module workspace</h3><div id="workspace"><p class="small">The Schelling grid will appear here after initialization or a run.</p></div></div></div></section>
-<section id="lens" role="tabpanel"><div class="card"><h2>Ethical Lens Audit</h2><textarea id="lensNotes" placeholder="Which ethical lens would you use first, and why?"></textarea></div></section>
-<section id="costs" role="tabpanel"><div class="card"><h2>Hidden Costs</h2><textarea id="hiddenCostNotes" placeholder="What might the traditional view hide?"></textarea></div></section>
-<section id="repair" role="tabpanel"><div class="grid"><div class="card span6"><h2>Repair Builder</h2><label for="failedCondition">What condition failed?</label><input id="failedCondition" type="text" placeholder="protected voice, fair mobility, truthful information"></div><div class="card span6"><h3>Repair proposal</h3><textarea id="repairProposal" placeholder="What must be built, protected, or repaired?"></textarea></div></div></section>
-<section id="bridge" role="tabpanel"><div class="grid"><div class="card span6"><h2>Navigator Bridge</h2><textarea id="bridgeStatement" placeholder="Write a classroom-safe bridge statement."></textarea></div><div class="card span6"><h3>Export</h3><div class="buttons"><button class="action" id="exportBtn">Download Reflection Summary</button><button class="action secondary" id="copyBtn">Copy Summary</button><button class="action warnbtn" id="resetLocalBtn">Reset local data</button></div></div></div></section>
-<section id="toolkit" role="tabpanel"><div class="grid"><div class="card span6"><h2>Instructor Toolkit</h2><p>This is a controlled reinsertion build with Schelling and Coordination engines active. The Warning Under Pressure case remains intentionally staged for a later build.</p><ul><li>Upload as <code>index.html</code>.</li><li>Keep Pages source as <strong>main / root</strong>.</li><li>Run the self-test after Pages updates.</li><li>Verify Schelling controls and run the Coordination Under Heat case across the four teaching presets.</li></ul></div><div class="card span6"><h3>Runtime diagnostics</h3><button class="action" id="diagBtn">Run Runtime Self-Test</button><div id="diagPanel" class="notice"><p class="small">No self-test has been run.</p></div></div></div></section>
-</main><p class="footer">Capability Lab v2.0C.4. Controlled rebuild with Schelling and Coordination engines active.</p></div>
+<section id="start" class="active" role="tabpanel">
+  <div class="grid">
+    <div class="card s8">
+      <h2>Teaching sequence</h2>
+      <p>Use this Lab by contrast. First show the traditional simplified model. Then ask what the expanded Capability Lab view reveals about hidden variables, agency-supporting conditions, and repair.</p>
+      <div class="notice good"><strong>Recommended use:</strong><p>For Schelling, start with the Traditional Demo and then compare it to Emergent Complexity, Stress Test, or Repair-Oriented View. For Coordination, start with the Traditional Coordination Demo, then compare it with the expanded views to ask whether visible cooperation is ethically healthy.</p></div>
+    </div>
+    <div class="card s4">
+      <h3>Active engines</h3>
+      <ul>
+        <li>Schelling / Layered Emergence</li>
+        <li>Coordination Under Heat</li>
+        <li>Warning Under Pressure shell</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="studio" role="tabpanel">
+  <div class="grid">
+    <div class="card s12">
+      <h2>Simulation Studio</h2>
+      <p>Choose a public classroom case. Private Navigator content should remain private unless a student freely chooses to share it.</p>
+      <div id="caseList" class="case-list"></div>
+    </div>
+    <div class="card s6">
+      <h3 id="caseTitle">Selected case</h3>
+      <p id="caseSummary" class="small">Choose a case to begin.</p>
+      <div id="caseTags" class="tags"></div>
+    </div>
+    <div class="card s6">
+      <h3>Teaching Contrast Presets</h3>
+      <div id="presetPanel"></div>
+    </div>
+    <div class="card s6">
+      <h3>Variables</h3>
+      <div id="vars"></div>
+      <div id="glossaryPanel"></div>
+      <div class="button-row">
+        <button class="action secondary hidden" id="initGridBtn">Initialize grid</button>
+        <button class="action secondary hidden" id="stepGridBtn">Move one agent</button>
+        <button class="action secondary hidden" id="run25Btn">Run 25 agent moves</button>
+        <button class="action" id="runBtn">Run analysis</button>
+        <button class="action secondary" id="resetCaseBtn">Reset case</button>
+      </div>
+    </div>
+    <div class="card s6">
+      <h3>Result</h3>
+      <div id="result"><p class="small">Run the simulation to generate a result.</p></div>
+    </div>
+    <div class="card s12">
+      <h3>Workspace</h3>
+      <div id="workspace"></div>
+    </div>
+  </div>
+</section>
+
+<section id="lens" role="tabpanel">
+  <div class="card">
+    <h2>Ethical Lens Audit</h2>
+    <p>Ask what kind of agent the system forms, whether persons are respected as ends, what futures are produced, how agency-supporting conditions are distributed, whose vulnerability is sustained, and whose knowledge can be heard.</p>
+    <textarea id="lensNotes" placeholder="Apply ethical lenses here."></textarea>
+  </div>
+</section>
+
+<section id="costs" role="tabpanel">
+  <div class="card">
+    <h2>Hidden Costs</h2>
+    <p>Use this section to name what a successful-looking pattern may hide: exclusion, silence, burden-shifting, discounted testimony, depleted care capacity, or missing repair.</p>
+    <textarea id="hiddenCostNotes" placeholder="What does the model hide or bracket?"></textarea>
+  </div>
+</section>
+
+<section id="repair" role="tabpanel">
+  <div class="grid">
+    <div class="card s6">
+      <h2>Repair Builder</h2>
+      <label for="failedCondition">What condition failed?</label>
+      <input id="failedCondition" type="text" placeholder="Example: protected voice, fair mobility, public memory">
+    </div>
+    <div class="card s6">
+      <h3>Repair proposal</h3>
+      <textarea id="repairProposal" placeholder="What must be built, protected, redesigned, or restored?"></textarea>
+    </div>
+  </div>
+</section>
+
+<section id="bridge" role="tabpanel">
+  <div class="grid">
+    <div class="card s6">
+      <h2>Navigator Bridge</h2>
+      <p>Write a classroom-safe statement connecting the public simulation to ethical navigation. Do not require private journal disclosure.</p>
+      <textarea id="bridgeStatement" placeholder="Public bridge statement."></textarea>
+    </div>
+    <div class="card s6">
+      <h3>Export</h3>
+      <p>Download or copy a classroom reflection summary.</p>
+      <div class="button-row">
+        <button class="action" id="exportBtn">Download Reflection Summary</button>
+        <button class="action secondary" id="copyBtn">Copy Summary</button>
+        <button class="action warn" id="resetLocalBtn">Reset local data</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="toolkit" role="tabpanel">
+  <div class="grid">
+    <div class="card s6">
+      <h2>Instructor Toolkit</h2>
+      <p>This build is designed for live teaching. The Coordination output now separates technical cooperation from ethical coordination.</p>
+      <ul>
+        <li>Traditional Coordination shows trust, clarity, information, and heat.</li>
+        <li>Expanded Coordination adds voice, fairness, power, credibility, care burden, translation, memory, and repair.</li>
+        <li>Use the dashboard to ask whether cooperation is constructive or merely compliant.</li>
+      </ul>
+    </div>
+    <div class="card s6">
+      <h3>Runtime diagnostics</h3>
+      <div class="button-row"><button class="action" id="diagBtn">Run Runtime Self-Test</button></div>
+      <div id="diagPanel" class="notice"><p class="small">No runtime self-test has been run in this browser session.</p></div>
+    </div>
+  </div>
+</section>
+</main>
+<p class="footer">Capability Lab v2.0C.4a. Public simulation work only.</p>
+</div>
+
 <script>
-'use strict';
-const KEY='capability_lab_v2_0c4_state';
+"use strict";
+const KEY="capability_lab_v2_0c4a_state";
+const defaults={activeTab:"start",caseId:"schelling",presetId:"traditional",vars:{},result:null,schelling:{initialized:false,size:18,grid:[],unsatisfied:[],step:0,totalMoves:0,stats:null},lensNotes:"",hiddenCostNotes:"",failedCondition:"",repairProposal:"",bridgeStatement:""};
+
 const cases=[
- {id:"schelling",title:"Layered Emergence / Schelling Engine",type:"layeredEmergence",summary:"A real Schelling-style emergence simulation. The Traditional preset uses only the classic Schelling variables; expanded presets add Capability Lab variables such as mobility access, shared spaces, and repair capacity.",commons:["local threshold","vacancy / open space","emergence","fair mobility","shared space","repair capacity"]},
- {id:"coordination",title:"Coordination Under Heat Engine",type:"coordinationUnderHeat",summary:"A classroom engine for examining cooperation under pressure. Traditional coordination focuses on trust, goal clarity, information clarity, and heat. Expanded views ask whether cooperation is constructive, fragile, coercive, repairable, or a form of dark coherence.",commons:["trust","truthful information","protected voice","fair burden","translation","repair","public memory"]},
- {id:"warning",title:"Warning Under Pressure Shell",type:"warningUnderPressure",summary:"Placeholder for the future whistleblower/professional-responsibility case.",commons:["documentation","professional duty","public risk","institutional memory"]}
+ {id:"schelling",title:"Layered Emergence / Schelling Engine",type:"schelling",summary:"A real Schelling-style emergence simulation. The Traditional preset uses only the classic variables; expanded presets add Capability Lab variables.",commons:["local threshold","open space","emergence","fair mobility","shared space","repair"]},
+ {id:"coordination",title:"Coordination Under Heat Engine",type:"coordination",summary:"A structured engine for examining cooperation under pressure. Traditional coordination focuses on trust, goal clarity, information clarity, and heat. Expanded views ask whether cooperation is constructive, fragile, coercive, repairable, or dark coherence.",commons:["trust","information","protected voice","fair burden","translation","public memory","repair"]},
+ {id:"warning",title:"Warning Under Pressure Shell",type:"warning",summary:"Placeholder for the future whistleblower/professional-responsibility case.",commons:["documentation","professional duty","public risk","institutional memory"]}
 ];
+
 const presets={
- layeredEmergence:[
-  {id:"traditional",label:"Traditional Schelling Demo",short:"Traditional",mode:"classic",note:"Classic view: local similarity thresholds and available empty spaces can generate macro-level clustering even without explicit intent to segregate.",reveals:"Small local preferences can generate visible macro-level clustering. This is the standard Schelling lesson.",hides:"It intentionally brackets unequal mobility, institutional support, shared spaces, protected voice, fairness, and repair capacity. In this view, agents are simply assumed able to relocate when unsatisfied.",compare:"Use this as the clean baseline. Then ask what changes when Capability Lab variables are made visible.",visibleVars:["gridSize","density","similarityThreshold"],assumptions:"Classical assumption: unsatisfied agents may relocate freely into available open cells. No repair capacity, shared spaces, protected voice, or institutional support is modeled in the Traditional view.",vars:{gridSize:18,density:82,similarityThreshold:33}},
-  {id:"emergent",label:"Emergent Complexity View",short:"Emergent",note:"Keeps the classic emergence lesson but adds mobility access, shared spaces, and repair capacity as agency-supporting conditions.",reveals:"Emergence is shaped by conditions that support or restrict agency, not merely by preference thresholds.",hides:"It still simplifies history, housing policy, race, class, legal structures, and real-world institutional power.",compare:"Compare clustering and unsatisfied agents against the Traditional baseline. What changes when agency-supporting conditions are visible?",vars:{gridSize:18,density:82,similarityThreshold:45,mobilityAccess:60,sharedSpaces:8,repairCapacity:40}},
-  {id:"stress",label:"High-Pressure Stress Test",short:"Stress Test",note:"Shows how harmful patterns harden when thresholds rise, mobility is restricted, shared spaces are scarce, and repair is weak.",reveals:"Harmful macro-patterns can become more rigid when mobility and repair are weak.",hides:"This intentionally exaggerates pressure for classroom analysis; it is not a prediction of actual communities.",compare:"Compare against the Traditional baseline. Does the system become more stable, more harmful, or both?",vars:{gridSize:18,density:86,similarityThreshold:58,mobilityAccess:32,sharedSpaces:2,repairCapacity:18}},
-  {id:"repair",label:"Repair-Oriented View",short:"Repair",note:"Highlights what must be built to make emergence more agency-supporting: fair mobility, shared space, and repair capacity.",reveals:"Repair changes the ethical interpretation of emergence by adding shared spaces and redesign capacity.",hides:"A repair slider cannot solve structural injustice by itself; it only gives students a design vocabulary.",compare:"Compare against the Stress Test and Traditional baseline. Which repair conditions reduce exclusion risk without hiding remaining costs?",vars:{gridSize:18,density:82,similarityThreshold:42,mobilityAccess:78,sharedSpaces:16,repairCapacity:86}}
+ schelling:[
+  {id:"traditional",label:"Traditional Schelling Demo",short:"Traditional",mode:"classic",visible:["gridSize","density","similarityThreshold"],vars:{gridSize:18,density:82,similarityThreshold:33},note:"Classic view: local similarity thresholds and available empty spaces can generate macro-level clustering.",reveals:"Small local rules can generate large visible patterns.",hides:"Unequal mobility, institutional support, shared spaces, protected voice, fairness, and repair capacity.",compare:"Compare this baseline with expanded presets to ask what the classic model leaves out."},
+  {id:"emergent",label:"Emergent Complexity View",short:"Emergent",mode:"expanded",visible:["gridSize","density","similarityThreshold","mobilityAccess","sharedSpaces","repairCapacity"],vars:{gridSize:18,density:82,similarityThreshold:45,mobilityAccess:60,sharedSpaces:8,repairCapacity:40},note:"Keeps emergence visible but adds agency-supporting conditions.",reveals:"Emergence is shaped by mobility, shared space, and repair.",hides:"Real histories, law, race, class, economics, and institutional power.",compare:"Compare against Traditional. Do the extra variables change what counts as success?"},
+  {id:"stress",label:"High-Pressure Stress Test",short:"Stress Test",mode:"expanded",visible:["gridSize","density","similarityThreshold","mobilityAccess","sharedSpaces","repairCapacity"],vars:{gridSize:18,density:86,similarityThreshold:58,mobilityAccess:30,sharedSpaces:2,repairCapacity:15},note:"Shows how patterns harden when thresholds rise and repair weakens.",reveals:"Mobility limits and weak repair can make harmful patterns rigid.",hides:"This exaggerates pressure for classroom analysis.",compare:"Compare to Repair-Oriented View. What must be built to change the pattern?"},
+  {id:"repair",label:"Repair-Oriented View",short:"Repair",mode:"expanded",visible:["gridSize","density","similarityThreshold","mobilityAccess","sharedSpaces","repairCapacity"],vars:{gridSize:18,density:82,similarityThreshold:40,mobilityAccess:80,sharedSpaces:15,repairCapacity:85},note:"Highlights fair mobility, shared spaces, and repair capacity.",reveals:"Repair changes the ethical interpretation of emergence.",hides:"A slider cannot solve structural injustice; it only gives students a design vocabulary.",compare:"Compare with Stress Test. Which repair conditions reduce harm or instability?"}
  ],
- coordinationUnderHeat:[
-  {id:"traditional",label:"Traditional Coordination Demo",short:"Traditional",mode:"classicCoordination",note:"A simplified coordination view: cooperation improves when agents have enough trust, shared goals, usable information, and manageable pressure.",reveals:"Trust, goal clarity, information clarity, and pressure can strongly shape whether cooperation succeeds.",hides:"It brackets protected voice, power asymmetry, credibility gaps, care burden, translation effort, public memory, fairness, and repair. It therefore cannot tell whether cooperation is ethically healthy.",compare:"Use this as the technical baseline. Then ask what changes when voice, fairness, power, credibility, care burden, translation, memory, and repair become visible.",visibleVars:["trust","sharedGoalClarity","informationClarity","institutionalHeat"],assumptions:"Traditional simplifying assumption: coordination is treated mainly as a trust-and-information problem under pressure.",vars:{trust:62,sharedGoalClarity:68,informationClarity:64,institutionalHeat:42}},
-  {id:"emergent",label:"Emergent Complexity View",short:"Emergent",mode:"expandedCoordination",note:"Adds ethical structure to the coordination problem: protected voice, fair burden, power differences, credibility gaps, translation effort, memory, and repair.",reveals:"Cooperation can be stable while still distributing burdens unfairly or silencing some agents.",hides:"It still simplifies real institutional histories, role duties, legal protections, status hierarchies, and material risks.",compare:"Compare against the Traditional baseline. Did cooperation improve because persons were supported, or because pressure made dissent costly?",vars:{trust:55,sharedGoalClarity:60,informationClarity:58,protectedVoice:45,institutionalHeat:65,fairness:50,repairCapacity:42,powerAsymmetry:55,credibilityGap:50,careBurden:45,translationEffort:50,publicMemory:35}},
-  {id:"stress",label:"High-Pressure Stress Test",short:"Stress Test",mode:"expandedCoordination",note:"Raises institutional heat, power asymmetry, credibility gaps, and care burden while lowering voice and repair.",reveals:"Coordination can become compliance, coercion, or dark coherence when heat rises and protected voice collapses.",hides:"It intentionally exaggerates pressure so breakdown mechanisms are easier to see.",compare:"Compare with Traditional and Repair views. Does the group look coordinated because trust is real, or because risk and power make disagreement unsafe?",vars:{trust:38,sharedGoalClarity:52,informationClarity:42,protectedVoice:25,institutionalHeat:88,fairness:32,repairCapacity:24,powerAsymmetry:78,credibilityGap:72,careBurden:76,translationEffort:35,publicMemory:22}},
-  {id:"repair",label:"Repair-Oriented View",short:"Repair",mode:"expandedCoordination",note:"Strengthens protected voice, information clarity, fairness, repair capacity, translation effort, and public memory while lowering harmful heat and asymmetry.",reveals:"Constructive coordination depends on agency-supporting conditions, not merely agreement or visible cooperation.",hides:"It does not guarantee consensus or erase PRF differences; it models conditions that make ethical cooperation more practicable.",compare:"Compare with the Stress Test. Which repair conditions change the outcome from forced compliance toward constructive coordination?",vars:{trust:72,sharedGoalClarity:72,informationClarity:76,protectedVoice:82,institutionalHeat:45,fairness:80,repairCapacity:86,powerAsymmetry:32,credibilityGap:25,careBurden:32,translationEffort:84,publicMemory:82}}
+ coordination:[
+  {id:"traditional",label:"Traditional Coordination Demo",short:"Traditional",mode:"classic",visible:["trust","sharedGoalClarity","informationClarity","institutionalHeat"],vars:{trust:62,sharedGoalClarity:68,informationClarity:64,institutionalHeat:42},note:"A simplified view: cooperation improves with trust, shared goals, usable information, and manageable pressure.",reveals:"Technical cooperation depends on trust, clarity, information, and heat.",hides:"Protected voice, fairness, power asymmetry, credibility gaps, care burden, translation effort, public memory, and repair.",compare:"Compare with expanded views. Does visible cooperation remain ethically healthy once hidden conditions are included?"},
+  {id:"emergent",label:"Emergent Complexity View",short:"Emergent",mode:"expanded",visible:["trust","sharedGoalClarity","informationClarity","institutionalHeat","protectedVoice","fairness","repairCapacity","powerAsymmetry","credibilityGap","careBurden","translationEffort","publicMemory"],vars:{trust:55,sharedGoalClarity:60,informationClarity:58,institutionalHeat:65,protectedVoice:45,fairness:50,repairCapacity:42,powerAsymmetry:55,credibilityGap:50,careBurden:45,translationEffort:50,publicMemory:35},note:"Adds ethical structure to the coordination problem.",reveals:"Cooperation can be stable while voice, burden, or credibility remain unequal.",hides:"Real legal duties, role-specific risks, and institutional histories.",compare:"Compare with Traditional. What was missing from the technical cooperation story?"},
+  {id:"stress",label:"High-Pressure Stress Test",short:"Stress Test",mode:"expanded",visible:["trust","sharedGoalClarity","informationClarity","institutionalHeat","protectedVoice","fairness","repairCapacity","powerAsymmetry","credibilityGap","careBurden","translationEffort","publicMemory"],vars:{trust:38,sharedGoalClarity:52,informationClarity:42,institutionalHeat:88,protectedVoice:25,fairness:32,repairCapacity:24,powerAsymmetry:78,credibilityGap:72,careBurden:76,translationEffort:35,publicMemory:22},note:"Raises heat, asymmetry, credibility gaps, and care burden while lowering voice and repair.",reveals:"Coordination can become compliance, coercion, or dark coherence.",hides:"This exaggerates pressure to make breakdown visible.",compare:"Compare with Repair-Oriented View. Which conditions restore voice and reduce coercion?"},
+  {id:"repair",label:"Repair-Oriented View",short:"Repair",mode:"expanded",visible:["trust","sharedGoalClarity","informationClarity","institutionalHeat","protectedVoice","fairness","repairCapacity","powerAsymmetry","credibilityGap","careBurden","translationEffort","publicMemory"],vars:{trust:72,sharedGoalClarity:72,informationClarity:76,institutionalHeat:45,protectedVoice:82,fairness:80,repairCapacity:86,powerAsymmetry:32,credibilityGap:25,careBurden:32,translationEffort:84,publicMemory:82},note:"Strengthens voice, fairness, repair, translation, and public memory.",reveals:"Constructive coordination requires agency-supporting conditions, not just agreement.",hides:"It does not guarantee consensus or erase PRF differences.",compare:"Compare with Stress Test. What changed from coercive pressure to repairable cooperation?"}
  ],
- warningUnderPressure:[
-  {id:"traditional",label:"Traditional Professional Courage View",note:"Frames warning as individual courage. Placeholder engine only.",vars:{timePressure:80,documentationQuality:45,protectedVoice:35,publicRisk:75}},
-  {id:"emergent",label:"Emergent Institutional View",note:"Frames warning as voice, evidence, hierarchy, and memory. Placeholder engine only.",vars:{timePressure:78,documentationQuality:55,protectedVoice:45,publicRisk:80}},
-  {id:"stress",label:"High-Pressure Stress Test",note:"Shows warning failure under pressure. Placeholder engine only.",vars:{timePressure:92,documentationQuality:30,protectedVoice:20,publicRisk:88}},
-  {id:"repair",label:"Repair-Oriented View",note:"Strengthens documentation, voice, and warning pathways. Placeholder engine only.",vars:{timePressure:50,documentationQuality:82,protectedVoice:84,publicRisk:72}}
+ warning:[
+  {id:"traditional",label:"Traditional Professional Courage View",short:"Traditional",mode:"shell",visible:["timePressure","documentationQuality","protectedVoice","publicRisk"],vars:{timePressure:80,documentationQuality:45,protectedVoice:35,publicRisk:75},note:"Placeholder. Frames warning as individual courage.",reveals:"The future engine will compare individual and institutional views.",hides:"Full warning-pathway dynamics are not active yet.",compare:"This shell is reserved for v2.0D."}
  ]
 };
-const defaults={tab:'start',caseId:'schelling',presetId:'traditional',vars:{},result:null,schelling:{grid:[],size:18,step:0,totalMoves:0,initialized:false,unsatisfied:[],stats:null},lensNotes:'',hiddenCostNotes:'',failedCondition:'',repairProposal:'',bridgeStatement:''};
-const varMeta={gridSize:{min:8,max:30,step:1},density:{min:40,max:95,step:1},similarityThreshold:{min:0,max:100,step:1},mobilityAccess:{min:0,max:100,step:1},sharedSpaces:{min:0,max:40,step:1},repairCapacity:{min:0,max:100,step:1},trust:{min:0,max:100,step:1},sharedGoalClarity:{min:0,max:100,step:1},informationClarity:{min:0,max:100,step:1},protectedVoice:{min:0,max:100,step:1},institutionalHeat:{min:0,max:100,step:1},fairness:{min:0,max:100,step:1},powerAsymmetry:{min:0,max:100,step:1},credibilityGap:{min:0,max:100,step:1},careBurden:{min:0,max:100,step:1},translationEffort:{min:0,max:100,step:1},publicMemory:{min:0,max:100,step:1},timePressure:{min:0,max:100,step:1},documentationQuality:{min:0,max:100,step:1},publicRisk:{min:0,max:100,step:1}};
+
+const varMeta={gridSize:{min:8,max:30,step:1},density:{min:40,max:95,step:1},similarityThreshold:{min:0,max:100,step:1},mobilityAccess:{min:0,max:100,step:1},sharedSpaces:{min:0,max:40,step:1},repairCapacity:{min:0,max:100,step:1},trust:{min:0,max:100,step:1},sharedGoalClarity:{min:0,max:100,step:1},informationClarity:{min:0,max:100,step:1},institutionalHeat:{min:0,max:100,step:1},protectedVoice:{min:0,max:100,step:1},fairness:{min:0,max:100,step:1},powerAsymmetry:{min:0,max:100,step:1},credibilityGap:{min:0,max:100,step:1},careBurden:{min:0,max:100,step:1},translationEffort:{min:0,max:100,step:1},publicMemory:{min:0,max:100,step:1},timePressure:{min:0,max:100,step:1},documentationQuality:{min:0,max:100,step:1},publicRisk:{min:0,max:100,step:1}};
+
 const varDefs={
- gridSize:{group:"Core Schelling Variable",short:"The width and height of the square grid.",teaching:"A larger grid gives the model more possible locations and can make patterns harder to read quickly. It changes the scale of the simulated environment, not the ethical interpretation by itself."},
- density:{group:"Core Schelling Variable",short:"How full the grid is; higher density means fewer open cells.",teaching:"In the classic model, empty cells matter because agents need open locations to move into. High density can make movement harder and can make local dissatisfaction persist."},
- similarityThreshold:{group:"Core Schelling Variable",short:"The minimum percentage of occupied nearby neighbors that must be similar for an agent to stay satisfied.",teaching:"In the Traditional Schelling model, this is a local satisfaction rule, not a measurement of prejudice or moral worth. A value near 33% means roughly one-third: because neighbors are whole persons/cells, the app rounds this into the minimum number of similar occupied neighbors needed."},
- mobilityAccess:{group:"Expanded Capability Lab Variable",short:"How easily unsatisfied agents can relocate.",teaching:"This represents unequal ability to exit, transfer, relocate, change schools, leave a job, or escape harmful conditions. In the Traditional Schelling view, mobility is treated as a hidden simplifying assumption rather than an ethical variable."},
- sharedSpaces:{group:"Expanded Capability Lab Variable",short:"Boundary-crossing spaces that support interaction across groups.",teaching:"Shared spaces represent parks, schools, workplaces, public forums, civic institutions, shared projects, or other designed environments where groups can encounter one another without requiring full similarity."},
- repairCapacity:{group:"Expanded Capability Lab Variable",short:"The system's ability to respond when harmful patterns emerge.",teaching:"Repair capacity represents policy change, dialogue, institutional redesign, restorative processes, anti-exclusion rules, support for displaced agents, or other ways a system can correct damage rather than simply letting the pattern harden."},
- trust:{group:"Core Coordination Variable",short:"The degree to which agents expect one another to act reliably enough for cooperation.",teaching:"Trust is necessary for coordination, but trust alone does not tell us whether cooperation is ethical, coerced, or fair."},
- sharedGoalClarity:{group:"Core Coordination Variable",short:"How clearly participants understand the shared task or goal.",teaching:"Shared goals can improve coordination, but a shared goal can still be ethically flawed if some agents are silenced or burdened unfairly."},
- informationClarity:{group:"Core Coordination Variable",short:"How accurate, accessible, and usable the available information is.",teaching:"Coordination improves when information is clear. Ethical coordination also asks whose information is heard, discounted, or suppressed."},
- institutionalHeat:{group:"Coordination Pressure Variable",short:"The level of pressure, scarcity, threat, surveillance, urgency, or institutional stress in the situation.",teaching:"Heat can make coordination appear efficient while actually narrowing voice, increasing fear, and making disagreement unsafe."},
- protectedVoice:{group:"Expanded Coordination Variable",short:"Whether agents can raise concerns, dissent, or report risk without punishment.",teaching:"Protected voice is central to distinguishing constructive coordination from compliance or dark coherence."},
- fairness:{group:"Expanded Coordination Variable",short:"How fairly benefits, burdens, risks, and responsibilities are distributed.",teaching:"A group can be well-coordinated while still shifting costs onto people with less power."},
- powerAsymmetry:{group:"Expanded Coordination Variable",short:"How unequal the power relation is among participants.",teaching:"High asymmetry can make apparent agreement unreliable because lower-power agents may comply rather than freely coordinate."},
- credibilityGap:{group:"Expanded Coordination Variable",short:"How strongly some agents' testimony or warnings are discounted.",teaching:"Credibility gaps connect coordination to epistemic justice: whose knowledge can enter the shared model?"},
- careBurden:{group:"Expanded Coordination Variable",short:"The hidden emotional, relational, or support labor carried by some agents.",teaching:"Coordination often depends on care labor that is invisible in technical success metrics."},
- translationEffort:{group:"Expanded Coordination Variable",short:"The work of building shared vocabulary across different PRFs, roles, or communities.",teaching:"Translation effort supports cooperation without requiring full consensus or identical worldviews."},
- publicMemory:{group:"Expanded Coordination Variable",short:"Whether the system remembers warnings, injuries, lessons, and repair commitments.",teaching:"Public memory helps prevent the same harms from being repeatedly treated as isolated incidents."},
- timePressure:{group:"Warning Case Variable",short:"The urgency surrounding a possible warning or professional decision.",teaching:"This variable will be activated in the later Warning Under Pressure engine."},
- documentationQuality:{group:"Warning Case Variable",short:"How clear and usable the evidence trail is.",teaching:"This variable will be activated in the later Warning Under Pressure engine."},
- publicRisk:{group:"Warning Case Variable",short:"The scale of possible harm to patients, clients, students, workers, publics, or communities.",teaching:"This variable will be activated in the later Warning Under Pressure engine."}
+ gridSize:{group:"Core Schelling",short:"The width and height of the square grid.",teaching:"A larger grid creates more possible positions and more complex patterns."},
+ density:{group:"Core Schelling",short:"How full the grid is; higher density means fewer open cells.",teaching:"Open cells matter because agents need vacant places to move into."},
+ similarityThreshold:{group:"Core Schelling",short:"The minimum percentage of occupied nearby neighbors that must be similar for an agent to stay satisfied.",teaching:"This is a local satisfaction rule, not a measure of prejudice or moral worth."},
+ mobilityAccess:{group:"Expanded Schelling",short:"How easily unsatisfied agents can relocate.",teaching:"Real agents do not all have equal ability to exit, transfer, move, or escape harmful conditions."},
+ sharedSpaces:{group:"Expanded Schelling",short:"Boundary-crossing spaces that support interaction across groups.",teaching:"Examples include schools, parks, workplaces, public forums, civic institutions, or shared projects."},
+ repairCapacity:{group:"Expanded / Coordination",short:"The system's ability to respond when harmful patterns emerge.",teaching:"Repair includes redesign, dialogue, institutional change, restorative processes, and support for those harmed."},
+ trust:{group:"Core Coordination",short:"The degree to which agents expect reliable cooperation.",teaching:"Trust helps coordination, but trust alone does not prove cooperation is ethical."},
+ sharedGoalClarity:{group:"Core Coordination",short:"How clearly participants understand the shared task or goal.",teaching:"A shared goal can still be harmful if some people are silenced or unfairly burdened."},
+ informationClarity:{group:"Core Coordination",short:"How accurate, accessible, and usable the available information is.",teaching:"Ethical coordination asks whose information is heard, discounted, or suppressed."},
+ institutionalHeat:{group:"Core Coordination",short:"Pressure, scarcity, urgency, threat, surveillance, or institutional stress.",teaching:"Heat can make coordination look efficient while narrowing voice and increasing fear."},
+ protectedVoice:{group:"Expanded Coordination",short:"Whether agents can raise concerns or dissent without punishment.",teaching:"Protected voice distinguishes constructive coordination from compliance."},
+ fairness:{group:"Expanded Coordination",short:"How fairly benefits, burdens, risks, and responsibilities are distributed.",teaching:"A group can be coordinated while shifting costs onto less powerful people."},
+ powerAsymmetry:{group:"Expanded Coordination",short:"How unequal the power relation is among participants.",teaching:"High asymmetry can make apparent agreement unreliable."},
+ credibilityGap:{group:"Expanded Coordination",short:"How strongly some agents' testimony or warnings are discounted.",teaching:"This connects coordination to epistemic justice."},
+ careBurden:{group:"Expanded Coordination",short:"Hidden emotional, relational, or support labor carried by some agents.",teaching:"Coordination often depends on care work that technical metrics do not see."},
+ translationEffort:{group:"Expanded Coordination",short:"The work of building shared vocabulary across PRFs, roles, or communities.",teaching:"Translation supports cooperation without requiring full consensus."},
+ publicMemory:{group:"Expanded Coordination",short:"Whether the system remembers warnings, injuries, lessons, and repair commitments.",teaching:"Public memory helps prevent repeated harm from being treated as isolated."},
+ timePressure:{group:"Warning Case",short:"Urgency surrounding a possible warning.",teaching:"Active in a later build."},
+ documentationQuality:{group:"Warning Case",short:"How clear and usable the evidence trail is.",teaching:"Active in a later build."},
+ publicRisk:{group:"Warning Case",short:"The scale of possible public harm.",teaching:"Active in a later build."}
 };
+
 let state=normalize(load());
-function load(){try{return JSON.parse(localStorage.getItem(KEY))||clone(defaults)}catch(e){return clone(defaults)}}
-function save(){try{localStorage.setItem(KEY,JSON.stringify(state))}catch(e){console.warn(e)}}
+
 function clone(x){return JSON.parse(JSON.stringify(x))}
-function selected(){return cases.find(c=>c.id===state.caseId)||cases[0]}
+function load(){try{const raw=localStorage.getItem(KEY);return raw?JSON.parse(raw):clone(defaults)}catch(e){return clone(defaults)}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(state))}catch(e){console.warn("Save failed",e)}}
+function normalize(s){const n=Object.assign(clone(defaults),s||{});if(!cases.some(c=>c.id===n.caseId))n.caseId=cases[0].id;const p=activePreset(selected(n),n.presetId);if(!p||!casePresets(selected(n)).some(x=>x.id===n.presetId))n.presetId=casePresets(selected(n))[0].id;if(!n.vars||Object.keys(n.vars).length===0)n.vars=clone(activePreset(selected(n),n.presetId).vars);if(!n.schelling)n.schelling=clone(defaults.schelling);return n}
+function selected(st=state){return cases.find(c=>c.id===st.caseId)||cases[0]}
 function casePresets(c=selected()){return presets[c.type]||[]}
 function activePreset(c=selected(),id=state.presetId){return casePresets(c).find(p=>p.id===id)||casePresets(c)[0]}
-function schellingMode(){return isSchellingCase()&&activePreset().mode==='classic'?'classic':'expanded'}
-function schellingParam(key,classicDefault=0,expandedDefault=0){if(Object.prototype.hasOwnProperty.call(state.vars,key))return Number(state.vars[key])||0;return schellingMode()==='classic'?classicDefault:expandedDefault}
-function normalize(s){s=Object.assign(clone(defaults),s||{});s.schelling=Object.assign(clone(defaults.schelling),s.schelling||{});if(!cases.some(c=>c.id===s.caseId))s.caseId=cases[0].id;const c=cases.find(x=>x.id===s.caseId);if(!casePresets(c).some(p=>p.id===s.presetId))s.presetId='traditional';if(!s.vars||Object.keys(s.vars).length===0)s.vars=clone(activePreset(c,s.presetId).vars);return s}
-function switchTab(id){state.tab=id;save();renderTabs();window.scrollTo({top:0,behavior:'smooth'})}
-function selectCase(id){state.caseId=id;state.presetId='traditional';state.vars=clone(activePreset(selected(),'traditional').vars);state.result=null;state.schelling=clone(defaults.schelling);save();renderAll();switchTab('studio')}
-function applyPreset(id){state.presetId=id;state.vars=clone(activePreset(selected(),id).vars);state.result=null;if(selected().type==='layeredEmergence'){state.schelling=clone(defaults.schelling);initSchelling();return}save();renderAll()}
-function isSchellingCase(){return selected().type==='layeredEmergence'}
-function isCoordinationCase(){return selected().type==='coordinationUnderHeat'}
-function coordinationMode(){return isCoordinationCase()&&activePreset().mode==='classicCoordination'?'classic':'expanded'}
-function cParam(key,classicDefault=50,expandedDefault=50){if(Object.prototype.hasOwnProperty.call(state.vars,key))return Number(state.vars[key])||0;return coordinationMode()==='classic'?classicDefault:expandedDefault}
-function runSim(){if(isSchellingCase()){if(!state.schelling.initialized)initSchelling();runSchellingSteps(1);return}if(isCoordinationCase()){runCoordinationSim();return}runPlaceholderSim()}
-function runCoordinationSim(){
-  const r=coordinationResultFromVars();
-  state.result=r;
-  save();
-  renderAll()
-}
-function coordinationResultFromVars(){
-  const classic=coordinationMode()==='classic';
-  const trust=cParam('trust',50,50);
-  const goal=cParam('sharedGoalClarity',50,50);
-  const info=cParam('informationClarity',50,50);
-  const heat=cParam('institutionalHeat',50,50);
-  const voice=cParam('protectedVoice',50,50);
-  const fairness=cParam('fairness',50,50);
-  const repair=cParam('repairCapacity',0,50);
-  const power=cParam('powerAsymmetry',50,50);
-  const cred=cParam('credibilityGap',50,50);
-  const care=cParam('careBurden',50,50);
-  const translation=cParam('translationEffort',50,50);
-  const memory=cParam('publicMemory',50,50);
+function isSchelling(){return selected().type==="schelling"}
+function isCoordination(){return selected().type==="coordination"}
+function visibleKeys(){return activePreset().visible||Object.keys(state.vars)}
+function mode(){return activePreset().mode||"shell"}
 
-  const technical=clamp(Math.round(trust*.30+goal*.24+info*.24+(100-heat)*.14+voice*.08),0,100);
-  const pressureRisk=clamp(Math.round(heat*.40+(100-trust)*.18+(100-info)*.16+power*.12+cred*.08+care*.06),0,100);
+function switchTab(id){state.activeTab=id;save();renderTabs();window.scrollTo({top:0,behavior:"smooth"})}
+function selectCase(id){state.caseId=id;state.presetId=casePresets(selected())[0].id;state.vars=clone(activePreset().vars);state.result=null;state.schelling=clone(defaults.schelling);save();renderAll();switchTab("studio")}
+function applyPreset(id){state.presetId=id;state.vars=clone(activePreset().vars);state.result=null;state.schelling=clone(defaults.schelling);save();renderAll()}
 
-  let support,risk,repairPotential,moralCommons;
-  if(classic){
-    support=technical;
-    risk=clamp(Math.round(heat*.55+(100-trust)*.25+(100-info)*.20),0,100);
-    repairPotential=null;
-    moralCommons=null;
-  }else{
-    const agencySupport=voice*.17+fairness*.14+repair*.13+translation*.11+memory*.10+trust*.12+goal*.09+info*.09+(100-heat)*.05;
-    const coercionRisk=heat*.20+power*.18+cred*.16+care*.14+(100-voice)*.15+(100-fairness)*.10+(100-repair)*.07;
-    support=clamp(Math.round(agencySupport),0,100);
-    risk=clamp(Math.round(coercionRisk),0,100);
-    repairPotential=clamp(Math.round(repair*.34+voice*.19+fairness*.16+translation*.13+memory*.12+info*.06),0,100);
-    moralCommons={
-      trust:Math.round(trust),
-      truthfulInformation:Math.round(info),
-      protectedVoice:Math.round(voice),
-      fairBurden:Math.round((fairness+(100-care))/2),
-      translation:Math.round(translation),
-      publicMemory:Math.round(memory),
-      repair:Math.round(repair)
-    };
-  }
-
-  let label;
-  if(classic){
-    if(support>=70&&risk<45)label='Traditional coordination: stable cooperation';
-    else if(support>=55&&risk<65)label='Traditional coordination: fragile cooperation';
-    else if(risk>=70)label='Traditional coordination: pressure-driven breakdown risk';
-    else label='Traditional coordination: unsettled cooperation';
-  }else{
-    const dark=(technical>=60&&risk>=65);
-    if(dark)label='Dark coherence risk';
-    else if(support>=70&&risk<45&&repairPotential>=65)label='Constructive coordination';
-    else if(support>=55&&risk<60)label='Fragile but workable coordination';
-    else if(risk>=70&&support<55)label='Coercive coordination / breakdown risk';
-    else if(support<50&&repairPotential>=60)label='Repair path available';
-    else label='Unsettled coordination under heat';
-  }
-
-  return{
-    type:'coordination',
-    mode:classic?'classic':'expanded',
-    label,
-    preset:activePreset().label,
-    caseTitle:selected().title,
-    support,
-    risk,
-    repair:repairPotential,
-    stats:{trust,sharedGoalClarity:goal,informationClarity:info,institutionalHeat:heat,protectedVoice:voice,fairness,repairCapacity:repair,powerAsymmetry:power,credibilityGap:cred,careBurden:care,translationEffort:translation,publicMemory:memory,technicalCoordination:technical,pressureRisk},
-    moralCommons,
-    dark:{
-      active:classic?false:(technical>=60&&risk>=65),
-      message:classic?'Traditional coordination does not evaluate voice, fairness, credibility, care burden, memory, or repair.':'The system may look coordinated because pressure, asymmetry, or credibility gaps suppress disagreement rather than because shared agency is healthy.'
-    }
-  }
-}
-
-function runPlaceholderSim(){const vals=Object.values(state.vars).map(Number);const avg=Math.round(vals.reduce((a,b)=>a+b,0)/Math.max(vals.length,1));const pressure=state.vars.institutionalHeat??state.vars.timePressure??50;const support=clamp(Math.round(avg*.7+(100-pressure)*.3),0,100);const risk=clamp(Math.round(pressure*.6+(100-avg)*.4),0,100);const repair=clamp(Math.round(state.vars.repairCapacity??state.vars.protectedVoice??50),0,100);let label='Unsettled Pattern';if(support>=70&&risk<50)label='Constructive Pattern';if(support>=60&&risk>=60)label='Dark Coherence Risk';if(support<50&&repair>=55)label='Repair Path Available';if(support<45&&risk>=65)label='Breakdown Risk';state.result={type:'placeholder',label,support,risk,repair,preset:activePreset().label,caseTitle:selected().title};save();renderAll()}
-function initSchelling(){const size=clamp(Number(state.vars.gridSize)||18,8,30);const total=size*size;const density=clamp(Number(state.vars.density)||82,0,100);const sharedCount=clamp(Math.round(schellingParam('sharedSpaces',0,0)),0,Math.floor(total*.25));const agentCount=clamp(Math.round(total*density/100),0,total-sharedCount);const cells=Array(total).fill(0);const slots=shuffle([...Array(total).keys()]);for(let i=0;i<sharedCount;i++)cells[slots[i]]='S';let aTurn=true;for(let i=sharedCount;i<sharedCount+agentCount;i++){cells[slots[i]]=aTurn?'A':'B';aTurn=!aTurn}state.schelling={grid:cells,size,step:0,totalMoves:0,initialized:true,unsatisfied:[],stats:null};updateSchellingStats();state.result=schellingResultFromStats();save();renderAll()}
-function runSchellingSteps(n){
-  if(!state.schelling.initialized)initSchelling();
-  let completed=0;
-  let attempts=0;
-  const maxAttempts=Math.max(n*4,n);
-  while(completed<n&&attempts<maxAttempts){
-    const moved=stepSchelling();
-    if(moved===0)break;
-    attempts++;
-    if(moved>0)completed+=moved;
-  }
-  updateSchellingStats();
-  state.result=schellingResultFromStats();
-  save();
-  renderAll()
-}
-function stepSchelling(){
-  updateSchellingStats();
-  const grid=state.schelling.grid;
-  const empties=grid.map((v,i)=>v===0?i:null).filter(v=>v!==null);
-  if(!empties.length||!state.schelling.unsatisfied.length)return 0;
-
-  const candidates=shuffle(state.schelling.unsatisfied.slice()).filter(i=>grid[i]==='A'||grid[i]==='B');
-  if(!candidates.length)return 0;
-
-  const from=candidates[0];
-  const agent=grid[from];
-
-  // One Schelling move means one unsatisfied agent relocates.
-  // In the classic baseline, mobility is a hidden free-movement assumption.
-  // In expanded presets, mobility limits how many possible open cells the agent can effectively consider.
-  const mobility=clamp(schellingParam('mobilityAccess',100,60),1,100);
-  const sampleSize=schellingMode()==='classic'
-    ? Math.min(empties.length,Math.max(1,Math.round(Math.min(20,empties.length))))
-    : Math.max(1,Math.round(empties.length*mobility/100));
-  const sample=shuffle(empties.slice()).slice(0,Math.min(sampleSize,empties.length));
-
-  let bestIndex=sample[0];
-  let bestScore=-1;
-  for(const to of sample){
-    grid[from]=0;
-    grid[to]=agent;
-    const after=cellSimilarity(grid,state.schelling.size,to,agent).score;
-    grid[to]=0;
-    grid[from]=agent;
-    if(after>bestScore){
-      bestScore=after;
-      bestIndex=to;
-    }
-  }
-
-  if(bestIndex===undefined||bestIndex===null)return 0;
-  grid[from]=0;
-  grid[bestIndex]=agent;
-  state.schelling.step+=1;
-  state.schelling.totalMoves+=1;
-  updateSchellingStats();
-  return 1
-}
-function updateSchellingStats(){const grid=state.schelling.grid,size=state.schelling.size;if(!grid.length){state.schelling.stats=null;return}let agents=0,satisfied=0,similaritySum=0;const unsat=[];for(let i=0;i<grid.length;i++){if(grid[i]==='A'||grid[i]==='B'){agents++;const sim=cellSimilarity(grid,size,i,grid[i]);similaritySum+=sim.score;if(isSatisfiedAt(grid,size,i,grid[i],sim))satisfied++;else unsat.push(i)}}const unsatisfiedPct=agents?Math.round(unsat.length/agents*100):0;const avgSimilarity=agents?Math.round(similaritySum/agents):0;const stability=agents?Math.round(satisfied/agents*100):100;const exclusionRisk=calculateExclusionRisk(avgSimilarity,unsatisfiedPct);const stats={agents,unsatisfied:unsat.length,unsatisfiedPct,avgSimilarity,stability,exclusionRisk,totalMoves:state.schelling.totalMoves,step:state.schelling.step,pattern:classifySchelling(avgSimilarity,unsatisfiedPct,exclusionRisk)};state.schelling.unsatisfied=unsat;state.schelling.stats=stats}
-function cellSimilarity(grid,size,index,agent){const ns=neighbors(index,size);let same=0,different=0,shared=0;for(const n of ns){if(grid[n]===agent)same++;else if(grid[n]==='A'||grid[n]==='B')different++;else if(grid[n]==='S')shared++}const denom=same+different;const score=denom?Math.round(same/denom*100):100;return{score,same,different,shared}}
-function isSatisfiedAt(grid,size,index,agent,sim){const repair=schellingParam('repairCapacity',0,0)*0.10;const sharedBonus=(sim.shared||0)*4;const threshold=clamp((Number(state.vars.similarityThreshold)||0)-repair-sharedBonus,0,100);return sim.score>=threshold}
-function neighbors(index,size){const r=Math.floor(index/size),c=index%size,out=[];for(let dr=-1;dr<=1;dr++){for(let dc=-1;dc<=1;dc++){if(dr===0&&dc===0)continue;const nr=r+dr,nc=c+dc;if(nr>=0&&nr<size&&nc>=0&&nc<size)out.push(nr*size+nc)}}return out}
-function calculateExclusionRisk(avgSimilarity,unsatisfiedPct){
-  const threshold=Number(state.vars.similarityThreshold)||0;
-  if(schellingMode()==='classic'){
-    // In the Traditional Schelling baseline this is a clustering cue, not a moral repair score.
-    return clamp(Math.round(threshold*.45+unsatisfiedPct*.35+avgSimilarity*.20),0,100)
-  }
-  const mobility=schellingParam('mobilityAccess',100,60);
-  const repair=schellingParam('repairCapacity',0,0);
-  const shared=schellingParam('sharedSpaces',0,0);
-  return clamp(Math.round(threshold*.30+(100-mobility)*.22+(100-repair)*.20+unsatisfiedPct*.18+avgSimilarity*.10-shared*.35),0,100)
-}
-function classifySchelling(avgSimilarity,unsatisfiedPct,exclusionRisk){
-  if(schellingMode()==='classic'){
-    if(unsatisfiedPct>=35)return'Classic Schelling: unstable / many agents dissatisfied';
-    if(avgSimilarity>=70&&unsatisfiedPct<22)return'Classic Schelling: high clustering from local thresholds';
-    if(unsatisfiedPct<18)return'Classic Schelling: locally stable pattern';
-    return'Classic Schelling: emerging clustering pattern'
-  }
-  if(exclusionRisk>=68&&avgSimilarity>=65)return'Dark coherence / exclusion risk';
-  if(unsatisfiedPct>=35)return'Unstable emergence / high dissatisfaction';
-  if(exclusionRisk<40&&unsatisfiedPct<18)return'Constructive repair conditions';
-  if(avgSimilarity>=70)return'High clustering emergence';
-  return'Layered emergence pattern'
-}
-function schellingResultFromStats(){
-  const s=state.schelling.stats||{};
-  const classic=schellingMode()==='classic';
-  let label=s.pattern||'Schelling pattern';
-  let support=classic
-    ? clamp(Math.round(s.stability||0),0,100)
-    : clamp(Math.round((s.stability||0)*.55+(100-(s.exclusionRisk||0))*.25+schellingParam('repairCapacity',0,0)*.20),0,100);
-  let risk=classic
-    ? clamp(Math.round((s.avgSimilarity||0)*.60+(s.unsatisfiedPct||0)*.40),0,100)
-    : clamp(Math.round((s.exclusionRisk||0)*.75+(s.unsatisfiedPct||0)*.25),0,100);
-  let repair=classic
-    ? null
-    : clamp(Math.round(schellingParam('repairCapacity',0,0)*.70+schellingParam('sharedSpaces',0,0)*.75),0,100);
-  return{
-    type:'schelling',
-    mode:classic?'classic':'expanded',
-    label,
-    support,
-    risk,
-    repair,
-    preset:activePreset().label,
-    caseTitle:selected().title,
-    stats:clone(s),
-    dark:{
-      active:classic?false:((s.exclusionRisk||0)>=65&&((s.avgSimilarity||0)>=65||(s.unsatisfiedPct||0)>=20)),
-      message:classic
-        ? 'Traditional Schelling does not evaluate repair or moral commons. It shows how local similarity thresholds can generate clustering.'
-        : 'A stable or highly clustered pattern may be produced through unequal mobility, weak repair, scarce shared spaces, or high similarity thresholds.'
-    }
-  }
-}
-function shuffle(arr){for(let i=arr.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[arr[i],arr[j]]=[arr[j],arr[i]]}return arr}
 function renderAll(){renderTabs();renderCases();renderSelected();renderPresets();renderVars();renderGlossary();renderButtons();renderResult();renderWorkspace();renderForms()}
-function renderTabs(){document.querySelectorAll('.tab').forEach(b=>b.setAttribute('aria-selected',b.getAttribute('aria-controls')===state.tab?'true':'false'));document.querySelectorAll('section[role=tabpanel]').forEach(p=>p.classList.toggle('active',p.id===state.tab))}
-function renderCases(){document.getElementById('caseList').innerHTML=cases.map(c=>`<article class="case ${c.id===state.caseId?'selected':''}" data-id="${c.id}" tabindex="0" role="button"><h3>${esc(c.title)}</h3><p class="small">${esc(c.summary)}</p><span class="tag">${esc(c.type)}</span></article>`).join('');document.querySelectorAll('.case').forEach(el=>{el.onclick=()=>selectCase(el.dataset.id);el.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();selectCase(el.dataset.id)}}})}
-function renderSelected(){const c=selected();document.getElementById('caseTitle').textContent=c.title;document.getElementById('caseSummary').textContent=c.summary;document.getElementById('caseTags').innerHTML=c.commons.map(x=>`<span class="tag">${esc(x)}</span>`).join('')}
-function renderPresets(){const p=activePreset();document.getElementById('presetPanel').innerHTML=`<div class="preset-grid">${casePresets().map(x=>`<button class="preset ${x.id===p.id?'active':''}" data-id="${x.id}">${esc(x.label)}${x.short?`<div class="preset-note">${esc(x.short)}</div>`:''}</button>`).join('')}</div><div class="notice"><strong>Current preset:</strong> ${esc(p.label)}<p>${esc(p.note)}</p>${p.reveals||p.hides||p.compare?`<div class="contrast-grid"><div class="contrast-card"><strong>What this view reveals</strong><p class="small">${esc(p.reveals||'This preset frames the case for comparison.')}</p></div><div class="contrast-card"><strong>What this view hides</strong><p class="small">${esc(p.hides||'This simplified preset does not capture the full case.')}</p></div><div class="contrast-card"><strong>What to compare</strong><p class="small">${esc(p.compare||'Compare the result with another preset.')}</p></div></div>`:''}</div>`;document.querySelectorAll('.preset').forEach(b=>b.onclick=()=>applyPreset(b.dataset.id))}
-function visibleVarKeys(){const p=activePreset();if(p.visibleVars)return p.visibleVars;return Object.keys(state.vars)}
+function renderTabs(){document.querySelectorAll(".tab").forEach(b=>{const on=b.getAttribute("aria-controls")===state.activeTab;b.setAttribute("aria-selected",on?"true":"false")});document.querySelectorAll("main section").forEach(s=>s.classList.toggle("active",s.id===state.activeTab))}
+function renderCases(){const el=document.getElementById("caseList");el.innerHTML=cases.map(c=>`<article class="case-card ${c.id===state.caseId?"selected":""}" tabindex="0" role="button" data-case="${c.id}"><h3>${esc(c.title)}</h3><p class="small">${esc(c.summary)}</p><div class="tags"><span class="tag">${esc(c.type)}</span></div></article>`).join("");el.querySelectorAll(".case-card").forEach(card=>{card.onclick=()=>selectCase(card.dataset.case);card.onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();selectCase(card.dataset.case)}}})}
+function renderSelected(){const c=selected();document.getElementById("caseTitle").textContent=c.title;document.getElementById("caseSummary").textContent=c.summary;document.getElementById("caseTags").innerHTML=c.commons.map(t=>`<span class="tag">${esc(t)}</span>`).join("")}
+function renderPresets(){const p=activePreset();document.getElementById("presetPanel").innerHTML=`<div class="preset-grid">${casePresets().map(x=>`<button class="preset ${x.id===p.id?"active":""}" data-preset="${x.id}" type="button">${esc(x.label)}<br><span class="small">${esc(x.short||x.id)}</span></button>`).join("")}</div><div class="notice"><strong>Current preset:</strong> ${esc(p.label)}<p>${esc(p.note||"")}</p><p><strong>Reveals:</strong> ${esc(p.reveals||"")}</p><p><strong>Hides:</strong> ${esc(p.hides||"")}</p><p><strong>Compare:</strong> ${esc(p.compare||"")}</p></div>`;document.querySelectorAll(".preset").forEach(b=>b.onclick=()=>applyPreset(b.dataset.preset))}
+function renderVars(){const p=activePreset();let html="";if(isSchelling()&&p.mode==="classic"){html+=`<div class="notice"><strong>Traditional Schelling variables only</strong><p>This preset shows only grid size, density/open space, and similarity threshold. Mobility, shared spaces, and repair are not active in the classic baseline.</p></div>`}if(isCoordination()&&p.mode==="classic"){html+=`<div class="notice"><strong>Traditional Coordination variables only</strong><p>This preset shows trust, shared goal clarity, information clarity, and institutional heat. It does not yet judge whether cooperation is fair, voiced, coercive, or repairable.</p></div>`}html+=`<p class="compact-help">Open the glossary below when needed. Close it during simulation runs to keep controls and results near each other.</p>`;html+=visibleKeys().map(k=>{const m=varMeta[k]||{min:0,max:100,step:1};const v=state.vars[k];const help=varDefs[k]?.short||"";const badge=k==="similarityThreshold"?`<span class="threshold-badge">percentage of occupied neighbors</span>`:"";return `<label for="var-${k}" title="${esc(help)}">${label(k)}: <span id="val-${k}">${esc(displayVar(k,v))}</span>${badge}</label><input id="var-${k}" type="range" min="${m.min}" max="${m.max}" step="${m.step}" value="${v}" data-key="${k}" title="${esc(help)}">`}).join("");document.getElementById("vars").innerHTML=html;document.querySelectorAll("#vars input").forEach(i=>i.oninput=()=>{state.vars[i.dataset.key]=Number(i.value);state.result=null;if(isSchelling())state.schelling.initialized=false;document.getElementById("val-"+i.dataset.key).textContent=displayVar(i.dataset.key,i.value);save();renderGlossary();renderResult();renderWorkspace()})}
+function renderGlossary(){const el=document.getElementById("glossaryPanel");let active=visibleKeys();let body=`<p class="small">Definitions stay close to the controls but can be rolled up during class discussion.</p><div class="glossary-grid">${active.map(k=>defCard(k,false)).join("")}</div>`;if(isSchelling()&&active.includes("similarityThreshold")){const t=Number(state.vars.similarityThreshold)||0;body+=`<div class="notice"><strong>How to read Similarity Threshold: ${t}%${thresholdPhrase(t)}</strong><p>This is the percentage of occupied nearby cells that must be similar for local satisfaction. Empty cells are ignored. Because neighbors are whole cells, the percentage becomes an integer requirement.</p>${thresholdTable(t)}</div>`}if(isCoordination()&&mode()==="classic"){const omitted=["protectedVoice","fairness","repairCapacity","powerAsymmetry","credibilityGap","careBurden","translationEffort","publicMemory"];body+=`<div class="notice warn"><strong>Defined but not active in the Traditional Coordination Demo</strong><p>These variables are intentionally omitted so students can compare technical cooperation with ethical coordination.</p><div class="glossary-grid">${omitted.map(k=>defCard(k,true)).join("")}</div></div>`}if(isSchelling()&&mode()==="classic"){const omitted=["mobilityAccess","sharedSpaces","repairCapacity"];body+=`<div class="notice warn"><strong>Defined but not active in the Traditional Schelling Demo</strong><div class="glossary-grid">${omitted.map(k=>defCard(k,true)).join("")}</div></div>`}el.innerHTML=`<details class="glossary-details"><summary>Variable definitions / teaching glossary</summary><div class="glossary-content">${body}</div></details>`}
+function defCard(k,inactive){const d=varDefs[k]||{group:"Variable",short:"",teaching:""};return `<div class="definition-card ${inactive?"inactive":""}"><strong>${esc(label(k))}</strong><p class="small">${esc(d.group)}${inactive?" — not active in this preset":""}</p><p>${esc(d.short)}</p><p class="small">${esc(d.teaching)}</p></div>`}
+function renderButtons(){document.getElementById("initGridBtn").classList.toggle("hidden",!isSchelling());document.getElementById("stepGridBtn").classList.toggle("hidden",!isSchelling());document.getElementById("run25Btn").classList.toggle("hidden",!isSchelling());document.getElementById("runBtn").classList.toggle("hidden",isSchelling());document.getElementById("runBtn").textContent=isCoordination()?"Run coordination analysis":"Run placeholder analysis";document.getElementById("resetCaseBtn").textContent=isSchelling()?"Reinitialize current preset grid":"Reset case"}
 
-function displayVarValue(k,v){
-  if(k==='similarityThreshold')return `${v}%${thresholdPhrase(v)}`;
-  return String(v)
-}
-function thresholdPhrase(v){
-  const n=Number(v);
-  if(n>=30&&n<=36)return ' — roughly 1/3';
-  if(n>=40&&n<=46)return ' — about 3/7 to nearly 1/2';
-  if(n>=48&&n<=52)return ' — about 1/2';
-  if(n>=23&&n<=27)return ' — about 1/4';
-  if(n>=60&&n<=67)return ' — about 2/3';
-  return ''
-}
-function neededSimilarNeighbors(occupied,threshold){
-  if(occupied<=0)return 0;
-  return Math.ceil((Number(threshold)||0)/100*occupied)
-}
-function thresholdGuideHtml(threshold){
-  const rows=[3,4,5,6,7,8].map(n=>{
-    const needed=neededSimilarNeighbors(n,threshold);
-    return `<tr><td>${n}</td><td>${needed}</td><td>${needed}/${n} = ${Math.round((needed/n)*100)}%</td></tr>`
-  }).join('');
-  return `<div class="threshold-guide"><table><thead><tr><th>Occupied neighbors</th><th>Similar needed</th><th>Effective fraction</th></tr></thead><tbody>${rows}</tbody></table></div>`
-}
+function renderResult(){const box=document.getElementById("result");if(!state.result){box.innerHTML='<p class="small">Run the simulation to generate a result. Slider changes clear previous results.</p>';return}const r=state.result;if(r.type==="coordination"){renderCoordinationResult(box,r);return}if(r.type==="schelling"){renderSchellingResult(box,r);return}box.innerHTML=`<div class="notice"><strong>${esc(r.label)}</strong><p>${esc(r.message||"Placeholder result.")}</p></div>`}
+function renderSchellingResult(box,r){const classic=r.mode==="classic";const metrics=classic?`<div class="metrics"><div class="metric"><span class="small">Local stability score</span><strong>${r.support}</strong></div><div class="metric"><span class="small">Clustering cue</span><strong>${r.risk}</strong></div><div class="metric"><span class="small">Repair variables</span><strong>omitted</strong></div></div><div class="notice"><strong>How to read the Traditional result</strong><p>Local stability estimates the share of agents satisfied by the local similarity rule. Clustering cue is not a justice score; it only indicates movement toward similarity clustering.</p></div>`:`<div class="metrics"><div class="metric"><span class="small">Agency-support score</span><strong>${r.support}</strong></div><div class="metric"><span class="small">Exclusion / harm risk</span><strong>${r.risk}</strong></div><div class="metric"><span class="small">Repair capacity score</span><strong>${r.repair}</strong></div></div><div class="notice"><strong>How to read the expanded result</strong><p>Agency-support combines stability, lower harm risk, and repair/shared-space conditions. It is a teaching index, not a moral-worth score.</p></div>`;const s=r.stats;const extra=s?`<div class="metrics"><div class="metric"><span class="small">Move attempts</span><strong>${s.step}</strong></div><div class="metric"><span class="small">Avg similarity</span><strong>${s.avgSimilarity}</strong></div><div class="metric"><span class="small">Unsatisfied %</span><strong>${s.unsatisfiedPct}</strong></div><div class="metric"><span class="small">${classic?"Clustering index":"Exclusion risk"}</span><strong>${s.risk}</strong></div><div class="metric"><span class="small">Agent relocations</span><strong>${s.totalMoves}</strong></div><div class="metric"><span class="small">Stability</span><strong>${s.stability}</strong></div></div>`:"";box.innerHTML=`<div class="notice ${r.label.includes("Dark")||r.label.includes("Unstable")?"warn":"good"}"><strong>${esc(r.label)}</strong><p>${classic?"Traditional Schelling result: emergence from local similarity rules only.":"Expanded Capability Lab result: stable order is not automatically ethical success."}</p></div>${metrics}${extra}${r.dark.active?`<div class="notice warn"><strong>Dark coherence warning</strong><p>${esc(r.dark.message)}</p></div>`:""}`}
+function renderCoordinationResult(box,r){const classic=r.mode==="classic";let top;if(classic){top=`<div class="metrics"><div class="metric"><span class="small">Technical coordination score</span><strong>${r.support}</strong></div><div class="metric"><span class="small">Pressure risk</span><strong>${r.risk}</strong></div><div class="metric"><span class="small">Ethical repair variables</span><strong>omitted</strong></div></div><div class="notice"><strong>What this means</strong><p>The Traditional result asks whether cooperation is technically likely: do agents have trust, shared goals, useful information, and manageable heat? It does not ask whether cooperation is fair, voiced, coercive, or repairable.</p></div>`}else{top=`<div class="metrics"><div class="metric"><span class="small">Agency-support score</span><strong>${r.support}</strong></div><div class="metric"><span class="small">Coercion / dark-coherence risk</span><strong>${r.risk}</strong></div><div class="metric"><span class="small">Repair potential</span><strong>${r.repair}</strong></div></div><div class="notice"><strong>What this means</strong><p>The expanded result asks what kind of cooperation is being produced. High coordination is ethically fragile if voice is unsafe, burden is unfair, credibility is filtered, or repair is weak.</p></div>`}const commons=!classic?coordCommonsHtml(r):"";box.innerHTML=`<div class="notice ${r.label.includes("Dark")||r.label.includes("coercive")||r.label.includes("breakdown")||r.label.includes("pressure")?"warn":"good"}"><strong>${esc(r.label)}</strong><p>${esc(r.explanation)}</p></div>${top}${commons}<div class="model-box"><strong>Teaching questions</strong><ul><li>Is this cooperation, compliance, or coercion?</li><li>Whose voice can safely enter the shared model?</li><li>Who bears hidden care or translation burdens?</li><li>What repair condition would most improve the moral commons?</li></ul></div>${r.dark.active?`<div class="notice warn"><strong>Dark coherence warning</strong><p>${esc(r.dark.message)}</p></div>`:""}`}
+function coordCommonsHtml(r){const c=r.moralCommons;return `<div class="model-box"><strong>Moral Commons Dashboard</strong><p class="small">These scores help students see whether cooperation is supported by public goods such as trust, truthful information, protected voice, fair burden, translation, repair, and memory.</p><div class="coord-dashboard">${Object.entries(c).map(([k,v])=>`<div class="coord-card"><span class="small">${esc(label(k))}</span><strong>${v}</strong><div class="bar"><span style="width:${v}%"></span></div></div>`).join("")}</div></div>`}
 
-function renderVars(){
-  const p=activePreset();
-  const keys=visibleVarKeys();
-  let html='';
-  if(isSchellingCase()&&p.mode==='classic'){
-    html+=`<div class="notice"><strong>Traditional Schelling variables only</strong><p>This preset shows only the classic model controls: grid size, density/open space, and similarity threshold. Mobility, shared space, and repair capacity are not visible variables and are not part of the Traditional baseline lesson.</p><p class="small">${esc(p.assumptions||'')}</p></div>`
-  }
-  if(isCoordinationCase()&&p.mode==='classicCoordination'){
-    html+=`<div class="notice"><strong>Traditional coordination variables only</strong><p>This preset treats coordination as a technical problem of trust, shared goals, information clarity, and pressure. Voice, fairness, power, credibility, care burden, translation, memory, and repair are intentionally omitted so students can compare what the traditional view hides.</p><p class="small">${esc(p.assumptions||'')}</p></div>`
-  }
-  html+=`<p class="compact-help">Definitions are available in the collapsible glossary directly below these controls, so the workspace can stay compact during simulation runs.</p>`;
-  html+=keys.map(k=>{
-    const v=state.vars[k];
-    const m=varMeta[k]||{min:0,max:100,step:1};
-    const help=varDefs[k]?.short||'Classroom simulation variable for comparison.';
-    const extra=k==='similarityThreshold'?`<span class="threshold-badge">percentage of occupied neighbors</span>`:'';
-    return `<label for="var-${k}" title="${esc(help)}">${label(k)}: <span id="val-${k}">${esc(displayVarValue(k,v))}</span>${extra}</label><input id="var-${k}" type="range" min="${m.min}" max="${m.max}" step="${m.step}" value="${v}" data-key="${k}" title="${esc(help)}">`
-  }).join('');
-  if(isSchellingCase()&&p.mode!=='classic'){
-    const hidden=Object.keys(state.vars).filter(k=>!keys.includes(k));
-    if(hidden.length){
-      html+=`<div class="model-box"><strong>Additional modeled variables</strong><p class="small">${hidden.map(k=>`${label(k)} = ${displayVarValue(k,state.vars[k])}`).join('; ')}</p></div>`
-    }
-  }
-  document.getElementById('vars').innerHTML=html;
-  document.querySelectorAll('#vars input').forEach(i=>i.oninput=()=>{
-    state.vars[i.dataset.key]=Number(i.value);
-    state.result=null;
-    if(isSchellingCase())state.schelling.initialized=false;
-    document.getElementById('val-'+i.dataset.key).textContent=displayVarValue(i.dataset.key,i.value);
-    save();
-    renderGlossary();
-    renderButtons();
-    renderResult();
-    renderWorkspace()
-  })
-}
-function renderGlossary(){
-  const panel=document.getElementById('glossaryPanel');
-  if(!panel)return;
-  const p=activePreset();
-  const activeKeys=visibleVarKeys();
+function renderWorkspace(){const w=document.getElementById("workspace");if(isSchelling()){renderSchellingWorkspace(w);return}if(isCoordination()){renderCoordinationWorkspace(w);return}w.innerHTML='<div class="notice"><strong>Warning Under Pressure shell</strong><p>This module is reserved for v2.0D.</p></div>'}
+function renderSchellingWorkspace(w){const p=activePreset();if(!state.schelling.initialized){w.innerHTML='<div class="notice"><strong>Schelling workspace ready.</strong><p>Choose a preset, initialize the grid, then move one agent or run 25 agent moves.</p></div>';return}const s=state.schelling.stats||{};w.innerHTML=`<div class="schelling-wrap"><div><div class="legend"><span><i class="swatch a"></i>Group A</span><span><i class="swatch b"></i>Group B</span><span><i class="swatch shared"></i>Shared space</span><span><i class="swatch empty"></i>Open</span><span><i class="swatch unsat"></i>Unsatisfied</span></div><div class="schelling-grid" style="grid-template-columns:repeat(${state.schelling.size},1fr)">${gridCells()}</div></div><div><h4>Interpretive frame</h4><p><strong>${esc(p.label)}</strong>: ${esc(p.note)}</p><div class="metrics"><div class="metric"><span class="small">Satisfied</span><strong>${100-(s.unsatisfiedPct||0)}%</strong></div><div class="metric"><span class="small">Unsatisfied</span><strong>${s.unsatisfiedPct||0}%</strong></div><div class="metric"><span class="small">Moves</span><strong>${s.totalMoves||0}</strong></div></div><div class="model-box"><strong>Compare:</strong><p>${esc(p.compare)}</p></div></div></div>`}
+function renderCoordinationWorkspace(w){const p=activePreset();if(!state.result||state.result.type!=="coordination"){w.innerHTML=`<div class="notice"><strong>Coordination workspace ready.</strong><p>Choose a preset and run the coordination analysis. The Traditional preset asks whether cooperation is technically likely. Expanded presets ask whether cooperation is ethically healthy.</p></div><div class="model-box"><strong>Interpretive frame</strong><p><strong>${esc(p.label)}</strong>: ${esc(p.note)}</p></div>`;return}const r=state.result,s=r.stats,classic=r.mode==="classic";w.innerHTML=`<div class="grid"><div class="card s6"><h3>${classic?"Technical coordination frame":"Expanded ethical coordination frame"}</h3><div class="metrics"><div class="metric"><span class="small">Technical cooperation</span><strong>${s.technicalCoordination}</strong></div><div class="metric"><span class="small">Pressure risk</span><strong>${s.pressureRisk}</strong></div>${classic?"":`<div class="metric"><span class="small">Voice integrity</span><strong>${s.protectedVoice}</strong></div><div class="metric"><span class="small">Burden fairness</span><strong>${r.moralCommons.fairBurden}</strong></div>`}</div></div><div class="card s6"><h3>Result interpretation</h3><p>${esc(r.explanation)}</p><div class="model-box"><strong>Compare:</strong><p>${esc(p.compare)}</p></div></div></div>`}
 
-  if(isSchellingCase()){
-    const core=['gridSize','density','similarityThreshold'];
-    const expanded=['mobilityAccess','sharedSpaces','repairCapacity'];
-    const visibleDefs=activeKeys.map(k=>definitionCard(k,false)).join('');
-    const threshold=Number(state.vars.similarityThreshold)||0;
-    let body=`<p class="glossary-note">Traditional Schelling variables show how emergence can arise from local rules. Expanded Capability Lab variables ask whether the resulting pattern supports or damages agency, fairness, voice, and repair.</p><div class="glossary-grid">${visibleDefs}</div>`;
-    if(activeKeys.includes('similarityThreshold')){
-      body+=`<div class="notice"><strong>How to read Similarity Threshold: ${threshold}%${thresholdPhrase(threshold)}</strong><p>Interpret this as the percentage of <em>occupied</em> nearby cells that must be similar for an agent to remain satisfied. Empty cells are ignored. Because neighbors come in whole numbers, the percentage becomes a rounded integer requirement.</p><p>Example: near one-third, an agent with 7 occupied neighbors needs 3 similar neighbors, because 2 out of 7 is below one-third while 3 out of 7 is above it.</p>${thresholdGuideHtml(threshold)}<p class="small">Teaching reminder: this number is not a prejudice score. It is a simplified local rule used to show how macro-patterns can emerge without any agent intending the macro-pattern.</p></div>`
-    }
-    if(p.mode==='classic'){
-      body+=`<div class="notice warn"><strong>Defined but not active in the Traditional Schelling Demo</strong><p>The following Capability Lab variables are intentionally omitted from the Traditional baseline so the classic model remains clean.</p><div class="glossary-grid">${expanded.map(k=>definitionCard(k,true)).join('')}</div></div>`
-    }else{
-      const missing=core.concat(expanded).filter(k=>!activeKeys.includes(k));
-      if(missing.length)body+=`<div class="notice"><strong>Related terms not currently visible</strong><div class="glossary-grid">${missing.map(k=>definitionCard(k,true)).join('')}</div></div>`
-    }
-    panel.innerHTML=`<details class="glossary-details"><summary>Variable definitions / teaching glossary</summary><div class="glossary-content">${body}</div></details>`;
-    return
-  }
+function initSchelling(){const size=Number(state.vars.gridSize)||18;const total=size*size;const shared=mode()==="classic"?0:Math.min(total,Number(state.vars.sharedSpaces)||0);const candidates=[];for(let i=0;i<total;i++)candidates.push(i);shuffleInPlace(candidates);const grid=new Array(total).fill(0);for(let i=0;i<shared;i++)grid[candidates[i]]="S";const remaining=candidates.slice(shared);const occupied=Math.round(remaining.length*(Number(state.vars.density)||80)/100);for(let i=0;i<occupied;i++)grid[remaining[i]]=i%2===0?"A":"B";shuffleInPlace(grid);state.schelling={initialized:true,size,grid,unsatisfied:[],step:0,totalMoves:0,stats:null};updateSchellingStats();state.result=schellingResult();save();renderAll()}
+function stepSchelling(){if(!state.schelling.initialized)initSchelling();updateSchellingStats();const grid=state.schelling.grid;const empties=grid.map((v,i)=>v===0?i:null).filter(v=>v!==null);if(!empties.length||!state.schelling.unsatisfied.length)return 0;const candidates=shuffle(state.schelling.unsatisfied.slice()).filter(i=>grid[i]==="A"||grid[i]==="B");if(!candidates.length)return 0;const from=candidates[0],agent=grid[from];const mobility=mode()==="classic"?100:Number(state.vars.mobilityAccess)||60;const sampleSize=Math.max(1,Math.round(empties.length*mobility/100));const sample=shuffle(empties.slice()).slice(0,Math.min(sampleSize,empties.length));let best=sample[0],bestScore=-1;for(const to of sample){grid[from]=0;grid[to]=agent;const score=cellSimilarity(grid,state.schelling.size,to,agent).score;grid[to]=0;grid[from]=agent;if(score>bestScore){bestScore=score;best=to}}grid[from]=0;grid[best]=agent;state.schelling.step+=1;state.schelling.totalMoves+=1;updateSchellingStats();return 1}
+function runSchellingMoves(n){if(!state.schelling.initialized)initSchelling();let done=0;while(done<n){const moved=stepSchelling();if(!moved)break;done+=moved}state.result=schellingResult();save();renderAll()}
+function updateSchellingStats(){const grid=state.schelling.grid,size=state.schelling.size;let agents=0,unsat=[],simSum=0;for(let i=0;i<grid.length;i++){const v=grid[i];if(v==="A"||v==="B"){agents++;const c=cellSimilarity(grid,size,i,v);simSum+=c.score;if(!isSatisfied(c))unsat.push(i)}}const avg=agents?Math.round(simSum/agents):0;const up=agents?Math.round(unsat.length/agents*100):0;const risk=calcSchellingRisk(avg,up);const stability=100-up;state.schelling.unsatisfied=unsat;state.schelling.stats={step:state.schelling.step,totalMoves:state.schelling.totalMoves,agents,avgSimilarity:avg,unsatisfiedPct:up,risk,stability,pattern:classifySchelling(avg,up,risk)}}
+function cellSimilarity(grid,size,i,agent){const ns=neighbors(i,size);let occ=0,same=0;for(const n of ns){if(grid[n]==="A"||grid[n]==="B"){occ++;if(grid[n]===agent)same++}}return{occupied:occ,same,score:occ?Math.round(same/occ*100):100}}
+function isSatisfied(c){if(c.occupied===0)return true;return c.same>=Math.ceil((Number(state.vars.similarityThreshold)||0)/100*c.occupied)}
+function neighbors(i,size){const r=Math.floor(i/size),c=i%size,out=[];for(let dr=-1;dr<=1;dr++)for(let dc=-1;dc<=1;dc++){if(!dr&&!dc)continue;const rr=r+dr,cc=c+dc;if(rr>=0&&rr<size&&cc>=0&&cc<size)out.push(rr*size+cc)}return out}
+function calcSchellingRisk(avg,unsat){if(mode()==="classic")return clamp(Math.round((Number(state.vars.similarityThreshold)||0)*.45+unsat*.35+avg*.2),0,100);const mobility=Number(state.vars.mobilityAccess)||60,repair=Number(state.vars.repairCapacity)||0,shared=Number(state.vars.sharedSpaces)||0;return clamp(Math.round((Number(state.vars.similarityThreshold)||0)*.3+(100-mobility)*.2+(100-repair)*.2+unsat*.2+avg*.1-shared*.35),0,100)}
+function classifySchelling(avg,unsat,risk){if(mode()==="classic"){if(unsat>=35)return"Classic Schelling: unstable / many agents dissatisfied";if(avg>=70&&unsat<22)return"Classic Schelling: high clustering from local thresholds";if(unsat<18)return"Classic Schelling: locally stable pattern";return"Classic Schelling: emerging clustering pattern"}if(risk>=68&&avg>=65)return"Dark coherence / exclusion risk";if(unsat>=35)return"Unstable emergence / high dissatisfaction";if(risk<40&&unsat<18)return"Constructive repair conditions";if(avg>=70)return"High clustering emergence";return"Layered emergence pattern"}
+function schellingResult(){const s=state.schelling.stats;const classic=mode()==="classic";const support=classic?s.stability:clamp(Math.round(s.stability*.55+(100-s.risk)*.25+(Number(state.vars.repairCapacity)||0)*.2),0,100);const risk=classic?s.risk:clamp(Math.round(s.risk*.75+s.unsatisfiedPct*.25),0,100);const repair=classic?null:clamp(Math.round((Number(state.vars.repairCapacity)||0)*.7+(Number(state.vars.sharedSpaces)||0)*.75),0,100);return{type:"schelling",mode:classic?"classic":"expanded",label:s.pattern,support,risk,repair,preset:activePreset().label,stats:clone(s),dark:{active:classic?false:(s.risk>=65&&(s.avgSimilarity>=65||s.unsatisfiedPct>=20)),message:"A stable or highly clustered pattern may be produced through unequal mobility, weak repair, scarce shared spaces, or high thresholds."}}}
 
-  if(isCoordinationCase()){
-    const core=['trust','sharedGoalClarity','informationClarity','institutionalHeat'];
-    const expanded=['protectedVoice','fairness','repairCapacity','powerAsymmetry','credibilityGap','careBurden','translationEffort','publicMemory'];
-    let body=`<p class="glossary-note">Traditional coordination variables show a technical cooperation problem. Expanded Capability Lab variables ask what kind of cooperation is being produced, for whom, under what pressure, and with what repair pathways.</p><div class="glossary-grid">${activeKeys.map(k=>definitionCard(k,false)).join('')}</div>`;
-    if(p.mode==='classicCoordination'){
-      body+=`<div class="notice warn"><strong>Defined but not active in the Traditional Coordination Demo</strong><p>These variables are intentionally omitted from the traditional baseline so students can see what changes when ethical structure is added to coordination.</p><div class="glossary-grid">${expanded.map(k=>definitionCard(k,true)).join('')}</div></div>`
-    }else{
-      const missing=core.concat(expanded).filter(k=>!activeKeys.includes(k));
-      if(missing.length)body+=`<div class="notice"><strong>Related terms not currently visible</strong><div class="glossary-grid">${missing.map(k=>definitionCard(k,true)).join('')}</div></div>`
-    }
-    panel.innerHTML=`<details class="glossary-details"><summary>Variable definitions / teaching glossary</summary><div class="glossary-content">${body}</div></details>`;
-    return
-  }
+function runCoordination(){state.result=coordinationResult();save();renderAll()}
+function coordinationResult(){const classic=mode()==="classic";const v=state.vars;const trust=val("trust"),goal=val("sharedGoalClarity"),info=val("informationClarity"),heat=val("institutionalHeat"),voice=val("protectedVoice",50),fair=val("fairness",50),repair=val("repairCapacity",50),power=val("powerAsymmetry",50),cred=val("credibilityGap",50),care=val("careBurden",50),translation=val("translationEffort",50),memory=val("publicMemory",50);const technical=clamp(Math.round(trust*.30+goal*.24+info*.24+(100-heat)*.14+voice*.08),0,100);const pressure=clamp(Math.round(heat*.44+(100-trust)*.22+(100-info)*.20+(100-goal)*.14),0,100);let support,risk,repairPotential,moral=null;if(classic){support=technical;risk=pressure;repairPotential=null}else{support=clamp(Math.round(trust*.10+goal*.08+info*.10+voice*.17+fair*.14+repair*.13+translation*.10+memory*.10+(100-heat)*.04+(100-power)*.07+(100-cred)*.04+(100-care)*.03),0,100);risk=clamp(Math.round(heat*.18+power*.17+cred*.15+care*.13+(100-voice)*.16+(100-fair)*.10+(100-repair)*.07+(100-memory)*.04),0,100);repairPotential=clamp(Math.round(repair*.32+voice*.18+fair*.14+translation*.13+memory*.13+info*.10),0,100);moral={trust:Math.round(trust),truthfulInformation:Math.round(info),protectedVoice:Math.round(voice),fairBurden:Math.round((fair+(100-care)+(100-power))/3),translation:Math.round(translation),repair:Math.round(repair),publicMemory:Math.round(memory)}}let label,explanation;if(classic){if(support>=70&&risk<45){label="Traditional coordination: stable cooperation";explanation="The technical conditions for cooperation are strong: trust, clarity, information, and manageable heat support coordination."}else if(support>=55&&risk<65){label="Traditional coordination: fragile cooperation";explanation="Cooperation is possible, but pressure or limited clarity may make it unstable."}else if(risk>=70){label="Traditional coordination: pressure-driven breakdown risk";explanation="Heat and uncertainty are high enough that technical cooperation may fail."}else{label="Traditional coordination: unsettled cooperation";explanation="The technical conditions are mixed. The traditional model does not yet ask whether cooperation is fair or voiced."}}else{const dark=technical>=60&&risk>=65;if(dark){label="Dark coherence risk";explanation="The group may appear coordinated, but pressure, asymmetry, credibility gaps, or hidden burden may be producing compliance rather than ethical cooperation."}else if(support>=70&&risk<45&&repairPotential>=65){label="Constructive coordination";explanation="Cooperation is supported by trust, information, protected voice, fairness, repair, translation, and public memory."}else if(support>=55&&risk<60){label="Fragile but workable coordination";explanation="Cooperation can proceed, but some moral commons remain under strain."}else if(risk>=70&&support<55){label="Coercive coordination / breakdown risk";explanation="The system is likely producing pressure, silence, or compliance rather than shared agency."}else if(support<50&&repairPotential>=60){label="Repair path available";explanation="Current coordination is weak, but repair resources are present enough to redesign the situation."}else{label="Unsettled coordination under heat";explanation="The coordination pattern is mixed. Students should identify which moral commons are weakest."}}return{type:"coordination",mode:classic?"classic":"expanded",label,explanation,support,risk,repair:repairPotential,preset:activePreset().label,stats:{trust,sharedGoalClarity:goal,informationClarity:info,institutionalHeat:heat,protectedVoice:voice,fairness:fair,repairCapacity:repair,powerAsymmetry:power,credibilityGap:cred,careBurden:care,translationEffort:translation,publicMemory:memory,technicalCoordination:technical,pressureRisk:pressure},moralCommons:moral,dark:{active:!classic&&technical>=60&&risk>=65,message:"Visible agreement may be produced by pressure, asymmetry, or credibility filtering rather than shared agency."}}}
+function val(k,d=50){return Object.prototype.hasOwnProperty.call(state.vars,k)?Number(state.vars[k]):d}
 
-  panel.innerHTML='<details class="glossary-details"><summary>Variable definitions / teaching glossary</summary><div class="glossary-content"><p class="small">The specialized glossary for this module will be added when its simulation engine is reintroduced.</p></div></details>'
-}
+function runPlaceholder(){state.result={type:"placeholder",label:"Placeholder shell",message:"This module will be activated in a later build.",support:0,risk:0,repair:null};save();renderAll()}
+function gridCells(){const uns=new Set(state.schelling.unsatisfied);return state.schelling.grid.map((v,i)=>{let cls=v==="A"?"a":v==="B"?"b":v==="S"?"shared":"empty";if(uns.has(i))cls+=" unsat";return`<div class="cell ${cls}" title="${uns.has(i)?"Unsatisfied":v||"Open"}"></div>`}).join("")}
+function renderForms(){["lensNotes","hiddenCostNotes","failedCondition","repairProposal","bridgeStatement"].forEach(id=>{const el=document.getElementById(id);if(el&&el.value!==state[id])el.value=state[id]||""})}
+function summary(){const c=selected(),p=activePreset(),r=state.result,lines=[];lines.push("Capability Lab v2.0C.4a Reflection Summary","========================================","",`Selected case: ${c.title}`,`Preset: ${p.label}`,"",`Preset reveals: ${p.reveals||""}`,`Preset hides: ${p.hides||""}`,`Teaching comparison: ${p.compare||""}`,"");if(isSchelling()&&state.vars.similarityThreshold!==undefined)lines.push(`Similarity threshold interpretation: ${displayVar("similarityThreshold",state.vars.similarityThreshold)} of occupied neighbors must be similar for local satisfaction.`,"");if(r){lines.push(`Outcome: ${r.label}`,`Support / coordination score: ${r.support}`,`Risk score: ${r.risk}`,`Repair score: ${r.repair===null?"omitted":r.repair}`);if(r.type==="schelling"&&r.stats)lines.push(`Schelling move attempts: ${r.stats.step}`,`Average similarity: ${r.stats.avgSimilarity}`,`Unsatisfied percent: ${r.stats.unsatisfiedPct}`,`Stability: ${r.stats.stability}`,`Agent relocations: ${r.stats.totalMoves}`);if(r.type==="coordination"&&r.stats){lines.push(`Coordination mode: ${r.mode}`,`Technical coordination: ${r.stats.technicalCoordination}`,`Pressure risk: ${r.stats.pressureRisk}`,`Trust: ${r.stats.trust}`,`Shared goal clarity: ${r.stats.sharedGoalClarity}`,`Information clarity: ${r.stats.informationClarity}`,`Institutional heat: ${r.stats.institutionalHeat}`);if(r.mode==="expanded")lines.push(`Protected voice: ${r.stats.protectedVoice}`,`Fairness: ${r.stats.fairness}`,`Repair capacity: ${r.stats.repairCapacity}`,`Power asymmetry: ${r.stats.powerAsymmetry}`,`Credibility gap: ${r.stats.credibilityGap}`,`Care burden: ${r.stats.careBurden}`,`Translation effort: ${r.stats.translationEffort}`,`Public memory: ${r.stats.publicMemory}`,`Dark coherence warning: ${r.dark.active?"active":"not active"}`)}}else lines.push("No simulation result recorded.");lines.push("","Lens notes:",state.lensNotes||"[No notes]","","Hidden-cost notes:",state.hiddenCostNotes||"[No notes]","","Failed condition:",state.failedCondition||"[Not specified]","","Repair proposal:",state.repairProposal||"[No proposal]","","Bridge statement:",state.bridgeStatement||"[No statement]");return lines.join("\n")}
+function download(){const blob=new Blob([summary()],{type:"text/plain;charset=utf-8"}),url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="capability_lab_v2_0c4a_summary.txt";document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url)}
+async function copySummary(){try{await navigator.clipboard.writeText(summary());alert("Reflection summary copied.")}catch(e){alert("Clipboard copy failed. Use download instead.")}}
+function resetLocal(){if(!confirm("Reset local Capability Lab v2.0C.4a data?"))return;localStorage.removeItem(KEY);state=normalize(clone(defaults));save();renderAll()}
+function diagnostics(){const items=[];const add=(n,ok,d)=>items.push({n,ok,d});try{add("App shell present",!!document.querySelector(".wrap"),"Main container found.");add("Tabs found",document.querySelectorAll(".tab").length===7,document.querySelectorAll(".tab").length+" tabs found.");add("Cases loaded",cases.length===3,cases.length+" cases loaded.");add("Schelling presets loaded",presets.schelling.length===4,presets.schelling.length+" Schelling presets loaded.");add("Coordination presets loaded",presets.coordination.length===4,presets.coordination.length+" Coordination presets loaded.");const old=clone(state);state.caseId="schelling";state.presetId="traditional";state.vars=clone(activePreset().vars);state.schelling=clone(defaults.schelling);initSchelling();add("Schelling initialize",state.schelling.initialized,state.schelling.grid.length+" cells initialized.");const before=state.schelling.step;stepSchelling();add("Schelling one-agent move",state.schelling.step===before+1,"Move counter advanced.");state=normalize(old);state.caseId="coordination";state.presetId="traditional";state.vars=clone(activePreset().vars);runCoordination();add("Coordination traditional engine",state.result&&state.result.type==="coordination"&&state.result.mode==="classic",state.result?state.result.label:"none");state.presetId="stress";state.vars=clone(activePreset().vars);runCoordination();add("Coordination expanded engine",state.result&&state.result.type==="coordination"&&state.result.mode==="expanded",state.result?state.result.label:"none");state=normalize(old);add("Summary builds",summary().length>100,summary().length+" characters generated.");const tk=KEY+"_test";localStorage.setItem(tk,"ok");add("Local storage works",localStorage.getItem(tk)==="ok","Write/read succeeded.");localStorage.removeItem(tk)}catch(e){add("Runtime exception",false,e.message||String(e))}save();renderAll();document.getElementById("diagPanel").innerHTML=`<strong>Runtime self-test complete:</strong> ${items.filter(x=>x.ok).length} passed, ${items.filter(x=>!x.ok).length} failed.<div class="diags">${items.map(x=>`<div class="diag ${x.ok?"pass":"fail"}"><strong>${esc(x.n)}:</strong> ${x.ok?"Pass":"Needs attention"}<br><span class="small">${esc(x.d)}</span></div>`).join("")}</div>`}
+function displayVar(k,v){if(k==="similarityThreshold")return `${v}%${thresholdPhrase(v)}`;return String(v)}
+function thresholdPhrase(v){const n=Number(v);if(n>=30&&n<=36)return" — roughly 1/3";if(n>=40&&n<=46)return" — about 3/7 to nearly 1/2";if(n>=48&&n<=52)return" — about 1/2";if(n>=23&&n<=27)return" — about 1/4";if(n>=60&&n<=67)return" — about 2/3";return""}
+function needed(n,t){return Math.ceil((Number(t)||0)/100*n)}
+function thresholdTable(t){return `<div class="threshold-guide"><table><thead><tr><th>Occupied neighbors</th><th>Similar needed</th><th>Effective fraction</th></tr></thead><tbody>${[3,4,5,6,7,8].map(n=>{const m=needed(n,t);return`<tr><td>${n}</td><td>${m}</td><td>${m}/${n} = ${Math.round(m/n*100)}%</td></tr>`}).join("")}</tbody></table></div>`}
+function label(k){return k.replace(/([A-Z])/g," $1").replace(/^./,s=>s.toUpperCase())}
+function esc(x){return String(x??"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#039;")}
+function clamp(x,a,b){return Math.max(a,Math.min(b,x))}
+function shuffle(a){const b=a.slice();shuffleInPlace(b);return b}
+function shuffleInPlace(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
 
-function definitionCard(k,omitted){const d=varDefs[k]||{group:'Variable',short:'Classroom simulation variable.',teaching:'Used for comparing model behavior across teaching presets.'};return`<div class="definition-card ${omitted?'omitted':'active-def'}"><span class="group">${esc(d.group)}${omitted?' — not active in this preset':''}</span><strong>${esc(label(k))}</strong><p class="small">${esc(d.short)}</p><p class="small">${esc(d.teaching)}</p></div>`}
-function renderButtons(){
-  const schell=isSchellingCase();
-  const coord=isCoordinationCase();
-  const init=document.getElementById('initGridBtn');
-  const step=document.getElementById('stepGridBtn');
-  const run25=document.getElementById('run25Btn');
-  const run=document.getElementById('runBtn');
-  const reset=document.getElementById('resetCaseBtn');
-  init.classList.toggle('hidden',!schell);
-  step.classList.toggle('hidden',!schell);
-  run25.classList.toggle('hidden',!schell);
-  run.classList.toggle('hidden',schell);
-  init.disabled=!schell;
-  step.disabled=!schell;
-  run25.disabled=!schell;
-  run.textContent=coord?'Run coordination analysis':(schell?'Run one step':'Run placeholder simulation');
-  reset.textContent=schell?'Reinitialize current preset grid':'Reset case'
-}
-
-function renderResult(){
-  const box=document.getElementById('result');
-  if(!state.result){
-    box.innerHTML='<p class="small">Run the simulation to generate a result. Slider changes clear previous results.</p>';
-    return
-  }
-  const r=state.result;
-
-  if(r.type==='coordination'){
-    const classic=r.mode==='classic';
-    const metrics=classic
-      ? `<div class="metrics"><div class="metric"><span class="small">Technical coordination score</span><strong>${r.support}</strong></div><div class="metric"><span class="small">Pressure risk</span><strong>${r.risk}</strong></div><div class="metric"><span class="small">Ethical repair variables</span><strong>omitted</strong></div></div><div class="notice"><strong>How to read the Traditional Coordination result</strong><p><strong>Technical coordination score</strong> estimates whether cooperation is likely given trust, shared goals, information clarity, and pressure. It is not an ethical success score.</p><p><strong>Pressure risk</strong> estimates whether heat may undermine cooperation. This traditional view does not evaluate voice, fairness, power, credibility, care burden, or repair.</p></div>`
-      : `<div class="metrics"><div class="metric"><span class="small">Agency-support score</span><strong>${r.support}</strong></div><div class="metric"><span class="small">Coercion / dark-coherence risk</span><strong>${r.risk}</strong></div><div class="metric"><span class="small">Repair potential</span><strong>${r.repair}</strong></div></div><div class="notice"><strong>How to read the Expanded Coordination result</strong><p><strong>Agency-support score</strong> combines trust, information, protected voice, fairness, translation, memory, repair, and lowered heat. <strong>Coercion risk</strong> asks whether visible cooperation may be produced by pressure, asymmetry, credibility gaps, or hidden care burden.</p></div>`;
-    const commons=r.moralCommons&&!classic?`<div class="metrics"><div class="metric"><span class="small">Trust</span><strong>${r.moralCommons.trust}</strong></div><div class="metric"><span class="small">Truthful information</span><strong>${r.moralCommons.truthfulInformation}</strong></div><div class="metric"><span class="small">Protected voice</span><strong>${r.moralCommons.protectedVoice}</strong></div><div class="metric"><span class="small">Fair burden</span><strong>${r.moralCommons.fairBurden}</strong></div><div class="metric"><span class="small">Translation</span><strong>${r.moralCommons.translation}</strong></div><div class="metric"><span class="small">Public memory</span><strong>${r.moralCommons.publicMemory}</strong></div><div class="metric"><span class="small">Repair</span><strong>${r.moralCommons.repair}</strong></div></div>`:'';
-    box.innerHTML=`<div class="notice ${r.label.includes('Dark')||r.label.includes('breakdown')||r.label.includes('coercive')||r.label.includes('pressure-driven')?'warn':'good'}"><strong>${esc(r.label)}</strong><p>${classic?'Traditional coordination result. This view explains cooperation as a trust, clarity, information, and pressure problem; it does not evaluate whether the cooperation is ethically healthy.':'Expanded Capability Lab coordination result. Interpret visible cooperation carefully: agreement is not automatically ethical success.'}</p></div>${metrics}${commons}${r.dark&&r.dark.active?`<div class="notice warn"><strong>Dark coherence warning</strong><p>${esc(r.dark.message)}</p></div>`:''}`;
-    return
-  }
-
-  const classic=r.type==='schelling'&&r.mode==='classic';
-  let metrics='';
-  if(r.type==='schelling'&&classic){
-    metrics=`<div class="metrics">
-      <div class="metric"><span class="small">Local stability score</span><strong>${r.support}</strong></div>
-      <div class="metric"><span class="small">Clustering cue</span><strong>${r.risk}</strong></div>
-      <div class="metric"><span class="small">Repair variables</span><strong>omitted</strong></div>
-    </div>
-    <div class="notice">
-      <strong>How to read the Traditional result</strong>
-      <p><strong>Local stability score</strong> means the approximate percentage of agents whose local neighborhood satisfies the similarity rule. It is not an ethical score.</p>
-      <p><strong>Clustering cue</strong> is a classroom indicator of how strongly the run is moving toward clustered similarity. It is not an exclusion, repair, or justice measure.</p>
-    </div>`
-  }else{
-    metrics=`<div class="metrics">
-      <div class="metric"><span class="small">Agency-support score</span><strong>${r.support}</strong></div>
-      <div class="metric"><span class="small">Exclusion / harm risk</span><strong>${r.risk}</strong></div>
-      <div class="metric"><span class="small">Repair capacity score</span><strong>${r.repair}</strong></div>
-    </div>
-    <div class="notice">
-      <strong>How to read the expanded result</strong>
-      <p><strong>Agency-support score</strong> is a teaching index combining stability, reduced exclusion risk, and visible repair/shared-space conditions. It is not a measurement of moral worth.</p>
-    </div>`
-  }
-  let extra='';
-  if(r.type==='schelling'&&r.stats){
-    extra=`<div class="metrics">
-      <div class="metric"><span class="small">Move attempts</span><strong>${r.stats.step}</strong></div>
-      <div class="metric"><span class="small">Avg similarity</span><strong>${r.stats.avgSimilarity}</strong></div>
-      <div class="metric"><span class="small">Unsatisfied %</span><strong>${r.stats.unsatisfiedPct}</strong></div>
-      <div class="metric"><span class="small">${classic?'Clustering index':'Exclusion risk'}</span><strong>${r.stats.exclusionRisk}</strong></div>
-      <div class="metric"><span class="small">Agent relocations</span><strong>${r.stats.totalMoves}</strong></div>
-      <div class="metric"><span class="small">Stability</span><strong>${r.stats.stability}</strong></div>
-    </div>${r.dark&&r.dark.active?`<div class="notice warn"><strong>Dark coherence warning</strong><p>${esc(r.dark.message)}</p></div>`:''}`
-  }
-  box.innerHTML=`<div class="notice ${r.label.includes('Dark')||r.label.includes('Breakdown')||r.label.includes('Unstable')?'warn':'good'}"><strong>${esc(r.label)}</strong><p>${r.type==='schelling'?(classic?'Traditional Schelling result. This view explains emergence from local similarity rules; it does not include repair, moral commons, or agency-support variables.':'Expanded Capability Lab Schelling result. Interpret stability carefully: order is not automatically ethical success.'):'Placeholder result used for a module shell.'}</p></div>${metrics}${extra}`
-}
-
-function renderWorkspace(){
-  const w=document.getElementById('workspace');
-  const p=activePreset();
-
-  if(isCoordinationCase()){
-    if(!state.result||state.result.type!=='coordination'){
-      w.innerHTML=`<div class="notice"><strong>Coordination workspace ready.</strong><p>Choose a teaching preset and run the coordination analysis. The Traditional preset shows a technical coordination baseline. Expanded presets ask whether cooperation is constructive, fragile, coercive, repairable, or dark coherence.</p></div><div class="model-box"><strong>Interpretive frame</strong><p><strong>${esc(p.label)}</strong>: ${esc(p.note)}</p></div>`;
-      return
-    }
-    const r=state.result;
-    const s=r.stats||{};
-    const classic=r.mode==='classic';
-    const expandedBox=classic?`<div class="model-box"><strong>What this view omits:</strong><p>Protected voice, fairness, power asymmetry, credibility gaps, care burden, translation effort, public memory, and repair are intentionally omitted from the Traditional baseline.</p></div>`:`<div class="model-box"><strong>Moral commons diagnosis:</strong><p>Trust ${s.trust}; information ${s.informationClarity}; protected voice ${s.protectedVoice}; fairness ${s.fairness}; repair ${s.repairCapacity}; power asymmetry ${s.powerAsymmetry}; credibility gap ${s.credibilityGap}; care burden ${s.careBurden}; translation ${s.translationEffort}; public memory ${s.publicMemory}.</p></div>`;
-    w.innerHTML=`<div class="coord-wrap"><div><h4>Coordination diagnosis</h4><div class="metrics"><div class="metric"><span class="small">${classic?'Technical coordination':'Agency support'}</span><strong>${r.support}</strong></div><div class="metric"><span class="small">${classic?'Pressure risk':'Coercion risk'}</span><strong>${r.risk}</strong></div><div class="metric"><span class="small">Technical cooperation</span><strong>${s.technicalCoordination}</strong></div><div class="metric"><span class="small">Pressure risk</span><strong>${s.pressureRisk}</strong></div></div>${expandedBox}</div><div><h4>Interpretive frame</h4><p><strong>${esc(p.label)}</strong>: ${esc(p.note)}</p><div class="model-box"><strong>Current pattern:</strong><p>${esc(r.label)}</p></div><div class="model-box"><strong>What this view reveals:</strong><p>${esc(p.reveals||'A coordination pattern for classroom discussion.')}</p></div><div class="model-box"><strong>What this view hides:</strong><p>${esc(p.hides||'The full complexity of lived and institutional conditions.')}</p></div><div class="model-box"><strong>Teaching contrast question:</strong><p>${esc(p.compare||'Compare this preset with another view and ask what changed.')}</p></div></div></div>`;
-    return
-  }
-
-  if(!isSchellingCase()){
-    w.innerHTML='<p class="small">This module is still a placeholder. A later build will reinsert its full engine.</p>';
-    return
-  }
-
-  if(!state.schelling.initialized||!state.schelling.grid.length){
-    w.innerHTML='<div class="notice"><strong>Schelling workspace ready.</strong><p>Choose a teaching preset. The Traditional preset is kept clean as a classic Schelling demo, while expanded presets add Capability Lab variables for ethical interpretation.</p></div>';
-    return
-  }
-  const s=state.schelling.stats||{};
-  w.innerHTML=`<div class="schelling-wrap"><div><div class="legend"><span><i class="swatch a"></i>Group A</span><span><i class="swatch b"></i>Group B</span><span><i class="swatch s"></i>Shared space</span><span><i class="swatch empty"></i>Open</span><span><i class="swatch unsat"></i>Unsatisfied</span></div><div class="schelling-grid" style="grid-template-columns:repeat(${state.schelling.size},1fr)">${renderGridCells()}</div></div><div><h4>Interpretive frame</h4><p><strong>${esc(p.label)}</strong>: ${esc(p.note)}</p><div class="model-box"><strong>Current pattern:</strong><p>${esc(s.pattern||'No pattern yet')}</p></div><div class="model-box"><strong>What this view reveals:</strong><p>${esc(p.reveals||'A simplified model pattern for discussion.')}</p></div><div class="model-box"><strong>What this view hides:</strong><p>${esc(p.hides||'The full complexity of lived and institutional conditions.')}</p></div><div class="model-box"><strong>Teaching contrast question:</strong><p>${esc(p.compare||'Compare this preset with another view and ask what changed.')}</p></div></div></div>`
-}
-
-function renderGridCells(){const unsat=new Set(state.schelling.unsatisfied||[]);return state.schelling.grid.map((v,i)=>{let cls='empty';if(v==='A')cls='a';if(v==='B')cls='b';if(v==='S')cls='s';return`<div class="cell ${cls} ${unsat.has(i)?'unsat':''}" title="${esc(v||'open')}"></div>`}).join('')}
-function renderForms(){['lensNotes','hiddenCostNotes','failedCondition','repairProposal','bridgeStatement'].forEach(id=>{const el=document.getElementById(id);if(el&&el.value!==state[id])el.value=state[id]||''})}
-function summary(){
-  const c=selected(),p=activePreset(),r=state.result;
-  const lines=[`Capability Lab v2.0C.4 Reflection Summary`,`Selected case: ${c.title}`,`Preset: ${p.label}`,'',`Preset reveals: ${p.reveals||'[not specified]'}`,`Preset hides: ${p.hides||'[not specified]'}`,`Teaching comparison: ${p.compare||'[not specified]'}`,`Model assumptions: ${p.assumptions||'[standard preset assumptions]'}`,''];
-  if(isSchellingCase()&&state.vars.similarityThreshold!==undefined)lines.push(`Similarity threshold interpretation: ${displayVarValue('similarityThreshold',state.vars.similarityThreshold)} of occupied neighbors must be similar for local satisfaction.`,'');
-  lines.push('Variable glossary note: Traditional views intentionally omit expanded ethical variables so students can compare what the baseline reveals and hides.','');
-  if(r){
-    lines.push(`Outcome: ${r.label}`,`Support / coordination score: ${r.support}`,`Risk score: ${r.risk}`,`Repair score: ${r.repair===null?'omitted':r.repair}`);
-    if(r.type==='schelling'&&r.stats){
-      lines.push(`Schelling move attempts: ${r.stats.step}`,`Average similarity: ${r.stats.avgSimilarity}`,`Unsatisfied percent: ${r.stats.unsatisfiedPct}`,`Exclusion/clustering risk: ${r.stats.exclusionRisk}`,`Stability: ${r.stats.stability}`,`Agent relocations: ${r.stats.totalMoves}`,`Dark coherence warning: ${r.dark&&r.dark.active?'active':'not active'}`)
-    }
-    if(r.type==='coordination'&&r.stats){
-      lines.push(`Coordination mode: ${r.mode}`,`Technical coordination: ${r.stats.technicalCoordination}`,`Pressure risk: ${r.stats.pressureRisk}`,`Trust: ${r.stats.trust}`,`Shared goal clarity: ${r.stats.sharedGoalClarity}`,`Information clarity: ${r.stats.informationClarity}`,`Institutional heat: ${r.stats.institutionalHeat}`);
-      if(r.mode==='expanded')lines.push(`Protected voice: ${r.stats.protectedVoice}`,`Fairness: ${r.stats.fairness}`,`Repair capacity: ${r.stats.repairCapacity}`,`Power asymmetry: ${r.stats.powerAsymmetry}`,`Credibility gap: ${r.stats.credibilityGap}`,`Care burden: ${r.stats.careBurden}`,`Translation effort: ${r.stats.translationEffort}`,`Public memory: ${r.stats.publicMemory}`,`Dark coherence warning: ${r.dark&&r.dark.active?'active':'not active'}`)
-    }
-  }else lines.push('No simulation result recorded.');
-  lines.push('','Lens notes:',state.lensNotes||'[No notes]','','Hidden-cost notes:',state.hiddenCostNotes||'[No notes]','','Failed condition:',state.failedCondition||'[Not specified]','','Repair proposal:',state.repairProposal||'[No proposal]','','Bridge statement:',state.bridgeStatement||'[No statement]');
-  return lines.join('\n')
-}
-
-function download(){const blob=new Blob([summary()],{type:'text/plain;charset=utf-8'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='capability_lab_v2_0c4_summary.txt';document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url)}
-async function copySummary(){try{await navigator.clipboard.writeText(summary());alert('Reflection summary copied.')}catch(e){alert('Clipboard copy failed. Use download instead.')}}
-function resetLocal(){if(!confirm('Reset local Capability Lab v2.0C.4 data?'))return;localStorage.removeItem(KEY);state=normalize(clone(defaults));save();renderAll()}
-function diagnostics(){
-  const items=[];
-  const add=(n,ok,d)=>items.push({n,ok,d});
-  try{
-    add('App shell present',!!document.querySelector('.wrap'),'Main container found.');
-    add('Tabs found',document.querySelectorAll('.tab').length===7,document.querySelectorAll('.tab').length+' tabs found.');
-    add('Cases loaded',cases.length===3,cases.length+' cases loaded.');
-    add('Schelling presets loaded',casePresets(cases[0]).length===4,casePresets(cases[0]).length+' Schelling presets loaded.');
-    add('Coordination presets loaded',casePresets(cases[1]).length===4,casePresets(cases[1]).length+' Coordination presets loaded.');
-    add('Schelling preset teaching notes',casePresets(cases[0]).every(p=>p.reveals&&p.hides&&p.compare),'Each Schelling preset has reveals/hides/compare notes.');
-    add('Coordination preset teaching notes',casePresets(cases[1]).every(p=>p.reveals&&p.hides&&p.compare),'Each Coordination preset has reveals/hides/compare notes.');
-
-    const old=clone(state);
-
-    state.caseId='schelling';
-    state.presetId='traditional';
-    state.vars=clone(activePreset(selected(),'traditional').vars);
-    state.schelling=clone(defaults.schelling);
-    initSchelling();
-    const initOk=state.schelling.initialized&&state.schelling.grid.length===state.schelling.size*state.schelling.size;
-    add('Schelling initialize',initOk,state.schelling.grid.length+' cells initialized.');
-    const before=state.schelling.step;
-    stepSchelling();
-    add('Schelling one-agent move',state.schelling.step===before+1,'Move counter advanced from '+before+' to '+state.schelling.step+'.');
-    runSchellingSteps(3);
-    add('Schelling run',state.result&&state.result.type==='schelling','Schelling result: '+(state.result?state.result.label:'none'));
-
-    state=clone(old);
-    state.caseId='coordination';
-    state.presetId='traditional';
-    state.vars=clone(activePreset(selected(),'traditional').vars);
-    runCoordinationSim();
-    add('Coordination traditional engine',state.result&&state.result.type==='coordination'&&state.result.mode==='classic','Coordination result: '+(state.result?state.result.label:'none'));
-    state.presetId='stress';
-    state.vars=clone(activePreset(selected(),'stress').vars);
-    runCoordinationSim();
-    add('Coordination stress engine',state.result&&state.result.type==='coordination'&&state.result.mode==='expanded','Stress result: '+(state.result?state.result.label:'none'));
-
-    state=normalize(old);
-    add('Summary builds',summary().length>100,summary().length+' characters generated.');
-    const tk=KEY+'_test';
-    localStorage.setItem(tk,'ok');
-    add('Local storage works',localStorage.getItem(tk)==='ok','Write/read succeeded.');
-    localStorage.removeItem(tk)
-  }catch(e){
-    add('Runtime exception',false,e.message||String(e))
-  }
-  save();
-  renderAll();
-  document.getElementById('diagPanel').innerHTML=`<strong>Runtime self-test complete:</strong> ${items.filter(x=>x.ok).length} passed, ${items.filter(x=>!x.ok).length} failed.<div class="diagnostics">${items.map(x=>`<div class="diag ${x.ok?'pass':'fail'}"><strong>${esc(x.n)}:</strong> ${x.ok?'Pass':'Needs attention'}<br><span class="small">${esc(x.d)}</span></div>`).join('')}</div>`
-}
-
-function label(s){return s.replace(/([A-Z])/g,' $1').replace(/^./,x=>x.toUpperCase())}
-function clamp(v,min,max){return Math.max(min,Math.min(max,v))}
-function esc(v){return String(v??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#039;')}
-document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>switchTab(b.getAttribute('aria-controls')));
-document.getElementById('initGridBtn').onclick=initSchelling;document.getElementById('stepGridBtn').onclick=()=>runSchellingSteps(1);document.getElementById('runBtn').onclick=runSim;document.getElementById('run25Btn').onclick=()=>runSchellingSteps(25);document.getElementById('resetCaseBtn').onclick=()=>{if(isSchellingCase()){state.schelling=clone(defaults.schelling);state.result=null;initSchelling();return}state.presetId='traditional';state.vars=clone(activePreset(selected(),'traditional').vars);state.result=null;state.schelling=clone(defaults.schelling);save();renderAll()};document.getElementById('exportBtn').onclick=download;document.getElementById('copyBtn').onclick=copySummary;document.getElementById('resetLocalBtn').onclick=resetLocal;document.getElementById('diagBtn').onclick=diagnostics;['lensNotes','hiddenCostNotes','failedCondition','repairProposal','bridgeStatement'].forEach(id=>{document.getElementById(id).oninput=e=>{state[id]=e.target.value;save()}});
+document.querySelectorAll(".tab").forEach(b=>b.addEventListener("click",()=>switchTab(b.getAttribute("aria-controls"))));
+document.getElementById("initGridBtn").onclick=initSchelling;
+document.getElementById("stepGridBtn").onclick=()=>runSchellingMoves(1);
+document.getElementById("run25Btn").onclick=()=>runSchellingMoves(25);
+document.getElementById("runBtn").onclick=()=>{if(isCoordination())runCoordination();else runPlaceholder()};
+document.getElementById("resetCaseBtn").onclick=()=>{const p=activePreset();state.vars=clone(p.vars);state.result=null;state.schelling=clone(defaults.schelling);save();renderAll()};
+document.getElementById("exportBtn").onclick=download;
+document.getElementById("copyBtn").onclick=copySummary;
+document.getElementById("resetLocalBtn").onclick=resetLocal;
+document.getElementById("diagBtn").onclick=diagnostics;
+["lensNotes","hiddenCostNotes","failedCondition","repairProposal","bridgeStatement"].forEach(id=>{const el=document.getElementById(id);if(el)el.addEventListener("input",e=>{state[id]=e.target.value;save()})});
 renderAll();
 </script>
-</body></html>
+</body>
+</html>
