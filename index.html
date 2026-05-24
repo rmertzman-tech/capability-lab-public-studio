@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Capability Lab v2.0D.1a.1a — Challenger Visual Timeline and Testimony Panel</title>
+<title>Capability Lab v2.0D.1b.1b — Challenger Canvas Visual Timeline Hotfix</title>
 <style>
 :root{
   --bg:#f7f7f4;--panel:#fff;--ink:#1f2933;--muted:#5f6b7a;--line:#d8ded7;
@@ -89,37 +89,12 @@ textarea,input[type=text]{width:100%;border:1px solid var(--line);border-radius:
 .gap-fill{height:100%;background:linear-gradient(90deg,var(--good),var(--warn),var(--danger))}
 .stage-note{border-left:5px solid var(--accent);background:#f8fbf8;border-radius:12px;padding:12px;margin-top:10px}
 
-.warning-visual-panel{border:1px solid var(--line);border-radius:18px;background:linear-gradient(180deg,#fff,#f7faf7);padding:16px;margin:14px 0;box-shadow:var(--shadow)}
-.warning-visual-panel h4{margin:0 0 8px}
-.visual-caption{color:var(--muted);font-size:.92rem;margin-bottom:10px}
-.warning-ribbon{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;margin:10px 0 14px}
-.warning-ribbon .ribbon-stage{border:1px solid var(--line);border-radius:14px;background:#fff;padding:10px;min-height:112px}
-.warning-ribbon .ribbon-stage.active{border-color:var(--accent);outline:3px solid rgba(52,93,78,.18)}
-.warning-ribbon .ribbon-stage.done{background:#f4f8f5}
-.warning-ribbon .ribbon-stage .stage-num{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:2px 8px;font-size:.78rem;font-weight:800;color:var(--muted);margin-bottom:6px;background:var(--soft)}
-.warning-ribbon .ribbon-stage .stage-tag{display:inline-block;margin-top:6px}
-.warning-trace-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin:8px 0 14px}
-.warning-trace-card{border:1px solid var(--line);border-radius:14px;background:#fff;padding:10px}
-.warning-trace-card.active{border-color:var(--accent);outline:3px solid rgba(52,93,78,.18)}
-.warning-trace-card .small-title{font-weight:800;font-size:.9rem;margin-bottom:8px}
-.paired-bars{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;align-items:end;min-height:138px}
-.metric-col{text-align:center}
-.metric-col .vtrack{height:96px;border-radius:999px;background:#e8eee7;overflow:hidden;display:flex;align-items:flex-end;justify-content:center}
-.metric-col .vfill{width:100%;display:block;border-radius:999px 999px 0 0}
-.metric-col.raw .vfill{background:#2f6b4f}
-.metric-col.perc .vfill{background:#4d8a73}
-.metric-col.heat .vfill{background:#c28a42}
-.metric-col.risk .vfill{background:#7a2e2e}
-.metric-col .label{display:block;font-size:.72rem;color:var(--muted);margin-top:4px}
-.metric-col .val{display:block;font-size:.84rem;font-weight:800}
-.trace-mini{margin-top:8px;font-size:.82rem;color:var(--muted)}
-.aftermath-flow{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:10px 0}
-.flow-node{border:1px solid var(--line);border-radius:14px;background:#fff;padding:10px}
-.flow-node.active{border-color:var(--accent);outline:3px solid rgba(52,93,78,.18)}
-.flow-node.warn{border-left:5px solid var(--warn)}
-.flow-node.danger{border-left:5px solid var(--danger)}
-.flow-node.good{border-left:5px solid var(--good)}
-.visual-current-box{border:1px solid var(--line);border-radius:14px;background:#fbfcfb;padding:12px;margin-top:10px}
+.canvas-timeline-panel{border:1px solid var(--line);border-radius:18px;background:linear-gradient(180deg,#fff,#f7faf7);padding:16px;margin:14px 0;box-shadow:var(--shadow)}
+.canvas-timeline-panel h4{margin:0 0 8px}.canvas-timeline-panel .visual-caption{color:var(--muted);font-size:.92rem;margin:0 0 10px}
+.warning-canvas-wrap{border:1px solid var(--line);border-radius:16px;background:#fbfcfb;padding:10px;overflow:hidden}
+#warningVisualCanvas{display:block;width:100%;height:auto;border-radius:12px;background:#ffffff;border:1px solid var(--line)}
+.canvas-controls{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}.canvas-legend{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}.canvas-legend span{font-size:.82rem;color:var(--muted);border:1px solid var(--line);background:#fff;border-radius:999px;padding:4px 8px}
+.canvas-metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:8px;margin-top:10px}.canvas-metric{border:1px solid var(--line);border-radius:12px;background:#fff;padding:10px}.canvas-metric strong{display:block;font-size:1.2rem}.canvas-metric .bar{height:8px;background:#e6ece5;border-radius:999px;overflow:hidden;margin-top:6px}.canvas-metric .bar span{display:block;height:100%;background:var(--accent)}
 .hidden{display:none!important}.footer{margin-top:28px;color:var(--muted);font-size:.88rem;text-align:center}
 
 .chapter-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:10px}
@@ -138,7 +113,7 @@ textarea,input[type=text]{width:100%;border:1px solid var(--line);border-radius:
 <body>
 <div class="wrap">
 <header class="hero">
-  <div class="eyebrow">Capability Lab v2.0D.1a</div>
+  <div class="eyebrow">Capability Lab v2.0D.1b</div>
   <h1>Case-First Simulation Studio</h1>
   <p class="subtitle">Schelling and Coordination Under Heat are active classroom engines. This pass aligns the public case layer with the Chapters 1–5 teaching guide and adds a reusable timeline player for PRF landscapes, Challenger/SAGE, evidence-policy comparison, Schelling prediction, and care-under-pressure demonstrations.</p>
   <div class="sequence"><span>Schelling active</span><span>Coordination active</span><span>Teaching presets</span><span>Collapsible glossary</span><span>Moral commons dashboard</span><span>Chapter routing</span><span>Timeline player</span><span>Public/private boundary</span><span>Export</span></div>
@@ -295,7 +270,7 @@ textarea,input[type=text]{width:100%;border:1px solid var(--line);border-radius:
   </div>
 </section>
 </main>
-<p class="footer">Capability Lab v2.0D.1a. Public simulation work only.</p>
+<p class="footer">Capability Lab v2.0D.1b. Public simulation work only.</p>
 </div>
 
 <script>
@@ -416,10 +391,10 @@ function val(k,d=50){return Object.prototype.hasOwnProperty.call(state.vars,k)?N
 function runPlaceholder(){state.result={type:"placeholder",label:"Placeholder shell",message:"This module will be activated in a later build.",support:0,risk:0,repair:null};save();renderAll()}
 function gridCells(){const uns=new Set(state.schelling.unsatisfied);return state.schelling.grid.map((v,i)=>{let cls=v==="A"?"a":v==="B"?"b":v==="S"?"shared":"empty";if(uns.has(i))cls+=" unsat";return`<div class="cell ${cls}" title="${uns.has(i)?"Unsatisfied":v||"Open"}"></div>`}).join("")}
 function renderForms(){["lensNotes","hiddenCostNotes","failedCondition","repairProposal","bridgeStatement"].forEach(id=>{const el=document.getElementById(id);if(el&&el.value!==state[id])el.value=state[id]||""})}
-function summary(){const c=selected(),p=activePreset(),r=state.result,lines=[];lines.push("Capability Lab v2.0D.1a Reflection Summary","========================================","",`Selected case: ${c.title}`,`Preset: ${p.label}`,"",`Preset reveals: ${p.reveals||""}`,`Preset hides: ${p.hides||""}`,`Teaching comparison: ${p.compare||""}`,"");if(isSchelling()&&state.vars.similarityThreshold!==undefined)lines.push(`Similarity threshold interpretation: ${displayVar("similarityThreshold",state.vars.similarityThreshold)} of occupied neighbors must be similar for local satisfaction.`,"");if(r){lines.push(`Outcome: ${r.label}`,`Support / coordination score: ${r.support}`,`Risk score: ${r.risk}`,`Repair score: ${r.repair===null?"omitted":r.repair}`);if(r.type==="schelling"&&r.stats)lines.push(`Schelling move attempts: ${r.stats.step}`,`Average similarity: ${r.stats.avgSimilarity}`,`Unsatisfied percent: ${r.stats.unsatisfiedPct}`,`Stability: ${r.stats.stability}`,`Agent relocations: ${r.stats.totalMoves}`);if(r.type==="coordination"&&r.stats){lines.push(`Coordination mode: ${r.mode}`,`Technical coordination: ${r.stats.technicalCoordination}`,`Pressure risk: ${r.stats.pressureRisk}`,`Trust: ${r.stats.trust}`,`Shared goal clarity: ${r.stats.sharedGoalClarity}`,`Information clarity: ${r.stats.informationClarity}`,`Institutional heat: ${r.stats.institutionalHeat}`);if(r.mode==="expanded")lines.push(`Protected voice: ${r.stats.protectedVoice}`,`Fairness: ${r.stats.fairness}`,`Repair capacity: ${r.stats.repairCapacity}`,`Power asymmetry: ${r.stats.powerAsymmetry}`,`Credibility gap: ${r.stats.credibilityGap}`,`Care burden: ${r.stats.careBurden}`,`Translation effort: ${r.stats.translationEffort}`,`Public memory: ${r.stats.publicMemory}`,`Dark coherence warning: ${r.dark.active?"active":"not active"}`)}}else lines.push("No simulation result recorded.");lines.push("","Lens notes:",state.lensNotes||"[No notes]","","Hidden-cost notes:",state.hiddenCostNotes||"[No notes]","","Failed condition:",state.failedCondition||"[Not specified]","","Repair proposal:",state.repairProposal||"[No proposal]","","Bridge statement:",state.bridgeStatement||"[No statement]");return lines.join("\n")}
-function download(){const blob=new Blob([summary()],{type:"text/plain;charset=utf-8"}),url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="capability_lab_v2_0d1a_summary.txt";document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url)}
+function summary(){const c=selected(),p=activePreset(),r=state.result,lines=[];lines.push("Capability Lab v2.0D.1b Reflection Summary","========================================","",`Selected case: ${c.title}`,`Preset: ${p.label}`,"",`Preset reveals: ${p.reveals||""}`,`Preset hides: ${p.hides||""}`,`Teaching comparison: ${p.compare||""}`,"");if(isSchelling()&&state.vars.similarityThreshold!==undefined)lines.push(`Similarity threshold interpretation: ${displayVar("similarityThreshold",state.vars.similarityThreshold)} of occupied neighbors must be similar for local satisfaction.`,"");if(r){lines.push(`Outcome: ${r.label}`,`Support / coordination score: ${r.support}`,`Risk score: ${r.risk}`,`Repair score: ${r.repair===null?"omitted":r.repair}`);if(r.type==="schelling"&&r.stats)lines.push(`Schelling move attempts: ${r.stats.step}`,`Average similarity: ${r.stats.avgSimilarity}`,`Unsatisfied percent: ${r.stats.unsatisfiedPct}`,`Stability: ${r.stats.stability}`,`Agent relocations: ${r.stats.totalMoves}`);if(r.type==="coordination"&&r.stats){lines.push(`Coordination mode: ${r.mode}`,`Technical coordination: ${r.stats.technicalCoordination}`,`Pressure risk: ${r.stats.pressureRisk}`,`Trust: ${r.stats.trust}`,`Shared goal clarity: ${r.stats.sharedGoalClarity}`,`Information clarity: ${r.stats.informationClarity}`,`Institutional heat: ${r.stats.institutionalHeat}`);if(r.mode==="expanded")lines.push(`Protected voice: ${r.stats.protectedVoice}`,`Fairness: ${r.stats.fairness}`,`Repair capacity: ${r.stats.repairCapacity}`,`Power asymmetry: ${r.stats.powerAsymmetry}`,`Credibility gap: ${r.stats.credibilityGap}`,`Care burden: ${r.stats.careBurden}`,`Translation effort: ${r.stats.translationEffort}`,`Public memory: ${r.stats.publicMemory}`,`Dark coherence warning: ${r.dark.active?"active":"not active"}`)}}else lines.push("No simulation result recorded.");lines.push("","Lens notes:",state.lensNotes||"[No notes]","","Hidden-cost notes:",state.hiddenCostNotes||"[No notes]","","Failed condition:",state.failedCondition||"[Not specified]","","Repair proposal:",state.repairProposal||"[No proposal]","","Bridge statement:",state.bridgeStatement||"[No statement]");return lines.join("\n")}
+function download(){const blob=new Blob([summary()],{type:"text/plain;charset=utf-8"}),url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="capability_lab_v2_0d1b_summary.txt";document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url)}
 async function copySummary(){try{await navigator.clipboard.writeText(summary());alert("Reflection summary copied.")}catch(e){alert("Clipboard copy failed. Use download instead.")}}
-function resetLocal(){if(!confirm("Reset local Capability Lab v2.0D.1a data?"))return;localStorage.removeItem(KEY);state=normalize(clone(defaults));save();renderAll()}
+function resetLocal(){if(!confirm("Reset local Capability Lab v2.0D.1b data?"))return;localStorage.removeItem(KEY);state=normalize(clone(defaults));save();renderAll()}
 function diagnostics(){const items=[];const add=(n,ok,d)=>items.push({n,ok,d});try{add("App shell present",!!document.querySelector(".wrap"),"Main container found.");add("Tabs found",document.querySelectorAll(".tab").length===7,document.querySelectorAll(".tab").length+" tabs found.");add("Cases loaded",cases.length===3,cases.length+" cases loaded.");add("Schelling presets loaded",presets.schelling.length===4,presets.schelling.length+" Schelling presets loaded.");add("Coordination presets loaded",presets.coordination.length===4,presets.coordination.length+" Coordination presets loaded.");const old=clone(state);state.caseId="schelling";state.presetId="traditional";state.vars=clone(activePreset().vars);state.schelling=clone(defaults.schelling);initSchelling();add("Schelling initialize",state.schelling.initialized,state.schelling.grid.length+" cells initialized.");const before=state.schelling.step;stepSchelling();add("Schelling one-agent move",state.schelling.step===before+1,"Move counter advanced.");state=normalize(old);state.caseId="coordination";state.presetId="traditional";state.vars=clone(activePreset().vars);runCoordination();add("Coordination traditional engine",state.result&&state.result.type==="coordination"&&state.result.mode==="classic",state.result?state.result.label:"none");state.presetId="stress";state.vars=clone(activePreset().vars);runCoordination();add("Coordination expanded engine",state.result&&state.result.type==="coordination"&&state.result.mode==="expanded",state.result?state.result.label:"none");state=normalize(old);add("Summary builds",summary().length>100,summary().length+" characters generated.");const tk=KEY+"_test";localStorage.setItem(tk,"ok");add("Local storage works",localStorage.getItem(tk)==="ok","Write/read succeeded.");localStorage.removeItem(tk)}catch(e){add("Runtime exception",false,e.message||String(e))}save();renderAll();document.getElementById("diagPanel").innerHTML=`<strong>Runtime self-test complete:</strong> ${items.filter(x=>x.ok).length} passed, ${items.filter(x=>!x.ok).length} failed.<div class="diags">${items.map(x=>`<div class="diag ${x.ok?"pass":"fail"}"><strong>${esc(x.n)}:</strong> ${x.ok?"Pass":"Needs attention"}<br><span class="small">${esc(x.d)}</span></div>`).join("")}</div>`}
 function displayVar(k,v){if(k==="similarityThreshold")return `${v}%${thresholdPhrase(v)}`;return String(v)}
 function thresholdPhrase(v){const n=Number(v);if(n>=30&&n<=36)return" — roughly 1/3";if(n>=40&&n<=46)return" — about 3/7 to nearly 1/2";if(n>=48&&n<=52)return" — about 1/2";if(n>=23&&n<=27)return" — about 1/4";if(n>=60&&n<=67)return" — about 2/3";return""}
@@ -448,7 +423,7 @@ function scenarioDetailHtml(s){return `<div class="scenario-detail"><div class="
 function coordinationResult(){const classic=mode()==="classic",scenario=activeCoordScenario();const trust=val("trust"),goal=val("sharedGoalClarity"),info=val("informationClarity"),heat=val("institutionalHeat"),voice=val("protectedVoice",50),fair=val("fairness",50),repair=val("repairCapacity",50),power=val("powerAsymmetry",50),cred=val("credibilityGap",50),care=val("careBurden",50),translation=val("translationEffort",50),memory=val("publicMemory",50);const technical=clamp(Math.round(trust*.30+goal*.24+info*.24+(100-heat)*.14+voice*.08),0,100);const pressure=clamp(Math.round(heat*.44+(100-trust)*.22+(100-info)*.20+(100-goal)*.14),0,100);let support,risk,repairPotential,moral=null;if(classic){support=technical;risk=pressure;repairPotential=null}else{support=clamp(Math.round(trust*.10+goal*.08+info*.10+voice*.17+fair*.14+repair*.13+translation*.10+memory*.10+(100-heat)*.04+(100-power)*.07+(100-cred)*.04+(100-care)*.03),0,100);risk=clamp(Math.round(heat*.18+power*.17+cred*.15+care*.13+(100-voice)*.16+(100-fair)*.10+(100-repair)*.07+(100-memory)*.04),0,100);repairPotential=clamp(Math.round(repair*.32+voice*.18+fair*.14+translation*.13+memory*.13+info*.10),0,100);moral={trust:Math.round(trust),truthfulInformation:Math.round(info),protectedVoice:Math.round(voice),fairBurden:Math.round((fair+(100-care)+(100-power))/3),translation:Math.round(translation),repair:Math.round(repair),publicMemory:Math.round(memory)}}let label,explanation;if(classic){if(support>=70&&risk<45){label="Traditional coordination: stable cooperation";explanation="In this scenario, the technical conditions for cooperation are strong."}else if(support>=55&&risk<65){label="Traditional coordination: fragile cooperation";explanation="In this scenario, cooperation is possible, but pressure or limited clarity may make it unstable."}else if(risk>=70){label="Traditional coordination: pressure-driven breakdown risk";explanation="In this scenario, heat and uncertainty are high enough that technical cooperation may fail."}else{label="Traditional coordination: unsettled cooperation";explanation="The technical conditions are mixed. The traditional model does not yet ask whether cooperation is fair, voiced, or repairable."}}else{const dark=technical>=60&&risk>=65;if(dark){label="Dark coherence risk";explanation="The scenario may look coordinated, but pressure, asymmetry, credibility gaps, or hidden burden may be producing compliance rather than ethical cooperation."}else if(support>=70&&risk<45&&repairPotential>=65){label="Constructive coordination";explanation="In this scenario, cooperation is supported by trust, information, protected voice, fairness, repair, translation, and public memory."}else if(support>=55&&risk<60){label="Fragile but workable coordination";explanation="The scenario can proceed, but some moral commons remain under strain."}else if(risk>=70&&support<55){label="Coercive coordination / breakdown risk";explanation="The scenario is likely producing pressure, silence, or compliance rather than shared agency."}else if(support<50&&repairPotential>=60){label="Repair path available";explanation="Current coordination is weak, but repair resources are present enough to redesign the situation."}else{label="Unsettled coordination under heat";explanation="The scenario is mixed. Students should identify which moral commons are weakest."}}return{type:"coordination",mode:classic?"classic":"expanded",label,explanation,support,risk,repair:repairPotential,preset:activePreset().label,scenario:{id:scenario.id,title:scenario.title,problem:scenario.problem,traditional:scenario.traditional,expanded:scenario.expanded,question:scenario.startingQuestion,discussion:scenario.discussion},stats:{trust,sharedGoalClarity:goal,informationClarity:info,institutionalHeat:heat,protectedVoice:voice,fairness:fair,repairCapacity:repair,powerAsymmetry:power,credibilityGap:cred,careBurden:care,translationEffort:translation,publicMemory:memory,technicalCoordination:technical,pressureRisk:pressure},moralCommons:moral,dark:{active:!classic&&technical>=60&&risk>=65,message:classic?"":"Visible agreement may be produced by pressure, asymmetry, or credibility filtering rather than shared agency."}}}
 function renderCoordinationResult(box,r){const classic=r.mode==="classic";const scenario=r.scenario||activeCoordScenario();let scenarioBox=`<div class="notice"><strong>Scenario: ${esc(scenario.title)}</strong><p>${esc(scenario.problem||"")}</p><p><strong>Starting question:</strong> ${esc(scenario.question||"")}</p></div>`;let top;if(classic){top=`<div class="metrics"><div class="metric"><span class="small">Technical coordination score</span><strong>${r.support}</strong></div><div class="metric"><span class="small">Pressure risk</span><strong>${r.risk}</strong></div><div class="metric"><span class="small">Ethical repair variables</span><strong>omitted</strong></div></div><div class="notice"><strong>What this means</strong><p>The Traditional result asks whether this scenario is technically likely to coordinate. It does not evaluate whether cooperation is fair, voiced, coercive, or repairable.</p></div>`}else{top=`<div class="metrics"><div class="metric"><span class="small">Agency-support score</span><strong>${r.support}</strong></div><div class="metric"><span class="small">Coercion / dark-coherence risk</span><strong>${r.risk}</strong></div><div class="metric"><span class="small">Repair potential</span><strong>${r.repair}</strong></div></div><div class="notice"><strong>What this means</strong><p>The Expanded result asks what kind of cooperation this scenario is producing: shared agency, fragile coordination, repairable strain, coercive compliance, or dark coherence.</p></div>${coordCommonsHtml(r)}`}const dark=r.dark&&r.dark.active?`<div class="notice warn"><strong>Dark coherence warning</strong><p>${esc(r.dark.message)}</p></div>`:"";box.innerHTML=`<div class="notice ${r.label.includes("Dark")||r.label.includes("breakdown")||r.label.includes("coercive")||r.label.includes("pressure-driven")?"warn":"good"}"><strong>${esc(r.label)}</strong><p>${esc(r.explanation)}</p></div>${scenarioBox}${top}${dark}`}
 function renderCoordinationWorkspace(w){const p=activePreset(),s=activeCoordScenario();if(!state.result||state.result.type!=="coordination"){w.innerHTML=`<div class="notice"><strong>Coordination workspace ready.</strong><p><strong>Active scenario:</strong> ${esc(s.title)}. Choose a preset and run the coordination analysis. The Traditional preset asks whether cooperation is technically likely. Expanded presets ask whether cooperation is ethically healthy.</p></div><div class="model-box"><strong>Scenario frame</strong><p>${esc(s.context)}</p><p><strong>Problem:</strong> ${esc(s.problem)}</p></div><div class="model-box"><strong>Interpretive frame</strong><p><strong>${esc(p.label)}</strong>: ${esc(p.note)}</p></div>`;return}const r=state.result,stats=r.stats,classic=r.mode==="classic",sc=r.scenario||s;w.innerHTML=`<div class="grid"><div class="card s6"><h3>${classic?"Technical coordination frame":"Expanded ethical coordination frame"}</h3><p><strong>Scenario:</strong> ${esc(sc.title)}</p><div class="metrics"><div class="metric"><span class="small">Technical cooperation</span><strong>${stats.technicalCoordination}</strong></div><div class="metric"><span class="small">Pressure risk</span><strong>${stats.pressureRisk}</strong></div>${classic?"":`<div class="metric"><span class="small">Voice integrity</span><strong>${stats.protectedVoice}</strong></div><div class="metric"><span class="small">Credibility gap</span><strong>${stats.credibilityGap}</strong></div>`}</div></div><div class="card s6"><h3>Teaching questions</h3><ol class="question-list">${(sc.discussion||[]).map(q=>`<li>${esc(q)}</li>`).join("")}</ol></div><div class="card s12"><h3>Interpretive caution</h3><p>${classic?esc(sc.traditional):esc(sc.expanded)}</p></div></div>`}
-function summary(){const c=selected(),p=activePreset(),r=state.result,lines=[];lines.push("Capability Lab v2.0D.1a Reflection Summary","========================================","",`Selected case: ${c.title}`,`Preset: ${p.label}`);if(isCoordination()){const s=activeCoordScenario();lines.push(`Coordination scenario: ${s.title}`,`Scenario problem: ${s.problem}`,`Starting question: ${s.startingQuestion}`)}lines.push("",`Preset reveals: ${p.reveals||""}`,`Preset hides: ${p.hides||""}`,`Teaching comparison: ${p.compare||""}`,"");if(isSchelling()&&state.vars.similarityThreshold!==undefined)lines.push(`Similarity threshold interpretation: ${displayVar("similarityThreshold",state.vars.similarityThreshold)} of occupied neighbors must be similar for local satisfaction.`,"");if(r){lines.push(`Outcome: ${r.label}`,`Support / coordination score: ${r.support}`,`Risk score: ${r.risk}`,`Repair score: ${r.repair===null?"omitted":r.repair}`);if(r.type==="schelling"&&r.stats)lines.push(`Schelling move attempts: ${r.stats.step}`,`Average similarity: ${r.stats.avgSimilarity}`,`Unsatisfied percent: ${r.stats.unsatisfiedPct}`,`Stability: ${r.stats.stability}`,`Agent relocations: ${r.stats.totalMoves}`);if(r.type==="coordination"&&r.stats){lines.push(`Coordination mode: ${r.mode}`,`Technical coordination: ${r.stats.technicalCoordination}`,`Pressure risk: ${r.stats.pressureRisk}`,`Trust: ${r.stats.trust}`,`Shared goal clarity: ${r.stats.sharedGoalClarity}`,`Information clarity: ${r.stats.informationClarity}`,`Institutional heat: ${r.stats.institutionalHeat}`);if(r.mode==="expanded")lines.push(`Protected voice: ${r.stats.protectedVoice}`,`Fairness: ${r.stats.fairness}`,`Repair capacity: ${r.stats.repairCapacity}`,`Power asymmetry: ${r.stats.powerAsymmetry}`,`Credibility gap: ${r.stats.credibilityGap}`,`Care burden: ${r.stats.careBurden}`,`Translation effort: ${r.stats.translationEffort}`,`Public memory: ${r.stats.publicMemory}`,`Dark coherence warning: ${r.dark.active?"active":"not active"}`);if(r.scenario)lines.push("","Scenario discussion questions:",...(r.scenario.discussion||[]).map(q=>`- ${q}`))}}else lines.push("No simulation result recorded.");lines.push("","Lens notes:",state.lensNotes||"[No notes]","","Hidden-cost notes:",state.hiddenCostNotes||"[No notes]","","Failed condition:",state.failedCondition||"[Not specified]","","Repair proposal:",state.repairProposal||"[No proposal]","","Bridge statement:",state.bridgeStatement||"[No statement]");return lines.join("\n")}
+function summary(){const c=selected(),p=activePreset(),r=state.result,lines=[];lines.push("Capability Lab v2.0D.1b Reflection Summary","========================================","",`Selected case: ${c.title}`,`Preset: ${p.label}`);if(isCoordination()){const s=activeCoordScenario();lines.push(`Coordination scenario: ${s.title}`,`Scenario problem: ${s.problem}`,`Starting question: ${s.startingQuestion}`)}lines.push("",`Preset reveals: ${p.reveals||""}`,`Preset hides: ${p.hides||""}`,`Teaching comparison: ${p.compare||""}`,"");if(isSchelling()&&state.vars.similarityThreshold!==undefined)lines.push(`Similarity threshold interpretation: ${displayVar("similarityThreshold",state.vars.similarityThreshold)} of occupied neighbors must be similar for local satisfaction.`,"");if(r){lines.push(`Outcome: ${r.label}`,`Support / coordination score: ${r.support}`,`Risk score: ${r.risk}`,`Repair score: ${r.repair===null?"omitted":r.repair}`);if(r.type==="schelling"&&r.stats)lines.push(`Schelling move attempts: ${r.stats.step}`,`Average similarity: ${r.stats.avgSimilarity}`,`Unsatisfied percent: ${r.stats.unsatisfiedPct}`,`Stability: ${r.stats.stability}`,`Agent relocations: ${r.stats.totalMoves}`);if(r.type==="coordination"&&r.stats){lines.push(`Coordination mode: ${r.mode}`,`Technical coordination: ${r.stats.technicalCoordination}`,`Pressure risk: ${r.stats.pressureRisk}`,`Trust: ${r.stats.trust}`,`Shared goal clarity: ${r.stats.sharedGoalClarity}`,`Information clarity: ${r.stats.informationClarity}`,`Institutional heat: ${r.stats.institutionalHeat}`);if(r.mode==="expanded")lines.push(`Protected voice: ${r.stats.protectedVoice}`,`Fairness: ${r.stats.fairness}`,`Repair capacity: ${r.stats.repairCapacity}`,`Power asymmetry: ${r.stats.powerAsymmetry}`,`Credibility gap: ${r.stats.credibilityGap}`,`Care burden: ${r.stats.careBurden}`,`Translation effort: ${r.stats.translationEffort}`,`Public memory: ${r.stats.publicMemory}`,`Dark coherence warning: ${r.dark.active?"active":"not active"}`);if(r.scenario)lines.push("","Scenario discussion questions:",...(r.scenario.discussion||[]).map(q=>`- ${q}`))}}else lines.push("No simulation result recorded.");lines.push("","Lens notes:",state.lensNotes||"[No notes]","","Hidden-cost notes:",state.hiddenCostNotes||"[No notes]","","Failed condition:",state.failedCondition||"[Not specified]","","Repair proposal:",state.repairProposal||"[No proposal]","","Bridge statement:",state.bridgeStatement||"[No statement]");return lines.join("\n")}
 function diagnostics(){const items=[];const add=(n,ok,d)=>items.push({n,ok,d});try{add("App shell present",!!document.querySelector(".wrap"),"Main container found.");add("Tabs found",document.querySelectorAll(".tab").length===7,document.querySelectorAll(".tab").length+" tabs found.");add("Cases loaded",cases.length===3,cases.length+" cases loaded.");add("Coordination scenarios loaded",coordinationScenarios.length>=6,coordinationScenarios.length+" scenario cards loaded.");add("Schelling presets loaded",presets.schelling.length===4,presets.schelling.length+" Schelling presets loaded.");add("Coordination presets loaded",presets.coordination.length===4,presets.coordination.length+" Coordination presets loaded.");const old=clone(state);state.caseId="coordination";state.coordScenarioId="policy_rollout";state.presetId="stress";state.vars=presetVarsFor(activePreset(),selected());runCoordination();add("Scenario-specific coordination values",state.result&&state.result.scenario&&state.result.scenario.id==="policy_rollout",state.result?state.result.scenario.title:"none");state=normalize(old);state.caseId="schelling";state.presetId="traditional";state.vars=presetVarsFor(activePreset(),selected());state.schelling=clone(defaults.schelling);initSchelling();add("Schelling initialize",state.schelling.initialized,state.schelling.grid.length+" cells initialized.");const before=state.schelling.step;stepSchelling();add("Schelling one-agent move",state.schelling.step===before+1,"Move counter advanced.");state=normalize(old);add("Summary builds",summary().length>100,summary().length+" characters generated.");const tk=KEY+"_test";localStorage.setItem(tk,"ok");add("Local storage works",localStorage.getItem(tk)==="ok","Write/read succeeded.");localStorage.removeItem(tk)}catch(e){add("Runtime exception",false,e.message||String(e))}state=normalize(state);save();renderAll();document.getElementById("diagPanel").innerHTML=`<strong>Runtime self-test complete:</strong> ${items.filter(x=>x.ok).length} passed, ${items.filter(x=>!x.ok).length} failed.<div class="diags">${items.map(x=>`<div class="diag ${x.ok?"pass":"fail"}"><strong>${esc(x.n)}:</strong> ${x.ok?"Pass":"Needs attention"}<br><span class="small">${esc(x.d)}</span></div>`).join("")}</div>`}
 
 
@@ -701,7 +676,7 @@ Selected case:`);
     {id:"repair_design",title:"6. Testimony, Repair, and Moral World Design",tag:"repair",narrative:"After tragedy, testimony reveals what the institution failed to hear. Students then redesign the warning pathway so voice, evidence, documentation, public memory, and accountability are protected before future crisis pressure arrives.",question:"What does testimony reveal, and what must be built so the next warning can be heard in time?",preset:"repair",vars:{rawCapacity:90,perceivedCapacity:80,evidenceClarity:88,protectedVoice:92,institutionalHeat:44,authorityWeighting:28,credibilityGap:20,burdenReversal:22,documentationStrength:90,timePressure:56,publicRisk:96,repairCapacity:94}}
   ];
 
-  window.warningStages=warningStages;
+  window.warningStages = warningStages;
 
   const warningMetrics=[
     "rawCapacity","perceivedCapacity","evidenceClarity","protectedVoice","institutionalHeat","authorityWeighting","credibilityGap","burdenReversal","documentationStrength","timePressure","publicRisk","repairCapacity"
@@ -724,7 +699,7 @@ Selected case:`);
     return warningStages[Math.max(0,Math.min(warningStages.length-1,i))]
   }
 
-  window.activeWarningStage=activeWarningStage;
+  window.activeWarningStage = activeWarningStage;
 
   function loadWarningStage(index=state.warningStageIndex, applyPreset=true){
     state.warningStageIndex=Math.max(0,Math.min(warningStages.length-1,Number(index)||0));
@@ -968,7 +943,7 @@ Selected case:`);
 
   const priorResetLocal=resetLocal;
   resetLocal=function(){
-    if(!confirm("Reset local Capability Lab v2.0D.1a data?"))return;
+    if(!confirm("Reset local Capability Lab v2.0D.1b data?"))return;
     localStorage.removeItem(KEY);
     state=normalize(clone(defaults));
     save();
@@ -977,108 +952,123 @@ Selected case:`);
 })();
 
 
-/* v2.0D.1a — Challenger Visual Timeline and Testimony Panel */
+/* v2.0D.1b — Canvas Visual Timeline Hotfix */
 (function(){
-  function warningStagesList(){
-    return Array.isArray(window.warningStages)?window.warningStages:[]
-  }
-  function currentWarningStage(){
-    return typeof window.activeWarningStage==="function" ? window.activeWarningStage() : (warningStagesList()[Number(state.warningStageIndex||0)]||null)
-  }
+  let canvasAnimation=null;
+  let animationClock=0;
+  let visualPlaying=true;
+
+  function stages(){return Array.isArray(window.warningStages)?window.warningStages:[]}
+  function stageIndex(){return Math.max(0,Math.min(stages().length-1,Number(state.warningStageIndex||0)))}
+  function activeStage(){return stages()[stageIndex()] || (typeof window.activeWarningStage==="function"?window.activeWarningStage():null)}
   function stageVars(stage){return (stage&&stage.vars)||{}}
-  function stageValue(stage,key,defaultValue=0){
-    const vars=stageVars(stage);
-    return Object.prototype.hasOwnProperty.call(vars,key)?Number(vars[key]):defaultValue
+  function sv(stage,key,d=0){const v=stageVars(stage);return Object.prototype.hasOwnProperty.call(v,key)?Number(v[key]):d}
+  function compute(stage){
+    const raw=sv(stage,"rawCapacity",80), perceived=sv(stage,"perceivedCapacity",raw), evidence=sv(stage,"evidenceClarity",60), voice=sv(stage,"protectedVoice",50), heat=sv(stage,"institutionalHeat",sv(stage,"timePressure",50)), authority=sv(stage,"authorityWeighting",50), cred=sv(stage,"credibilityGap",50), burden=sv(stage,"burdenReversal",40), doc=sv(stage,"documentationStrength",50), repair=sv(stage,"repairCapacity",40), risk=sv(stage,"publicRisk",75);
+    const gap=clamp(Math.round(raw-perceived),0,100);
+    const uptake=clamp(Math.round(evidence*.24+doc*.22+voice*.18+(100-authority)*.14+(100-cred)*.12+(100-burden)*.10),0,100);
+    const pathway=clamp(Math.round(voice*.22+doc*.16+repair*.20+uptake*.20+(100-heat)*.08+(100-authority)*.07+(100-burden)*.07),0,100);
+    const failure=clamp(Math.round(risk*.22+heat*.18+authority*.15+cred*.14+burden*.15+(100-voice)*.10+(100-repair)*.06),0,100);
+    return {raw,perceived,evidence,voice,heat,authority,cred,burden,doc,repair,publicRisk:risk,gap,uptake,pathway,failure};
   }
-  function computedStage(stage){
-    const raw=stageValue(stage,"rawCapacity",80);
-    const perceived=stageValue(stage,"perceivedCapacity",raw);
-    const evidence=stageValue(stage,"evidenceClarity",60);
-    const voice=stageValue(stage,"protectedVoice",50);
-    const heat=stageValue(stage,"institutionalHeat",stageValue(stage,"timePressure",50));
-    const authority=stageValue(stage,"authorityWeighting",50);
-    const cred=stageValue(stage,"credibilityGap",50);
-    const burden=stageValue(stage,"burdenReversal",40);
-    const doc=stageValue(stage,"documentationStrength",50);
-    const repair=stageValue(stage,"repairCapacity",40);
-    const publicRisk=stageValue(stage,"publicRisk",75);
-    const gap=Math.max(0,Math.min(100,Math.round(raw-perceived)));
-    const uptake=Math.max(0,Math.min(100,Math.round(evidence*.24+doc*.22+voice*.18+(100-authority)*.14+(100-cred)*.12+(100-burden)*.10)));
-    const pathway=Math.max(0,Math.min(100,Math.round(voice*.22+doc*.16+repair*.20+uptake*.20+(100-heat)*.08+(100-authority)*.07+(100-burden)*.07)));
-    const failure=Math.max(0,Math.min(100,Math.round(publicRisk*.22+heat*.18+authority*.15+cred*.14+burden*.15+(100-voice)*.10+(100-repair)*.06)));
-    return {raw,perceived,evidence,voice,heat,authority,cred,burden,doc,repair,publicRisk,gap,uptake,pathway,failure}
+  function shortTitle(t){return String(t||"").replace(/^\d+\.\s*/,"")}
+  function metricsHtml(m){
+    const arr=[["Raw capacity",m.raw],["Perceived capacity",m.perceived],["Suppression gap",m.gap],["Evidence uptake",m.uptake],["Warning pathway",m.pathway],["Failure pressure",m.failure]];
+    return `<div class="canvas-metrics">${arr.map(([n,v])=>`<div class="canvas-metric"><span class="small">${esc(n)}</span><strong>${Math.round(v)}</strong><div class="bar"><span style="width:${Math.round(v)}%"></span></div></div>`).join("")}</div>`;
   }
-  function shortenStageTitle(title){
-    return String(title||"").replace(/^\d+\.\s*/,"")
+  function canvasPanelHtml(result){
+    const st=activeStage(); const m=result&&result.type==="warning"?Object.assign({},compute(st),{raw:result.stats.rawCapacity,perceived:result.stats.perceivedCapacity,gap:result.stats.suppressionGap,uptake:result.stats.evidenceUptake,pathway:result.stats.warningPathway,failure:result.stats.failureRisk}):compute(st);
+    return `<div class="canvas-timeline-panel"><h4>Animated Visual Timeline: Warning, Suppression, Tragedy, Testimony, and Repair</h4><p class="visual-caption">This is a live canvas teaching display, adapted from the older large visual concept. It is not a video file and not a full historical reconstruction; it shows how warning signals, institutional heat, and the suppression gap change across the classroom model.</p><div class="canvas-legend"><span>green line = raw capacity</span><span>lower green line = perceived capacity</span><span>orange field = institutional heat</span><span>red band = suppression / failure pressure</span><span>blue pulses = warning signal</span><span>right side = testimony and repair</span></div><div class="warning-canvas-wrap"><canvas id="warningVisualCanvas" width="1000" height="430" aria-label="Animated Challenger warning pathway visualization"></canvas></div><div class="canvas-controls"><button class="action secondary" id="visualPrevBtn" type="button">Previous visual stage</button><button class="action secondary" id="visualNextBtn" type="button">Next visual stage</button><button class="action secondary" id="visualPlayBtn" type="button">Pause visual motion</button><button class="action" id="visualAnalyzeBtn" type="button">Analyze this stage</button></div><div class="stage-note"><strong>Current visual reading</strong><p><strong>${esc(st?st.title:"Active stage")}</strong> — ${esc(st?st.narrative:"")}</p><p><strong>Teaching question:</strong> ${esc(st?st.question:"")}</p></div>${metricsHtml(m)}</div>`;
   }
-  function metricColumn(label,value,cls){
-    return `<div class="metric-col ${cls}"><div class="vtrack"><span class="vfill" style="height:${Math.max(0,Math.min(100,Number(value)||0))}%"></span></div><span class="label">${esc(label)}</span><span class="val">${Math.round(Number(value)||0)}</span></div>`
-  }
-  function warningVisualPanelHtml(result){
-    const stages=warningStagesList();
-    const idx=Math.max(0,Math.min(stages.length-1,Number(state.warningStageIndex||0)));
-    const active=stages[idx]||currentWarningStage();
-    const current=result&&result.type==="warning" ? result.stats : computedStage(active);
-    const ribbon=stages.map((s,i)=>`<article class="ribbon-stage ${i===idx?"active":""} ${i<idx?"done":""}"><span class="stage-num">Stage ${i+1}</span><strong>${esc(shortenStageTitle(s.title))}</strong><p class="small">${esc(s.question)}</p><span class="tag stage-tag">${esc(s.tag||"stage")}</span></article>`).join("");
-    const traces=stages.map((s,i)=>{
-      const c=computedStage(s);
-      return `<article class="warning-trace-card ${i===idx?"active":""}"><div class="small-title">${esc(shortenStageTitle(s.title))}</div><div class="paired-bars">${metricColumn("Raw",c.raw,"raw")}${metricColumn("Seen",c.perceived,"perc")}${metricColumn("Heat",c.heat,"heat")}${metricColumn("Risk",c.publicRisk,"risk")}</div><div class="trace-mini">Gap ${c.gap} • Uptake ${c.uptake} • Pathway ${c.pathway}</div></article>`
-    }).join("");
-    const tragedyActive=idx>=4;
-    const testimonyActive=idx>=5;
-    const outcomeFlow=`<div class="aftermath-flow"><div class="flow-node ${idx===0?"active":""}"><strong>First noticing</strong><p class="small">Risk enters attention before full institutional uptake.</p></div><div class="flow-node ${idx>=2&&idx<4?"warn active":"warn"}"><strong>Pressure field</strong><p class="small">Authority, schedule heat, and burden reversal shape how warning travels.</p></div><div class="flow-node ${tragedyActive?"danger active":"danger"}"><strong>Tragedy threshold</strong><p class="small">When warning fails to reach action in time, harm becomes realized rather than hypothetical.</p></div><div class="flow-node ${testimonyActive?"active":"good"}"><strong>Testimony / public memory</strong><p class="small">After harm, testimony reveals the hidden structure of suppression and reassigns institutional visibility.</p></div><div class="flow-node ${testimonyActive?"good active":"good"}"><strong>Repair / redesign</strong><p class="small">The teaching goal is to design warning pathways that protect future voice, evidence, documentation, and accountability.</p></div></div>`;
-    return `<div class="warning-visual-panel"><h4>Large Visual Timeline: From First Noticing to Tragedy, Testimony, and Repair</h4><p class="visual-caption">This visual timeline condenses the warning field into one classroom-facing panel. It is a teaching model, not a full accident investigation.</p><div class="warning-ribbon">${ribbon}</div><div class="warning-trace-grid">${traces}</div>${outcomeFlow}<div class="visual-current-box"><strong>Current stage reading</strong><p><strong>${esc(active?active.title:"Active stage")}</strong> — ${esc(active?active.narrative:"")}</p><div class="metrics"><div class="metric"><span class="small">Raw capacity</span><strong>${Math.round(current.rawCapacity!==undefined?current.rawCapacity:current.raw)}</strong></div><div class="metric"><span class="small">Perceived capacity</span><strong>${Math.round(current.perceivedCapacity!==undefined?current.perceivedCapacity:current.perceived)}</strong></div><div class="metric"><span class="small">Suppression gap</span><strong>${Math.round(current.suppressionGap!==undefined?current.suppressionGap:current.gap)}</strong></div><div class="metric"><span class="small">Evidence uptake</span><strong>${Math.round(current.evidenceUptake!==undefined?current.evidenceUptake:current.uptake)}</strong></div><div class="metric"><span class="small">Warning pathway</span><strong>${Math.round(current.warningPathway!==undefined?current.warningPathway:current.pathway)}</strong></div><div class="metric"><span class="small">Failure pressure</span><strong>${Math.round(current.failureRisk!==undefined?current.failureRisk:current.failure)}</strong></div></div><div class="stage-note"><strong>Teaching use</strong><p>Ask students to narrate what changes as the timeline moves forward: what becomes visible, what gets blocked, when tragedy becomes likely, and what testimony reveals afterward that was not institutionally usable before the harm.</p></div></div></div>`
-  }
-
-  const priorRenderWorkspace=renderWorkspace;
-  renderWorkspace=function(){
-    if(!(window.isWarning&&window.isWarning())){priorRenderWorkspace();return}
-    const w=document.getElementById("workspace");
-    if(!w)return;
-    const stages=warningStagesList();
-    const st=currentWarningStage();
-    const r=state.result&&state.result.type==="warning"?state.result:null;
-    const idx=Math.max(0,Math.min(stages.length-1,Number(state.warningStageIndex||0)));
-    w.innerHTML=`<div class="notice"><strong>Challenger / Boisjoly Suppression Gap Timeline</strong><p>This is a public classroom simulation. It is not a private Field Scan and it is not a full historical accident analysis. Its purpose is to show how warning can fail when institutional pressure changes perceived capacity, evidence uptake, and protected voice.</p></div><div class="warning-stage-grid">${stages.map((x,i)=>`<article class="warning-stage ${i===idx?"active":""} ${i<idx?"done":""}" data-warning-stage="${i}" role="button" tabindex="0"><strong>${esc(x.title)}</strong><p class="small">${esc(x.narrative)}</p><span class="tag">${esc(x.tag)}</span></article>`).join("")}</div><div class="chapter-detail"><h4>Active warning stage: ${esc(st?st.title:"")}</h4><p>${esc(st?st.narrative:"")}</p><p><strong>Stage question:</strong> ${esc(st?st.question:"")}</p>${state.warningStageMessage?`<div class="notice good"><strong>Loaded stage:</strong><p>${esc(state.warningStageMessage)}</p></div>`:""}<div class="button-row"><button class="action secondary" id="warningPrevBtn" type="button">Previous warning stage</button><button class="action secondary" id="warningNextBtn" type="button">Next warning stage</button><button class="action" id="warningLoadBtn" type="button">Load stage values</button><button class="action" id="warningAnalyzeBtn" type="button">Analyze active stage</button></div></div>${warningVisualPanelHtml(r)}${r?`${suppressionGapHtml(r)}${warningDashboardHtml(r)}`:`<div class="stage-note"><strong>How to teach this stage</strong><p>Ask students to identify what is visible, what is filtered, and what would have to be built so warning can reach decision-controlling authority.</p></div>`}<div class="guardrail-box"><strong>Guardrail</strong><p>Do not teach the case as a simple failure of private courage. The point is to identify the designed conditions that make warning hearable, credible, documented, and actionable.</p></div>`;
-    w.querySelectorAll(".warning-stage").forEach(card=>{
-      card.onclick=()=>{state.warningStageIndex=Number(card.dataset.warningStage);state.result=null;save();renderAll()};
-      card.onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();state.warningStageIndex=Number(card.dataset.warningStage);state.result=null;save();renderAll()}}
+  function drawCanvas(){
+    const canvas=document.getElementById("warningVisualCanvas");
+    if(!canvas)return;
+    const ctx=canvas.getContext("2d");
+    const W=canvas.width,H=canvas.height;
+    const ss=stages();
+    const idx=stageIndex();
+    const t=animationClock;
+    ctx.clearRect(0,0,W,H);
+    ctx.fillStyle="#ffffff";ctx.fillRect(0,0,W,H);
+    // soft background grid
+    ctx.strokeStyle="#edf1ec";ctx.lineWidth=1;
+    for(let x=0;x<W;x+=40){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H);ctx.stroke();}
+    for(let y=0;y<H;y+=40){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke();}
+    const left=60,right=W-60,top=58,bottom=312,plotH=bottom-top;
+    const xs=ss.map((s,i)=>left+(right-left)*(ss.length<=1?0:i/(ss.length-1)));
+    const comps=ss.map(compute);
+    // heat/risk vertical fields
+    comps.forEach((c,i)=>{
+      const x=xs[i]; const w=(right-left)/(ss.length-1)*0.78;
+      const alpha=Math.min(.36,.05+c.heat/320);
+      ctx.fillStyle=`rgba(194,138,66,${alpha})`;ctx.fillRect(x-w/2,top,w,plotH);
+      if(c.failure>70){ctx.fillStyle="rgba(122,46,46,.12)";ctx.fillRect(x-w/2,top,w,plotH);}
     });
-    const prev=document.getElementById("warningPrevBtn");
-    if(prev)prev.onclick=()=>{state.warningStageIndex=Math.max(0,Number(state.warningStageIndex||0)-1);state.result=null;save();renderAll()};
-    const next=document.getElementById("warningNextBtn");
-    if(next)next.onclick=()=>{state.warningStageIndex=Math.min(stages.length-1,Number(state.warningStageIndex||0)+1);state.result=null;save();renderAll()};
-    const load=document.getElementById("warningLoadBtn");
-    if(load)load.onclick=()=>loadWarningStage(state.warningStageIndex,true);
-    const analyze=document.getElementById("warningAnalyzeBtn");
-    if(analyze)analyze.onclick=runWarningAnalysis
-  };
-
-  const priorRenderResult=renderResult;
-  renderResult=function(){
-    const box=document.getElementById("result");
-    if(state.result&&state.result.type==="warning"){
-      const r=state.result;
-      const classic=r.mode==="classic";
-      const stageBox=`<div class="notice"><strong>Timeline stage: ${esc(r.stage.title)}</strong><p>${esc(r.stage.narrative)}</p><p><strong>Question:</strong> ${esc(r.stage.question)}</p></div>`;
-      const top=`<div class="metrics"><div class="metric"><span class="small">${classic?"Traditional pathway score":"Warning pathway integrity"}</span><strong>${r.support}</strong></div><div class="metric"><span class="small">Failure / public-risk pressure</span><strong>${r.risk}</strong></div><div class="metric"><span class="small">Repair potential</span><strong>${r.repair===null?"omitted":r.repair}</strong></div></div>`;
-      const testimonyNote=Number(state.warningStageIndex||0)>=5?`<div class="notice good"><strong>Testimony and public memory</strong><p>At this stage, the class should ask what became visible only after tragedy, how retrospective testimony reassigns credibility, and what institutional memory must now preserve.</p></div>`:"";
-      const traditionalNote=classic?`<div class="notice warn"><strong>Traditional warning frame</strong><p>This view can show that evidence, urgency, and public risk matter. It does not yet show why warning may fail even when the warning agent has real capacity.</p></div>`:`<div class="notice"><strong>Expanded field frame</strong><p>This view asks whether the institution can hear, route, protect, and act on warning under pressure.</p></div>`;
-      const dark=r.dark&&r.dark.active?`<div class="notice warn"><strong>Dark coherence warning</strong><p>${esc(r.dark.message)}</p></div>`:"";
-      box.innerHTML=`<div class="notice ${r.label.includes("crisis")||r.label.includes("failure")?"warn":"good"}"><strong>${esc(r.label)}</strong><p>${esc(r.explanation)}</p></div>${stageBox}${top}${classic?"":suppressionGapHtml(r)}${warningDashboardHtml(r)}${testimonyNote}${traditionalNote}${dark}`;
-      return
+    // tragedy threshold and testimony zone
+    if(xs[4]){ctx.fillStyle="rgba(122,46,46,.14)";ctx.fillRect(xs[4]-12,top,24,plotH+38);ctx.fillStyle="#7a2e2e";ctx.font="bold 13px Arial";ctx.fillText("tragedy threshold",xs[4]-50,bottom+32)}
+    if(xs[5]){ctx.fillStyle="rgba(52,93,78,.10)";ctx.fillRect(xs[5]-46,top,92,plotH+38);ctx.fillStyle="#345d4e";ctx.font="bold 13px Arial";ctx.fillText("testimony + repair",xs[5]-54,bottom+52)}
+    function yFor(v){return bottom-(Math.max(0,Math.min(100,v))/100)*plotH}
+    function curve(key,color,width,dash){ctx.beginPath();comps.forEach((c,i)=>{const y=yFor(c[key]);if(i===0)ctx.moveTo(xs[i],y);else ctx.lineTo(xs[i],y)});ctx.strokeStyle=color;ctx.lineWidth=width;if(dash)ctx.setLineDash(dash);else ctx.setLineDash([]);ctx.stroke();ctx.setLineDash([])}
+    // gap fill between raw/perceived
+    ctx.beginPath(); comps.forEach((c,i)=>{const y=yFor(c.raw); if(i===0)ctx.moveTo(xs[i],y); else ctx.lineTo(xs[i],y)}); for(let i=comps.length-1;i>=0;i--){ctx.lineTo(xs[i],yFor(comps[i].perceived))} ctx.closePath(); ctx.fillStyle="rgba(122,46,46,.13)"; ctx.fill();
+    curve("raw","#2f6b4f",4); curve("perceived","#4d8a73",4,[8,6]); curve("heat","#c28a42",2,[3,5]); curve("failure","#7a2e2e",2);
+    // warning pathway line and animated pulses
+    const pathY=bottom+78;
+    ctx.strokeStyle="#8aa6bf";ctx.lineWidth=5;ctx.beginPath();ctx.moveTo(left,pathY);ctx.lineTo(right,pathY);ctx.stroke();
+    for(let p=0;p<7;p++){
+      const progress=((t/90)+p/7)%1;
+      const x=left+(right-left)*progress;
+      const stageFloat=progress*(ss.length-1);
+      const nearest=Math.round(stageFloat);
+      const c=comps[Math.min(comps.length-1,Math.max(0,nearest))]||comps[0];
+      const opacity=Math.max(.12,(100-(c?c.gap:0))/100);
+      ctx.fillStyle=`rgba(50,110,160,${opacity})`;ctx.beginPath();ctx.arc(x,pathY,5+3*Math.sin(t/9+p),0,Math.PI*2);ctx.fill();
     }
-    priorRenderResult()
+    // stage nodes
+    comps.forEach((c,i)=>{
+      const x=xs[i], active=i===idx;
+      ctx.fillStyle=active?"#345d4e":"#ffffff";ctx.strokeStyle=active?"#345d4e":"#9aa7a0";ctx.lineWidth=active?4:2;ctx.beginPath();ctx.arc(x,pathY,active?16:12,0,Math.PI*2);ctx.fill();ctx.stroke();
+      ctx.fillStyle=active?"#ffffff":"#1f2933";ctx.font="bold 12px Arial";ctx.textAlign="center";ctx.fillText(String(i+1),x,pathY+4);
+      ctx.fillStyle="#1f2933";ctx.font=active?"bold 12px Arial":"12px Arial";wrapText(ctx,shortTitle(ss[i].title),x-54,pathY+28,108,14);
+      // blockage mark for severe suppression
+      if(c.gap>45||c.authority>75||c.burden>75){ctx.strokeStyle="#7a2e2e";ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(x-17,pathY-24);ctx.lineTo(x+17,pathY+24);ctx.moveTo(x+17,pathY-24);ctx.lineTo(x-17,pathY+24);ctx.stroke();}
+    });
+    // labels
+    ctx.textAlign="left";ctx.font="bold 14px Arial";ctx.fillStyle="#2f6b4f";ctx.fillText("Raw capacity",left,30);ctx.fillStyle="#4d8a73";ctx.fillText("Perceived capacity",left+130,30);ctx.fillStyle="#c28a42";ctx.fillText("Institutional heat",left+315,30);ctx.fillStyle="#7a2e2e";ctx.fillText("Failure pressure / suppression",left+490,30);
+    const st=activeStage();ctx.fillStyle="#1f2933";ctx.font="bold 16px Arial";ctx.textAlign="left";ctx.fillText(st?st.title:"Active stage",left,H-22);
+    if(visualPlaying){animationClock++;canvasAnimation=requestAnimationFrame(drawCanvas)}
+  }
+  function wrapText(ctx,text,x,y,maxWidth,lineHeight){const words=String(text||"").split(/\s+/);let line="";for(const word of words){const test=line?line+" "+word:word;if(ctx.measureText(test).width>maxWidth&&line){ctx.fillText(line,x+maxWidth/2,y);line=word;y+=lineHeight}else line=test}if(line)ctx.fillText(line,x+maxWidth/2,y)}
+  function startCanvas(){if(canvasAnimation)cancelAnimationFrame(canvasAnimation);visualPlaying=true;animationClock=0;drawCanvas()}
+  function attachVisualButtons(){
+    const prev=document.getElementById("visualPrevBtn"), next=document.getElementById("visualNextBtn"), play=document.getElementById("visualPlayBtn"), analyze=document.getElementById("visualAnalyzeBtn");
+    if(prev)prev.onclick=()=>{state.warningStageIndex=Math.max(0,stageIndex()-1);state.result=null;save();renderAll()};
+    if(next)next.onclick=()=>{state.warningStageIndex=Math.min(stages().length-1,stageIndex()+1);state.result=null;save();renderAll()};
+    if(play)play.onclick=()=>{visualPlaying=!visualPlaying;play.textContent=visualPlaying?"Pause visual motion":"Play visual motion";if(visualPlaying)drawCanvas()};
+    if(analyze)analyze.onclick=()=>{if(typeof window.runWarningAnalysis==="function")window.runWarningAnalysis()};
+  }
+  function localDashboard(r){if(!r||r.type!=="warning")return "";return `<div class="model-box"><strong>Warning result summary</strong><div class="metrics"><div class="metric"><span class="small">Outcome</span><strong style="font-size:1rem">${esc(r.label)}</strong></div><div class="metric"><span class="small">Pathway</span><strong>${r.support}</strong></div><div class="metric"><span class="small">Risk</span><strong>${r.risk}</strong></div><div class="metric"><span class="small">Repair</span><strong>${r.repair===null?"omitted":r.repair}</strong></div></div><p>${esc(r.explanation)}</p></div>`}
+
+  const previousRenderWorkspace=renderWorkspace;
+  renderWorkspace=function(){
+    if(!(window.isWarning&&window.isWarning())){previousRenderWorkspace();return}
+    const w=document.getElementById("workspace"); if(!w)return;
+    const ss=stages(); const idx=stageIndex(); const st=activeStage(); const r=state.result&&state.result.type==="warning"?state.result:null;
+    w.innerHTML=`<div class="notice"><strong>Challenger / Boisjoly Suppression Gap Timeline</strong><p>This is a public classroom simulation, not a private Field Scan and not a full historical accident investigation. The canvas below is a live teaching visualization of warning, institutional pressure, suppression, tragedy threshold, testimony, and repair.</p></div><div class="warning-stage-grid">${ss.map((x,i)=>`<article class="warning-stage ${i===idx?"active":""} ${i<idx?"done":""}" data-warning-stage="${i}" role="button" tabindex="0"><strong>${esc(x.title)}</strong><p class="small">${esc(x.narrative)}</p><span class="tag">${esc(x.tag)}</span></article>`).join("")}</div><div class="chapter-detail"><h4>Active warning stage: ${esc(st?st.title:"")}</h4><p>${esc(st?st.narrative:"")}</p><p><strong>Stage question:</strong> ${esc(st?st.question:"")}</p><div class="button-row"><button class="action secondary" id="warningPrevBtn" type="button">Previous warning stage</button><button class="action secondary" id="warningNextBtn" type="button">Next warning stage</button><button class="action" id="warningLoadBtn" type="button">Load stage values</button><button class="action" id="warningAnalyzeBtn" type="button">Analyze active stage</button></div></div>${canvasPanelHtml(r)}${localDashboard(r)}<div class="guardrail-box"><strong>Guardrail</strong><p>Do not teach the case as a simple failure of private courage. The point is to identify designed conditions that make warning hearable, credible, documented, and actionable.</p></div>`;
+    w.querySelectorAll(".warning-stage").forEach(card=>{card.onclick=()=>{state.warningStageIndex=Number(card.dataset.warningStage);state.result=null;save();renderAll()};card.onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();state.warningStageIndex=Number(card.dataset.warningStage);state.result=null;save();renderAll()}}});
+    const prev=document.getElementById("warningPrevBtn"); if(prev)prev.onclick=()=>{state.warningStageIndex=Math.max(0,idx-1);state.result=null;save();renderAll()};
+    const next=document.getElementById("warningNextBtn"); if(next)next.onclick=()=>{state.warningStageIndex=Math.min(ss.length-1,idx+1);state.result=null;save();renderAll()};
+    const load=document.getElementById("warningLoadBtn"); if(load)load.onclick=()=>window.loadWarningStage?window.loadWarningStage(state.warningStageIndex,true):null;
+    const analyze=document.getElementById("warningAnalyzeBtn"); if(analyze)analyze.onclick=()=>window.runWarningAnalysis?window.runWarningAnalysis():null;
+    attachVisualButtons(); startCanvas();
   };
 
   const priorSummary=summary;
   summary=function(){
     const base=priorSummary();
-    if(!(state.result&&state.result.type==="warning")&&!(window.isWarning&&window.isWarning()))return base;
-    const st=currentWarningStage();
-    const extra=["","Visual timeline panel note: The Challenger module now includes a large timeline display spanning early noticing, institutional pressure, tragedy threshold, testimony/public memory, and repair design."];
-    if(st)extra.push("Active visual stage: "+st.title);
-    return base+"\n"+extra.join("\n")
+    if(!(window.isWarning&&window.isWarning())&&!(state.result&&state.result.type==="warning"))return base;
+    const st=activeStage();
+    return base+"\n\nCanvas Visual Timeline: active\nActive visual stage: "+(st?st.title:"none")+"\nVisual purpose: show warning signal, institutional heat, suppression gap, tragedy threshold, testimony/public memory, and repair design.";
   };
 })();
 
