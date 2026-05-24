@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Capability Lab v2.0D.1d.1d — Visible Timeline Fallback and Case-Card Clarity Fix</title>
+<title>Capability Lab v2.0D.2.2 — Guided Challenger Workflow and Layout Simplification Pass</title>
 <style>
 :root{
   --bg:#f7f7f4;--panel:#fff;--ink:#1f2933;--muted:#5f6b7a;--line:#d8ded7;
@@ -89,37 +89,17 @@ textarea,input[type=text]{width:100%;border:1px solid var(--line);border-radius:
 .gap-fill{height:100%;background:linear-gradient(90deg,var(--good),var(--warn),var(--danger))}
 .stage-note{border-left:5px solid var(--accent);background:#f8fbf8;border-radius:12px;padding:12px;margin-top:10px}
 
-.case-open-hint{display:inline-block;margin-top:10px;border:1px solid var(--accent);color:var(--accent);background:#fff;border-radius:999px;padding:5px 9px;font-size:.8rem;font-weight:800}
-.visible-timeline-panel{border:2px solid var(--accent);border-radius:18px;background:linear-gradient(180deg,#ffffff,#f4f8f5);padding:16px;margin:14px 0;box-shadow:var(--shadow)}
-.visible-timeline-panel h4{margin:0 0 6px}
-.visual-status{display:inline-block;border:1px solid var(--accent);background:#eef7f1;color:var(--accent);border-radius:999px;padding:4px 10px;font-weight:800;font-size:.82rem;margin:0 0 10px}
-.visual-note{color:var(--muted);font-size:.92rem;margin:0 0 12px}
-.visual-stage-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(132px,1fr));gap:8px;margin:10px 0}
-.visual-stage-box{border:1px solid var(--line);border-radius:14px;background:#fff;padding:10px;min-height:112px}
-.visual-stage-box.active{border-color:var(--accent);outline:3px solid rgba(52,93,78,.20)}
-.visual-stage-box.done{background:#f1f8f4}
-.visual-stage-box .num{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:2px 7px;background:var(--soft);color:var(--muted);font-size:.78rem;font-weight:800;margin-bottom:5px}
-.visible-svg-wrap{border:1px solid var(--line);background:#fff;border-radius:16px;padding:10px;overflow:auto;margin-top:12px}
-.visible-svg{display:block;width:100%;min-width:880px;height:auto}
-.visual-dashboard{display:grid;grid-template-columns:repeat(auto-fit,minmax(135px,1fr));gap:8px;margin-top:12px}
-.visual-dash-card{border:1px solid var(--line);background:#fff;border-radius:14px;padding:10px}
-.visual-dash-card strong{display:block;font-size:1.2rem}
-.visual-dash-card.good{border-left:5px solid var(--good)}
-.visual-dash-card.warn{border-left:5px solid var(--warn)}
-.visual-dash-card.danger{border-left:5px solid var(--danger)}
-.visual-bar{height:8px;background:#e6ece5;border-radius:999px;overflow:hidden;margin-top:6px}
-.visual-bar span{display:block;height:100%;background:var(--accent)}
-.visual-flow-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;margin-top:12px}
-.visual-flow-node{border:1px solid var(--line);background:#fff;border-radius:14px;padding:10px}
-.visual-flow-node.active{border-color:var(--accent);outline:3px solid rgba(52,93,78,.18)}
-.visual-flow-node.warn{border-left:5px solid var(--warn)}
-.visual-flow-node.danger{border-left:5px solid var(--danger)}
-.visual-flow-node.good{border-left:5px solid var(--good)}
-.visual-current-reading{border:1px solid var(--line);border-radius:14px;background:#fbfcfb;padding:12px;margin-top:12px}
-.visual-pulse{animation:visiblePulse 1.3s ease-in-out infinite}
-.visual-dash-flow{animation:visibleFlow 2.2s linear infinite}
-@keyframes visiblePulse{0%,100%{opacity:.35;r:7}50%{opacity:1;r:13}}
-@keyframes visibleFlow{0%{stroke-dashoffset:0}100%{stroke-dashoffset:-30}}
+.guided-status{border:1px solid var(--accent);background:#f4faf6;border-radius:16px;padding:12px;margin:12px 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}
+.status-step{border:1px solid var(--line);background:#fff;border-radius:12px;padding:10px}.status-step strong{display:block}.status-step.active{border-color:var(--accent);outline:3px solid rgba(52,93,78,.16)}
+.guided-quickstart{border:1px solid var(--line);background:#fff;border-radius:16px;padding:12px;margin:10px 0}.guided-quickstart .button-row{margin-top:8px}.guided-quickstart strong{display:block;margin-bottom:4px}
+.case-card{position:relative}.selector-hint{display:inline-block;margin-top:8px;border:1px solid var(--accent);color:var(--accent);background:#fff;border-radius:999px;padding:4px 8px;font-size:.78rem;font-weight:800}.case-card.selected .selector-hint{background:var(--accent);color:#fff}
+.workflow-banner{border:2px solid var(--accent);background:#f5fbf6;border-radius:18px;padding:14px;margin:12px 0}.workflow-banner h4{margin:0 0 6px}.workflow-banner .next-action{font-weight:800;color:var(--accent)}
+.challenge-board{border:1px solid var(--line);border-radius:18px;background:#fff;padding:14px;margin:12px 0;box-shadow:var(--shadow)}.challenge-board h4{margin:0 0 8px}.challenge-board .board-sub{color:var(--muted);font-size:.92rem;margin:0 0 10px}
+.stage-progress{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;margin:10px 0}.stage-tile{border:1px solid var(--line);border-radius:14px;background:#fff;padding:10px;min-height:106px}.stage-tile.active{border-color:var(--accent);outline:3px solid rgba(52,93,78,.18)}.stage-tile.done{background:#f1f8f4}.stage-tile .num{display:inline-block;border:1px solid var(--line);border-radius:999px;background:var(--soft);color:var(--muted);font-weight:800;font-size:.75rem;padding:2px 7px;margin-bottom:5px}
+.board-metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;margin-top:10px}.board-metric{border:1px solid var(--line);border-radius:14px;background:#fff;padding:10px}.board-metric.good{border-left:5px solid var(--good)}.board-metric.warn{border-left:5px solid var(--warn)}.board-metric.danger{border-left:5px solid var(--danger)}.board-metric strong{font-size:1.25rem;display:block}.meter{height:10px;background:#e6ece5;border-radius:999px;overflow:hidden;margin-top:7px}.meter span{display:block;height:100%;background:var(--accent)}.meter.warn span{background:var(--warn)}.meter.danger span{background:var(--danger)}
+.capacity-compare{display:grid;grid-template-columns:1fr;gap:8px;margin:10px 0}.capacity-row{display:grid;grid-template-columns:145px 1fr 50px;gap:8px;align-items:center}.capacity-row .bar{height:16px;background:#e6ece5;border-radius:999px;overflow:hidden}.capacity-row .bar span{display:block;height:100%;background:var(--accent)}.capacity-row.perceived .bar span{background:#4d8a73}.capacity-row.heat .bar span{background:var(--warn)}.capacity-row.risk .bar span{background:var(--danger)}
+.pathway-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;margin:10px 0}.pathway-node{border:1px solid var(--line);border-radius:14px;background:#fff;padding:10px}.pathway-node.active{border-color:var(--accent);outline:3px solid rgba(52,93,78,.16)}.pathway-node.warn{border-left:5px solid var(--warn)}.pathway-node.danger{border-left:5px solid var(--danger)}.pathway-node.good{border-left:5px solid var(--good)}
+.workflow-help{border-left:5px solid var(--accent);background:#f8fbf8;border-radius:12px;padding:12px;margin:10px 0}.guided-actions{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}.guided-actions button{min-width:160px}
 .hidden{display:none!important}.footer{margin-top:28px;color:var(--muted);font-size:.88rem;text-align:center}
 
 .chapter-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:10px}
@@ -138,7 +118,7 @@ textarea,input[type=text]{width:100%;border:1px solid var(--line);border-radius:
 <body>
 <div class="wrap">
 <header class="hero">
-  <div class="eyebrow">Capability Lab v2.0D.1d</div>
+  <div class="eyebrow">Capability Lab v2.0D.2</div>
   <h1>Case-First Simulation Studio</h1>
   <p class="subtitle">Schelling and Coordination Under Heat are active classroom engines. This pass aligns the public case layer with the Chapters 1–5 teaching guide and adds a reusable timeline player for PRF landscapes, Challenger/SAGE, evidence-policy comparison, Schelling prediction, and care-under-pressure demonstrations.</p>
   <div class="sequence"><span>Schelling active</span><span>Coordination active</span><span>Teaching presets</span><span>Collapsible glossary</span><span>Moral commons dashboard</span><span>Chapter routing</span><span>Timeline player</span><span>Public/private boundary</span><span>Export</span></div>
@@ -178,6 +158,8 @@ textarea,input[type=text]{width:100%;border:1px solid var(--line);border-radius:
     <div class="card s12">
       <h2>Simulation Studio</h2>
       <p>Choose a public classroom case. Private Navigator content should remain private unless a student freely chooses to share it.</p>
+      <div id="guidedStatusBar"></div>
+      <div id="guidedQuickStart"></div>
       <div id="caseList" class="case-list"></div>
     </div>
     <div class="card s12" id="chapterMapCard">
@@ -295,7 +277,7 @@ textarea,input[type=text]{width:100%;border:1px solid var(--line);border-radius:
   </div>
 </section>
 </main>
-<p class="footer">Capability Lab v2.0D.1d. Public simulation work only.</p>
+<p class="footer">Capability Lab v2.0D.2. Public simulation work only.</p>
 </div>
 
 <script>
@@ -416,10 +398,10 @@ function val(k,d=50){return Object.prototype.hasOwnProperty.call(state.vars,k)?N
 function runPlaceholder(){state.result={type:"placeholder",label:"Placeholder shell",message:"This module will be activated in a later build.",support:0,risk:0,repair:null};save();renderAll()}
 function gridCells(){const uns=new Set(state.schelling.unsatisfied);return state.schelling.grid.map((v,i)=>{let cls=v==="A"?"a":v==="B"?"b":v==="S"?"shared":"empty";if(uns.has(i))cls+=" unsat";return`<div class="cell ${cls}" title="${uns.has(i)?"Unsatisfied":v||"Open"}"></div>`}).join("")}
 function renderForms(){["lensNotes","hiddenCostNotes","failedCondition","repairProposal","bridgeStatement"].forEach(id=>{const el=document.getElementById(id);if(el&&el.value!==state[id])el.value=state[id]||""})}
-function summary(){const c=selected(),p=activePreset(),r=state.result,lines=[];lines.push("Capability Lab v2.0D.1d Reflection Summary","========================================","",`Selected case: ${c.title}`,`Preset: ${p.label}`,"",`Preset reveals: ${p.reveals||""}`,`Preset hides: ${p.hides||""}`,`Teaching comparison: ${p.compare||""}`,"");if(isSchelling()&&state.vars.similarityThreshold!==undefined)lines.push(`Similarity threshold interpretation: ${displayVar("similarityThreshold",state.vars.similarityThreshold)} of occupied neighbors must be similar for local satisfaction.`,"");if(r){lines.push(`Outcome: ${r.label}`,`Support / coordination score: ${r.support}`,`Risk score: ${r.risk}`,`Repair score: ${r.repair===null?"omitted":r.repair}`);if(r.type==="schelling"&&r.stats)lines.push(`Schelling move attempts: ${r.stats.step}`,`Average similarity: ${r.stats.avgSimilarity}`,`Unsatisfied percent: ${r.stats.unsatisfiedPct}`,`Stability: ${r.stats.stability}`,`Agent relocations: ${r.stats.totalMoves}`);if(r.type==="coordination"&&r.stats){lines.push(`Coordination mode: ${r.mode}`,`Technical coordination: ${r.stats.technicalCoordination}`,`Pressure risk: ${r.stats.pressureRisk}`,`Trust: ${r.stats.trust}`,`Shared goal clarity: ${r.stats.sharedGoalClarity}`,`Information clarity: ${r.stats.informationClarity}`,`Institutional heat: ${r.stats.institutionalHeat}`);if(r.mode==="expanded")lines.push(`Protected voice: ${r.stats.protectedVoice}`,`Fairness: ${r.stats.fairness}`,`Repair capacity: ${r.stats.repairCapacity}`,`Power asymmetry: ${r.stats.powerAsymmetry}`,`Credibility gap: ${r.stats.credibilityGap}`,`Care burden: ${r.stats.careBurden}`,`Translation effort: ${r.stats.translationEffort}`,`Public memory: ${r.stats.publicMemory}`,`Dark coherence warning: ${r.dark.active?"active":"not active"}`)}}else lines.push("No simulation result recorded.");lines.push("","Lens notes:",state.lensNotes||"[No notes]","","Hidden-cost notes:",state.hiddenCostNotes||"[No notes]","","Failed condition:",state.failedCondition||"[Not specified]","","Repair proposal:",state.repairProposal||"[No proposal]","","Bridge statement:",state.bridgeStatement||"[No statement]");return lines.join("\n")}
-function download(){const blob=new Blob([summary()],{type:"text/plain;charset=utf-8"}),url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="capability_lab_v2_0d1d_summary.txt";document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url)}
+function summary(){const c=selected(),p=activePreset(),r=state.result,lines=[];lines.push("Capability Lab v2.0D.2 Reflection Summary","========================================","",`Selected case: ${c.title}`,`Preset: ${p.label}`,"",`Preset reveals: ${p.reveals||""}`,`Preset hides: ${p.hides||""}`,`Teaching comparison: ${p.compare||""}`,"");if(isSchelling()&&state.vars.similarityThreshold!==undefined)lines.push(`Similarity threshold interpretation: ${displayVar("similarityThreshold",state.vars.similarityThreshold)} of occupied neighbors must be similar for local satisfaction.`,"");if(r){lines.push(`Outcome: ${r.label}`,`Support / coordination score: ${r.support}`,`Risk score: ${r.risk}`,`Repair score: ${r.repair===null?"omitted":r.repair}`);if(r.type==="schelling"&&r.stats)lines.push(`Schelling move attempts: ${r.stats.step}`,`Average similarity: ${r.stats.avgSimilarity}`,`Unsatisfied percent: ${r.stats.unsatisfiedPct}`,`Stability: ${r.stats.stability}`,`Agent relocations: ${r.stats.totalMoves}`);if(r.type==="coordination"&&r.stats){lines.push(`Coordination mode: ${r.mode}`,`Technical coordination: ${r.stats.technicalCoordination}`,`Pressure risk: ${r.stats.pressureRisk}`,`Trust: ${r.stats.trust}`,`Shared goal clarity: ${r.stats.sharedGoalClarity}`,`Information clarity: ${r.stats.informationClarity}`,`Institutional heat: ${r.stats.institutionalHeat}`);if(r.mode==="expanded")lines.push(`Protected voice: ${r.stats.protectedVoice}`,`Fairness: ${r.stats.fairness}`,`Repair capacity: ${r.stats.repairCapacity}`,`Power asymmetry: ${r.stats.powerAsymmetry}`,`Credibility gap: ${r.stats.credibilityGap}`,`Care burden: ${r.stats.careBurden}`,`Translation effort: ${r.stats.translationEffort}`,`Public memory: ${r.stats.publicMemory}`,`Dark coherence warning: ${r.dark.active?"active":"not active"}`)}}else lines.push("No simulation result recorded.");lines.push("","Lens notes:",state.lensNotes||"[No notes]","","Hidden-cost notes:",state.hiddenCostNotes||"[No notes]","","Failed condition:",state.failedCondition||"[Not specified]","","Repair proposal:",state.repairProposal||"[No proposal]","","Bridge statement:",state.bridgeStatement||"[No statement]");return lines.join("\n")}
+function download(){const blob=new Blob([summary()],{type:"text/plain;charset=utf-8"}),url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="capability_lab_v2_0d2_summary.txt";document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url)}
 async function copySummary(){try{await navigator.clipboard.writeText(summary());alert("Reflection summary copied.")}catch(e){alert("Clipboard copy failed. Use download instead.")}}
-function resetLocal(){if(!confirm("Reset local Capability Lab v2.0D.1d data?"))return;localStorage.removeItem(KEY);state=normalize(clone(defaults));save();renderAll()}
+function resetLocal(){if(!confirm("Reset local Capability Lab v2.0D.2 data?"))return;localStorage.removeItem(KEY);state=normalize(clone(defaults));save();renderAll()}
 function diagnostics(){const items=[];const add=(n,ok,d)=>items.push({n,ok,d});try{add("App shell present",!!document.querySelector(".wrap"),"Main container found.");add("Tabs found",document.querySelectorAll(".tab").length===7,document.querySelectorAll(".tab").length+" tabs found.");add("Cases loaded",cases.length===3,cases.length+" cases loaded.");add("Schelling presets loaded",presets.schelling.length===4,presets.schelling.length+" Schelling presets loaded.");add("Coordination presets loaded",presets.coordination.length===4,presets.coordination.length+" Coordination presets loaded.");const old=clone(state);state.caseId="schelling";state.presetId="traditional";state.vars=clone(activePreset().vars);state.schelling=clone(defaults.schelling);initSchelling();add("Schelling initialize",state.schelling.initialized,state.schelling.grid.length+" cells initialized.");const before=state.schelling.step;stepSchelling();add("Schelling one-agent move",state.schelling.step===before+1,"Move counter advanced.");state=normalize(old);state.caseId="coordination";state.presetId="traditional";state.vars=clone(activePreset().vars);runCoordination();add("Coordination traditional engine",state.result&&state.result.type==="coordination"&&state.result.mode==="classic",state.result?state.result.label:"none");state.presetId="stress";state.vars=clone(activePreset().vars);runCoordination();add("Coordination expanded engine",state.result&&state.result.type==="coordination"&&state.result.mode==="expanded",state.result?state.result.label:"none");state=normalize(old);add("Summary builds",summary().length>100,summary().length+" characters generated.");const tk=KEY+"_test";localStorage.setItem(tk,"ok");add("Local storage works",localStorage.getItem(tk)==="ok","Write/read succeeded.");localStorage.removeItem(tk)}catch(e){add("Runtime exception",false,e.message||String(e))}save();renderAll();document.getElementById("diagPanel").innerHTML=`<strong>Runtime self-test complete:</strong> ${items.filter(x=>x.ok).length} passed, ${items.filter(x=>!x.ok).length} failed.<div class="diags">${items.map(x=>`<div class="diag ${x.ok?"pass":"fail"}"><strong>${esc(x.n)}:</strong> ${x.ok?"Pass":"Needs attention"}<br><span class="small">${esc(x.d)}</span></div>`).join("")}</div>`}
 function displayVar(k,v){if(k==="similarityThreshold")return `${v}%${thresholdPhrase(v)}`;return String(v)}
 function thresholdPhrase(v){const n=Number(v);if(n>=30&&n<=36)return" — roughly 1/3";if(n>=40&&n<=46)return" — about 3/7 to nearly 1/2";if(n>=48&&n<=52)return" — about 1/2";if(n>=23&&n<=27)return" — about 1/4";if(n>=60&&n<=67)return" — about 2/3";return""}
@@ -448,7 +430,7 @@ function scenarioDetailHtml(s){return `<div class="scenario-detail"><div class="
 function coordinationResult(){const classic=mode()==="classic",scenario=activeCoordScenario();const trust=val("trust"),goal=val("sharedGoalClarity"),info=val("informationClarity"),heat=val("institutionalHeat"),voice=val("protectedVoice",50),fair=val("fairness",50),repair=val("repairCapacity",50),power=val("powerAsymmetry",50),cred=val("credibilityGap",50),care=val("careBurden",50),translation=val("translationEffort",50),memory=val("publicMemory",50);const technical=clamp(Math.round(trust*.30+goal*.24+info*.24+(100-heat)*.14+voice*.08),0,100);const pressure=clamp(Math.round(heat*.44+(100-trust)*.22+(100-info)*.20+(100-goal)*.14),0,100);let support,risk,repairPotential,moral=null;if(classic){support=technical;risk=pressure;repairPotential=null}else{support=clamp(Math.round(trust*.10+goal*.08+info*.10+voice*.17+fair*.14+repair*.13+translation*.10+memory*.10+(100-heat)*.04+(100-power)*.07+(100-cred)*.04+(100-care)*.03),0,100);risk=clamp(Math.round(heat*.18+power*.17+cred*.15+care*.13+(100-voice)*.16+(100-fair)*.10+(100-repair)*.07+(100-memory)*.04),0,100);repairPotential=clamp(Math.round(repair*.32+voice*.18+fair*.14+translation*.13+memory*.13+info*.10),0,100);moral={trust:Math.round(trust),truthfulInformation:Math.round(info),protectedVoice:Math.round(voice),fairBurden:Math.round((fair+(100-care)+(100-power))/3),translation:Math.round(translation),repair:Math.round(repair),publicMemory:Math.round(memory)}}let label,explanation;if(classic){if(support>=70&&risk<45){label="Traditional coordination: stable cooperation";explanation="In this scenario, the technical conditions for cooperation are strong."}else if(support>=55&&risk<65){label="Traditional coordination: fragile cooperation";explanation="In this scenario, cooperation is possible, but pressure or limited clarity may make it unstable."}else if(risk>=70){label="Traditional coordination: pressure-driven breakdown risk";explanation="In this scenario, heat and uncertainty are high enough that technical cooperation may fail."}else{label="Traditional coordination: unsettled cooperation";explanation="The technical conditions are mixed. The traditional model does not yet ask whether cooperation is fair, voiced, or repairable."}}else{const dark=technical>=60&&risk>=65;if(dark){label="Dark coherence risk";explanation="The scenario may look coordinated, but pressure, asymmetry, credibility gaps, or hidden burden may be producing compliance rather than ethical cooperation."}else if(support>=70&&risk<45&&repairPotential>=65){label="Constructive coordination";explanation="In this scenario, cooperation is supported by trust, information, protected voice, fairness, repair, translation, and public memory."}else if(support>=55&&risk<60){label="Fragile but workable coordination";explanation="The scenario can proceed, but some moral commons remain under strain."}else if(risk>=70&&support<55){label="Coercive coordination / breakdown risk";explanation="The scenario is likely producing pressure, silence, or compliance rather than shared agency."}else if(support<50&&repairPotential>=60){label="Repair path available";explanation="Current coordination is weak, but repair resources are present enough to redesign the situation."}else{label="Unsettled coordination under heat";explanation="The scenario is mixed. Students should identify which moral commons are weakest."}}return{type:"coordination",mode:classic?"classic":"expanded",label,explanation,support,risk,repair:repairPotential,preset:activePreset().label,scenario:{id:scenario.id,title:scenario.title,problem:scenario.problem,traditional:scenario.traditional,expanded:scenario.expanded,question:scenario.startingQuestion,discussion:scenario.discussion},stats:{trust,sharedGoalClarity:goal,informationClarity:info,institutionalHeat:heat,protectedVoice:voice,fairness:fair,repairCapacity:repair,powerAsymmetry:power,credibilityGap:cred,careBurden:care,translationEffort:translation,publicMemory:memory,technicalCoordination:technical,pressureRisk:pressure},moralCommons:moral,dark:{active:!classic&&technical>=60&&risk>=65,message:classic?"":"Visible agreement may be produced by pressure, asymmetry, or credibility filtering rather than shared agency."}}}
 function renderCoordinationResult(box,r){const classic=r.mode==="classic";const scenario=r.scenario||activeCoordScenario();let scenarioBox=`<div class="notice"><strong>Scenario: ${esc(scenario.title)}</strong><p>${esc(scenario.problem||"")}</p><p><strong>Starting question:</strong> ${esc(scenario.question||"")}</p></div>`;let top;if(classic){top=`<div class="metrics"><div class="metric"><span class="small">Technical coordination score</span><strong>${r.support}</strong></div><div class="metric"><span class="small">Pressure risk</span><strong>${r.risk}</strong></div><div class="metric"><span class="small">Ethical repair variables</span><strong>omitted</strong></div></div><div class="notice"><strong>What this means</strong><p>The Traditional result asks whether this scenario is technically likely to coordinate. It does not evaluate whether cooperation is fair, voiced, coercive, or repairable.</p></div>`}else{top=`<div class="metrics"><div class="metric"><span class="small">Agency-support score</span><strong>${r.support}</strong></div><div class="metric"><span class="small">Coercion / dark-coherence risk</span><strong>${r.risk}</strong></div><div class="metric"><span class="small">Repair potential</span><strong>${r.repair}</strong></div></div><div class="notice"><strong>What this means</strong><p>The Expanded result asks what kind of cooperation this scenario is producing: shared agency, fragile coordination, repairable strain, coercive compliance, or dark coherence.</p></div>${coordCommonsHtml(r)}`}const dark=r.dark&&r.dark.active?`<div class="notice warn"><strong>Dark coherence warning</strong><p>${esc(r.dark.message)}</p></div>`:"";box.innerHTML=`<div class="notice ${r.label.includes("Dark")||r.label.includes("breakdown")||r.label.includes("coercive")||r.label.includes("pressure-driven")?"warn":"good"}"><strong>${esc(r.label)}</strong><p>${esc(r.explanation)}</p></div>${scenarioBox}${top}${dark}`}
 function renderCoordinationWorkspace(w){const p=activePreset(),s=activeCoordScenario();if(!state.result||state.result.type!=="coordination"){w.innerHTML=`<div class="notice"><strong>Coordination workspace ready.</strong><p><strong>Active scenario:</strong> ${esc(s.title)}. Choose a preset and run the coordination analysis. The Traditional preset asks whether cooperation is technically likely. Expanded presets ask whether cooperation is ethically healthy.</p></div><div class="model-box"><strong>Scenario frame</strong><p>${esc(s.context)}</p><p><strong>Problem:</strong> ${esc(s.problem)}</p></div><div class="model-box"><strong>Interpretive frame</strong><p><strong>${esc(p.label)}</strong>: ${esc(p.note)}</p></div>`;return}const r=state.result,stats=r.stats,classic=r.mode==="classic",sc=r.scenario||s;w.innerHTML=`<div class="grid"><div class="card s6"><h3>${classic?"Technical coordination frame":"Expanded ethical coordination frame"}</h3><p><strong>Scenario:</strong> ${esc(sc.title)}</p><div class="metrics"><div class="metric"><span class="small">Technical cooperation</span><strong>${stats.technicalCoordination}</strong></div><div class="metric"><span class="small">Pressure risk</span><strong>${stats.pressureRisk}</strong></div>${classic?"":`<div class="metric"><span class="small">Voice integrity</span><strong>${stats.protectedVoice}</strong></div><div class="metric"><span class="small">Credibility gap</span><strong>${stats.credibilityGap}</strong></div>`}</div></div><div class="card s6"><h3>Teaching questions</h3><ol class="question-list">${(sc.discussion||[]).map(q=>`<li>${esc(q)}</li>`).join("")}</ol></div><div class="card s12"><h3>Interpretive caution</h3><p>${classic?esc(sc.traditional):esc(sc.expanded)}</p></div></div>`}
-function summary(){const c=selected(),p=activePreset(),r=state.result,lines=[];lines.push("Capability Lab v2.0D.1d Reflection Summary","========================================","",`Selected case: ${c.title}`,`Preset: ${p.label}`);if(isCoordination()){const s=activeCoordScenario();lines.push(`Coordination scenario: ${s.title}`,`Scenario problem: ${s.problem}`,`Starting question: ${s.startingQuestion}`)}lines.push("",`Preset reveals: ${p.reveals||""}`,`Preset hides: ${p.hides||""}`,`Teaching comparison: ${p.compare||""}`,"");if(isSchelling()&&state.vars.similarityThreshold!==undefined)lines.push(`Similarity threshold interpretation: ${displayVar("similarityThreshold",state.vars.similarityThreshold)} of occupied neighbors must be similar for local satisfaction.`,"");if(r){lines.push(`Outcome: ${r.label}`,`Support / coordination score: ${r.support}`,`Risk score: ${r.risk}`,`Repair score: ${r.repair===null?"omitted":r.repair}`);if(r.type==="schelling"&&r.stats)lines.push(`Schelling move attempts: ${r.stats.step}`,`Average similarity: ${r.stats.avgSimilarity}`,`Unsatisfied percent: ${r.stats.unsatisfiedPct}`,`Stability: ${r.stats.stability}`,`Agent relocations: ${r.stats.totalMoves}`);if(r.type==="coordination"&&r.stats){lines.push(`Coordination mode: ${r.mode}`,`Technical coordination: ${r.stats.technicalCoordination}`,`Pressure risk: ${r.stats.pressureRisk}`,`Trust: ${r.stats.trust}`,`Shared goal clarity: ${r.stats.sharedGoalClarity}`,`Information clarity: ${r.stats.informationClarity}`,`Institutional heat: ${r.stats.institutionalHeat}`);if(r.mode==="expanded")lines.push(`Protected voice: ${r.stats.protectedVoice}`,`Fairness: ${r.stats.fairness}`,`Repair capacity: ${r.stats.repairCapacity}`,`Power asymmetry: ${r.stats.powerAsymmetry}`,`Credibility gap: ${r.stats.credibilityGap}`,`Care burden: ${r.stats.careBurden}`,`Translation effort: ${r.stats.translationEffort}`,`Public memory: ${r.stats.publicMemory}`,`Dark coherence warning: ${r.dark.active?"active":"not active"}`);if(r.scenario)lines.push("","Scenario discussion questions:",...(r.scenario.discussion||[]).map(q=>`- ${q}`))}}else lines.push("No simulation result recorded.");lines.push("","Lens notes:",state.lensNotes||"[No notes]","","Hidden-cost notes:",state.hiddenCostNotes||"[No notes]","","Failed condition:",state.failedCondition||"[Not specified]","","Repair proposal:",state.repairProposal||"[No proposal]","","Bridge statement:",state.bridgeStatement||"[No statement]");return lines.join("\n")}
+function summary(){const c=selected(),p=activePreset(),r=state.result,lines=[];lines.push("Capability Lab v2.0D.2 Reflection Summary","========================================","",`Selected case: ${c.title}`,`Preset: ${p.label}`);if(isCoordination()){const s=activeCoordScenario();lines.push(`Coordination scenario: ${s.title}`,`Scenario problem: ${s.problem}`,`Starting question: ${s.startingQuestion}`)}lines.push("",`Preset reveals: ${p.reveals||""}`,`Preset hides: ${p.hides||""}`,`Teaching comparison: ${p.compare||""}`,"");if(isSchelling()&&state.vars.similarityThreshold!==undefined)lines.push(`Similarity threshold interpretation: ${displayVar("similarityThreshold",state.vars.similarityThreshold)} of occupied neighbors must be similar for local satisfaction.`,"");if(r){lines.push(`Outcome: ${r.label}`,`Support / coordination score: ${r.support}`,`Risk score: ${r.risk}`,`Repair score: ${r.repair===null?"omitted":r.repair}`);if(r.type==="schelling"&&r.stats)lines.push(`Schelling move attempts: ${r.stats.step}`,`Average similarity: ${r.stats.avgSimilarity}`,`Unsatisfied percent: ${r.stats.unsatisfiedPct}`,`Stability: ${r.stats.stability}`,`Agent relocations: ${r.stats.totalMoves}`);if(r.type==="coordination"&&r.stats){lines.push(`Coordination mode: ${r.mode}`,`Technical coordination: ${r.stats.technicalCoordination}`,`Pressure risk: ${r.stats.pressureRisk}`,`Trust: ${r.stats.trust}`,`Shared goal clarity: ${r.stats.sharedGoalClarity}`,`Information clarity: ${r.stats.informationClarity}`,`Institutional heat: ${r.stats.institutionalHeat}`);if(r.mode==="expanded")lines.push(`Protected voice: ${r.stats.protectedVoice}`,`Fairness: ${r.stats.fairness}`,`Repair capacity: ${r.stats.repairCapacity}`,`Power asymmetry: ${r.stats.powerAsymmetry}`,`Credibility gap: ${r.stats.credibilityGap}`,`Care burden: ${r.stats.careBurden}`,`Translation effort: ${r.stats.translationEffort}`,`Public memory: ${r.stats.publicMemory}`,`Dark coherence warning: ${r.dark.active?"active":"not active"}`);if(r.scenario)lines.push("","Scenario discussion questions:",...(r.scenario.discussion||[]).map(q=>`- ${q}`))}}else lines.push("No simulation result recorded.");lines.push("","Lens notes:",state.lensNotes||"[No notes]","","Hidden-cost notes:",state.hiddenCostNotes||"[No notes]","","Failed condition:",state.failedCondition||"[Not specified]","","Repair proposal:",state.repairProposal||"[No proposal]","","Bridge statement:",state.bridgeStatement||"[No statement]");return lines.join("\n")}
 function diagnostics(){const items=[];const add=(n,ok,d)=>items.push({n,ok,d});try{add("App shell present",!!document.querySelector(".wrap"),"Main container found.");add("Tabs found",document.querySelectorAll(".tab").length===7,document.querySelectorAll(".tab").length+" tabs found.");add("Cases loaded",cases.length===3,cases.length+" cases loaded.");add("Coordination scenarios loaded",coordinationScenarios.length>=6,coordinationScenarios.length+" scenario cards loaded.");add("Schelling presets loaded",presets.schelling.length===4,presets.schelling.length+" Schelling presets loaded.");add("Coordination presets loaded",presets.coordination.length===4,presets.coordination.length+" Coordination presets loaded.");const old=clone(state);state.caseId="coordination";state.coordScenarioId="policy_rollout";state.presetId="stress";state.vars=presetVarsFor(activePreset(),selected());runCoordination();add("Scenario-specific coordination values",state.result&&state.result.scenario&&state.result.scenario.id==="policy_rollout",state.result?state.result.scenario.title:"none");state=normalize(old);state.caseId="schelling";state.presetId="traditional";state.vars=presetVarsFor(activePreset(),selected());state.schelling=clone(defaults.schelling);initSchelling();add("Schelling initialize",state.schelling.initialized,state.schelling.grid.length+" cells initialized.");const before=state.schelling.step;stepSchelling();add("Schelling one-agent move",state.schelling.step===before+1,"Move counter advanced.");state=normalize(old);add("Summary builds",summary().length>100,summary().length+" characters generated.");const tk=KEY+"_test";localStorage.setItem(tk,"ok");add("Local storage works",localStorage.getItem(tk)==="ok","Write/read succeeded.");localStorage.removeItem(tk)}catch(e){add("Runtime exception",false,e.message||String(e))}state=normalize(state);save();renderAll();document.getElementById("diagPanel").innerHTML=`<strong>Runtime self-test complete:</strong> ${items.filter(x=>x.ok).length} passed, ${items.filter(x=>!x.ok).length} failed.<div class="diags">${items.map(x=>`<div class="diag ${x.ok?"pass":"fail"}"><strong>${esc(x.n)}:</strong> ${x.ok?"Pass":"Needs attention"}<br><span class="small">${esc(x.d)}</span></div>`).join("")}</div>`}
 
 
@@ -701,6 +683,8 @@ Selected case:`);
     {id:"repair_design",title:"6. Repair / Moral World Design",tag:"repair",narrative:"Students redesign the warning pathway so voice, evidence, documentation, public memory, and accountability are protected before future crisis pressure arrives.",question:"What must be built so the next warning can be heard in time?",preset:"repair",vars:{rawCapacity:90,perceivedCapacity:80,evidenceClarity:88,protectedVoice:92,institutionalHeat:44,authorityWeighting:28,credibilityGap:20,burdenReversal:22,documentationStrength:90,timePressure:56,publicRisk:96,repairCapacity:94}}
   ];
 
+  window.warningStages=warningStages;
+
   const warningMetrics=[
     "rawCapacity","perceivedCapacity","evidenceClarity","protectedVoice","institutionalHeat","authorityWeighting","credibilityGap","burdenReversal","documentationStrength","timePressure","publicRisk","repairCapacity"
   ];
@@ -721,6 +705,8 @@ Selected case:`);
     const i=Number(state.warningStageIndex||0);
     return warningStages[Math.max(0,Math.min(warningStages.length-1,i))]
   }
+
+  window.activeWarningStage=activeWarningStage;
 
   function loadWarningStage(index=state.warningStageIndex, applyPreset=true){
     state.warningStageIndex=Math.max(0,Math.min(warningStages.length-1,Number(index)||0));
@@ -964,7 +950,7 @@ Selected case:`);
 
   const priorResetLocal=resetLocal;
   resetLocal=function(){
-    if(!confirm("Reset local Capability Lab v2.0D.1d data?"))return;
+    if(!confirm("Reset local Capability Lab v2.0D.2 data?"))return;
     localStorage.removeItem(KEY);
     state=normalize(clone(defaults));
     save();
@@ -973,128 +959,177 @@ Selected case:`);
 })();
 
 
-/* v2.0D.1d — Visible Timeline Fallback and Case-Card Clarity Fix.
-   This patch avoids canvas entirely and adds the visual display to BOTH Workspace and Result,
-   so it is visible even when the user is focused on the static result panel. */
+/* v2.0D.2 — Guided Challenger Workflow and Layout Simplification Pass.
+   Built from the stable v2.0D checkpoint. This patch intentionally removes the expectation
+   of a video/canvas screen and replaces it with an unmistakable stage board and workflow. */
 (function(){
-  const visualStages=[
-    {title:"Early Signal",tag:"signal",question:"What is visible now, and who is positioned to notice it?",raw:84,seen:66,heat:48,risk:82,gap:18,uptake:50,pathway:50},
-    {title:"Evidence Formation",tag:"evidence",question:"When evidence exists, what determines whether it can move?",raw:88,seen:58,heat:62,risk:88,gap:30,uptake:62,pathway:50},
-    {title:"Institutional Heat Rises",tag:"pressure",question:"What changes when urgency and authority begin to dominate evidence?",raw:89,seen:44,heat:84,risk:92,gap:45,uptake:52,pathway:35},
-    {title:"Suppression Gap Opens",tag:"gap",question:"Where exactly does capacity get suppressed?",raw:90,seen:26,heat:92,risk:96,gap:64,uptake:34,pathway:20},
-    {title:"Decision Point",tag:"decision",question:"What would an evidence-calibrated institution do differently?",raw:88,seen:22,heat:96,risk:98,gap:66,uptake:30,pathway:16},
-    {title:"Testimony / Repair Design",tag:"testimony",question:"What does testimony reveal, and what must be built next?",raw:90,seen:80,heat:44,risk:96,gap:10,uptake:82,pathway:80}
-  ];
+  function stages(){return Array.isArray(window.warningStages)?window.warningStages:[]}
   function isWarn(){return window.isWarning&&window.isWarning()}
-  function idx(){return Math.max(0,Math.min(visualStages.length-1,Number(state.warningStageIndex||0)))}
-  function clampLocal(v){return Math.max(0,Math.min(100,Math.round(Number(v)||0)))}
-  function currentMetrics(){
-    if(state.result&&state.result.type==="warning"&&state.result.stats){
+  function currentStageIndex(){const list=stages();return Math.max(0,Math.min(list.length-1,Number(state.warningStageIndex||0)))}
+  function stageAt(i=currentStageIndex()){return stages()[i] || (typeof window.activeWarningStage==='function'?window.activeWarningStage():null)}
+  function stageVars(st){return (st&&st.vars)||{}}
+  function v(st,key,d=0){const vars=stageVars(st);return Object.prototype.hasOwnProperty.call(vars,key)?Number(vars[key]):d}
+  function c(vv){return Math.max(0,Math.min(100,Math.round(Number(vv)||0)))}
+  function stageMetrics(st){
+    const raw=v(st,'rawCapacity',80), perceived=v(st,'perceivedCapacity',raw), evidence=v(st,'evidenceClarity',60), voice=v(st,'protectedVoice',50), heat=v(st,'institutionalHeat',v(st,'timePressure',50)), authority=v(st,'authorityWeighting',50), cred=v(st,'credibilityGap',50), burden=v(st,'burdenReversal',40), doc=v(st,'documentationStrength',50), repair=v(st,'repairCapacity',40), publicRisk=v(st,'publicRisk',75);
+    const gap=c(raw-perceived);
+    const uptake=c(evidence*.24+doc*.22+voice*.18+(100-authority)*.14+(100-cred)*.12+(100-burden)*.10);
+    const pathway=c(voice*.22+doc*.16+repair*.20+uptake*.20+(100-heat)*.08+(100-authority)*.07+(100-burden)*.07);
+    const failure=c(publicRisk*.22+heat*.18+authority*.15+cred*.14+burden*.15+(100-voice)*.10+(100-repair)*.06);
+    return {raw:c(raw),perceived:c(perceived),evidence:c(evidence),voice:c(voice),heat:c(heat),authority:c(authority),cred:c(cred),burden:c(burden),doc:c(doc),repair:c(repair),publicRisk:c(publicRisk),gap,uptake,pathway,failure};
+  }
+  function resultMetrics(){
+    if(state.result&&state.result.type==='warning'&&state.result.stats){
       const s=state.result.stats;
-      return {
-        raw:clampLocal(s.rawCapacity),
-        seen:clampLocal(s.perceivedCapacity),
-        heat:clampLocal(s.institutionalHeat),
-        risk:clampLocal(s.publicRisk || s.failureRisk),
-        gap:clampLocal(s.suppressionGap),
-        uptake:clampLocal(s.evidenceUptake),
-        pathway:clampLocal(s.warningPathway),
-        failure:clampLocal(s.failureRisk),
-        repair:state.result.repair===null?null:clampLocal(state.result.repair)
-      };
+      return {raw:c(s.rawCapacity),perceived:c(s.perceivedCapacity),evidence:c(s.evidenceClarity),voice:c(s.protectedVoice),heat:c(s.institutionalHeat),authority:c(s.authorityWeighting),cred:c(s.credibilityGap),burden:c(s.burdenReversal),doc:c(s.documentationStrength),repair:state.result.repair===null?null:c(state.result.repair),publicRisk:c(s.publicRisk),gap:c(s.suppressionGap),uptake:c(s.evidenceUptake),pathway:c(s.warningPathway),failure:c(s.failureRisk)};
     }
-    const base=visualStages[idx()];
-    return Object.assign({failure:base.risk,repair:null},base);
+    return stageMetrics(stageAt());
   }
-  function y(v){return 285-(clampLocal(v)/100)*210}
-  function pointLine(key){
-    return visualStages.map((s,i)=>`${60+i*160},${y(s[key])}`).join(" ");
+  function shortTitle(t){return String(t||'').replace(/^\d+\.\s*/,'')}
+  function barRow(label,value,cls=''){
+    const val=c(value);
+    return `<div class="capacity-row ${cls}"><strong>${esc(label)}</strong><div class="bar"><span style="width:${val}%"></span></div><span>${val}</span></div>`
   }
-  function dashCard(name,value,kind){
-    const v=clampLocal(value);
-    return `<div class="visual-dash-card ${kind||""}"><span class="small">${esc(name)}</span><strong>${v}</strong><div class="visual-bar"><span style="width:${v}%"></span></div></div>`;
+  function metricCard(label,value,kind=''){
+    const val=value===null?'—':c(value);
+    const width=value===null?0:c(value);
+    return `<div class="board-metric ${kind}"><span class="small">${esc(label)}</span><strong>${val}</strong><div class="meter ${kind}"><span style="width:${width}%"></span></div></div>`
   }
-  function panelHtml(location){
-    const i=idx(), cur=currentMetrics();
-    const stageBoxes=visualStages.map((s,n)=>`<div class="visual-stage-box ${n===i?"active":""} ${n<i?"done":""}"><span class="num">Stage ${n+1}</span><strong>${esc(s.title)}</strong><p class="small">${esc(s.question)}</p><span class="tag">${esc(s.tag)}</span></div>`).join("");
-    const nodes=visualStages.map((s,n)=>{
-      const x=60+n*160;
-      const bad=s.gap>=55 || s.heat>=90;
-      const cross=bad?`<line x1="${x-22}" y1="338" x2="${x+22}" y2="382" stroke="#7a2e2e" stroke-width="4"/><line x1="${x+22}" y1="338" x2="${x-22}" y2="382" stroke="#7a2e2e" stroke-width="4"/>`:"";
-      return `<g><circle cx="${x}" cy="360" r="${n===i?18:13}" fill="${n===i?"#345d4e":"#fff"}" stroke="${n===i?"#345d4e":"#9aa7a0"}" stroke-width="${n===i?4:2}"/><text x="${x}" y="365" text-anchor="middle" font-size="12" font-weight="700" fill="${n===i?"#fff":"#1f2933"}">${n+1}</text>${cross}<text x="${x}" y="404" text-anchor="middle" font-size="11" fill="#1f2933">${esc(s.title).slice(0,24)}</text></g>`;
-    }).join("");
-    const heatFields=visualStages.map((s,n)=>{
-      const x=30+n*160, opacity=(.06+s.heat/330).toFixed(2);
-      const risk=s.risk>90?`<rect x="${x}" y="76" width="60" height="232" fill="rgba(122,46,46,.12)"/>`:"";
-      return `<rect x="${x}" y="76" width="60" height="232" fill="rgba(194,138,66,${opacity})"/>${risk}`;
-    }).join("");
-    const pulseX=60+i*160;
-    const flow=`<div class="visual-flow-row"><div class="visual-flow-node ${i===0?"active":""}"><strong>First noticing</strong><p class="small">Risk first enters attention.</p></div><div class="visual-flow-node warn ${i>=2&&i<4?"active":""}"><strong>Pressure field</strong><p class="small">Authority and heat reshape uptake.</p></div><div class="visual-flow-node danger ${i>=4?"active":""}"><strong>Tragedy threshold</strong><p class="small">Public risk becomes irreversible harm.</p></div><div class="visual-flow-node good ${i>=5?"active":""}"><strong>Testimony / memory</strong><p class="small">Afterward, testimony reveals what the system failed to hear.</p></div><div class="visual-flow-node good ${i>=5?"active":""}"><strong>Repair design</strong><p class="small">Students redesign the warning pathway.</p></div></div>`;
-    const svg=`<div class="visible-svg-wrap"><svg class="visible-svg" viewBox="0 0 940 430" role="img" aria-label="Warning timeline visual">
-      <rect x="0" y="0" width="940" height="430" fill="#ffffff"/>
-      <text x="24" y="28" font-size="18" font-weight="700" fill="#1f2933">Suppression Gap Timeline</text>
-      <text x="24" y="52" font-size="12" fill="#5f6b7a">Green = raw capacity; dashed green = perceived capacity; red area = suppression gap; orange = institutional heat.</text>
-      ${heatFields}
-      <line x1="40" y1="285" x2="900" y2="285" stroke="#cfd8cf" stroke-width="1"/>
-      <line x1="40" y1="75" x2="40" y2="285" stroke="#cfd8cf" stroke-width="1"/>
-      <text x="18" y="82" font-size="10" fill="#5f6b7a">100</text><text x="23" y="290" font-size="10" fill="#5f6b7a">0</text>
-      <polygon points="${visualStages.map((s,n)=>`${60+n*160},${y(s.raw)} ${60+n*160},${y(s.seen)}`).join(" ")}" fill="rgba(122,46,46,.12)"/>
-      <polyline points="${pointLine("raw")}" fill="none" stroke="#2f6b4f" stroke-width="5" stroke-linecap="round"/>
-      <polyline points="${pointLine("seen")}" fill="none" stroke="#4d8a73" stroke-width="4" stroke-dasharray="10 8" stroke-linecap="round"/>
-      <polyline points="${pointLine("risk")}" fill="none" stroke="#7a2e2e" stroke-width="3" stroke-opacity=".7" stroke-linecap="round"/>
-      <line class="visual-dash-flow" x1="60" y1="360" x2="860" y2="360" stroke="#345d4e" stroke-width="3" stroke-dasharray="8 8" opacity=".55"/>
-      ${nodes}
-      <circle class="visual-pulse" cx="${pulseX}" cy="${y(cur.seen)}" r="9" fill="#345d4e"/>
-      <text x="${pulseX}" y="${Math.max(62,y(cur.seen)-18)}" text-anchor="middle" font-size="12" font-weight="700" fill="#345d4e">current</text>
-    </svg></div>`;
-    const resultLabel=state.result&&state.result.type==="warning"?state.result.label:"No stage analysis has been run yet.";
-    return `<div class="visible-timeline-panel" data-visual-location="${esc(location)}"><span class="visual-status">Visible visual timeline active</span><h4>Large Visual Timeline: First Noticing → Tragedy → Testimony → Repair</h4><p class="visual-note">This display is built from ordinary HTML/CSS and inline SVG, not canvas. It should be visible on GitHub Pages even where the older video/canvas-style panel failed.</p>${stageBoxes}${svg}${flow}<div class="visual-dashboard">${dashCard("Raw capacity",cur.raw,"good")}${dashCard("Perceived capacity",cur.seen,cur.seen<45?"danger":cur.seen<65?"warn":"good")}${dashCard("Suppression gap",cur.gap,cur.gap>55?"danger":cur.gap>30?"warn":"good")}${dashCard("Institutional heat",cur.heat,cur.heat>75?"danger":cur.heat>55?"warn":"good")}${dashCard("Evidence uptake",cur.uptake,cur.uptake<45?"danger":cur.uptake<65?"warn":"good")}${dashCard("Warning pathway",cur.pathway,cur.pathway<45?"danger":cur.pathway<65?"warn":"good")}</div><div class="visual-current-reading"><strong>Current visual reading:</strong><p>${esc(visualStages[i].question)}</p><p><strong>Analysis status:</strong> ${esc(resultLabel)}</p><div class="button-row"><button class="action secondary" id="${location}VisualPrevBtn" type="button">Previous stage</button><button class="action secondary" id="${location}VisualNextBtn" type="button">Next stage</button><button class="action" id="${location}VisualAnalyzeBtn" type="button">Analyze this visual stage</button></div></div></div>`;
+  function guidedStageBoard(location='workspace'){
+    const list=stages();
+    const idx=currentStageIndex();
+    const st=stageAt();
+    const m=resultMetrics();
+    const resultLine=state.result&&state.result.type==='warning'?`<div class="notice ${state.result.label.includes('crisis')||state.result.label.includes('failure')?'warn':'good'}"><strong>Latest analysis:</strong> ${esc(state.result.label)}<p>${esc(state.result.explanation)}</p></div>`:`<div class="workflow-help"><strong>No analysis has been run for this stage yet.</strong><p>Use <strong>Run Stage Analysis</strong> after loading the stage values.</p></div>`;
+    const tiles=list.map((s,i)=>`<article class="stage-tile ${i===idx?'active':''} ${i<idx?'done':''}" data-guided-stage="${i}" role="button" tabindex="0"><span class="num">Stage ${i+1}</span><strong>${esc(shortTitle(s.title))}</strong><p class="small">${esc(s.question)}</p><span class="tag">${esc(s.tag||'stage')}</span></article>`).join('');
+    const testimony=idx>=5?`<div class="pathway-node good active"><strong>Testimony / public memory</strong><p class="small">Ask what becomes visible only after harm, and what must be remembered institutionally.</p></div>`:`<div class="pathway-node"><strong>Testimony / public memory</strong><p class="small">This becomes central after the tragedy threshold.</p></div>`;
+    return `<div class="workflow-banner"><h4>Stage ${idx+1} Active: ${esc(st?shortTitle(st.title):'Warning Timeline')}</h4><p>${esc(st?st.narrative:'Select a warning stage to begin.')}</p><p><strong>Stage question:</strong> ${esc(st?st.question:'What is visible, what is filtered, and what should be built?')}</p><p class="next-action">Next action: ${state.result&&state.result.type==='warning'?'Interpret the result or move to the next stage.':'Load stage values, then run stage analysis.'}</p></div><div class="challenge-board" data-board-location="${esc(location)}"><h4>Challenger Guided Timeline Board</h4><p class="board-sub">This is the active classroom display. It is a stable board, not a video or canvas screen.</p><div class="stage-progress">${tiles}</div><div class="capacity-compare">${barRow('Raw capacity',m.raw)}${barRow('Perceived capacity',m.perceived,'perceived')}${barRow('Institutional heat',m.heat,'heat')}${barRow('Public risk',m.publicRisk,'risk')}</div><div class="board-metrics">${metricCard('Suppression gap',m.gap,m.gap>=55?'danger':m.gap>=30?'warn':'good')}${metricCard('Evidence uptake',m.uptake,m.uptake>=70?'good':m.uptake>=45?'warn':'danger')}${metricCard('Warning pathway',m.pathway,m.pathway>=70?'good':m.pathway>=45?'warn':'danger')}${metricCard('Failure pressure',m.failure,m.failure>=70?'danger':m.failure>=45?'warn':'good')}${metricCard('Protected voice',m.voice,m.voice>=70?'good':m.voice>=45?'warn':'danger')}${metricCard('Repair potential',m.repair,m.repair===null?'':m.repair>=70?'good':m.repair>=45?'warn':'danger')}</div><div class="pathway-row"><div class="pathway-node ${idx===0?'active':''}"><strong>First noticing</strong><p class="small">A risk enters attention before full institutional uptake.</p></div><div class="pathway-node warn ${idx>=2&&idx<4?'active':''}"><strong>Pressure field</strong><p class="small">Urgency, authority, and burden reversal reshape what counts as evidence.</p></div><div class="pathway-node danger ${idx>=4?'active':''}"><strong>Tragedy threshold</strong><p class="small">The class asks how a blocked warning becomes public harm.</p></div>${testimony}<div class="pathway-node good ${idx>=5?'active':''}"><strong>Repair design</strong><p class="small">Students propose protected voice, documentation, evidence policy, and memory.</p></div></div>${resultLine}<div class="guided-actions"><button class="action secondary" id="${location}GuidedPrev" type="button">Previous Stage</button><button class="action secondary" id="${location}GuidedNext" type="button">Next Stage</button><button class="action" id="${location}GuidedLoad" type="button">Load Stage Values</button><button class="action" id="${location}GuidedAnalyze" type="button">Run Stage Analysis</button></div></div>`;
   }
-  function bindVisualButtons(location){
-    const prev=document.getElementById(location+"VisualPrevBtn");
-    const next=document.getElementById(location+"VisualNextBtn");
-    const analyze=document.getElementById(location+"VisualAnalyzeBtn");
-    if(prev)prev.onclick=()=>{state.warningStageIndex=Math.max(0,idx()-1);state.result=null;save();renderAll();};
-    if(next)next.onclick=()=>{state.warningStageIndex=Math.min(visualStages.length-1,idx()+1);state.result=null;save();renderAll();};
-    if(analyze)analyze.onclick=()=>{if(window.runWarningAnalysis)window.runWarningAnalysis();};
+  function bindBoard(location){
+    document.querySelectorAll(`[data-board-location="${location}"] .stage-tile`).forEach(card=>{
+      card.onclick=()=>{state.warningStageIndex=Number(card.dataset.guidedStage);state.result=null;state.warningStageMessage=`Selected ${shortTitle(stageAt().title)}. Load stage values to apply its variables.`;save();renderAll()};
+      card.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();card.click()}}
+    });
+    const prev=document.getElementById(location+'GuidedPrev'); if(prev)prev.onclick=()=>{state.warningStageIndex=Math.max(0,currentStageIndex()-1);state.result=null;save();renderAll()};
+    const next=document.getElementById(location+'GuidedNext'); if(next)next.onclick=()=>{state.warningStageIndex=Math.min(stages().length-1,currentStageIndex()+1);state.result=null;save();renderAll()};
+    const load=document.getElementById(location+'GuidedLoad'); if(load)load.onclick=()=>{startOrLoadChallenger(false)};
+    const analyze=document.getElementById(location+'GuidedAnalyze'); if(analyze)analyze.onclick=()=>{if(window.runWarningAnalysis)window.runWarningAnalysis()};
   }
+  function startOrLoadChallenger(resetToFirst=true){
+    state.caseId='warning';
+    if(resetToFirst)state.warningStageIndex=0;
+    const st=stageAt();
+    state.presetId=st&&st.preset?st.preset:'suppression';
+    if(window.loadWarningStage){window.loadWarningStage(state.warningStageIndex,true)}
+    state.guidedWorkflowMessage=`Stage ${currentStageIndex()+1} Active: ${shortTitle(stageAt().title)}. Stage values loaded. Run Stage Analysis next.`;
+    state.result=null;
+    save();
+    switchTab('studio');
+    renderAll();
+    setTimeout(()=>{const el=document.getElementById('workspace'); if(el)el.scrollIntoView({behavior:'smooth',block:'start'});},80);
+  }
+  window.startChallengerTimeline=()=>startOrLoadChallenger(true);
 
-  const priorRenderWorkspace=renderWorkspace;
-  renderWorkspace=function(){
-    priorRenderWorkspace();
-    if(!isWarn())return;
-    const w=document.getElementById("workspace");
-    if(!w)return;
-    w.insertAdjacentHTML("afterbegin", panelHtml("workspace"));
-    bindVisualButtons("workspace");
+  const priorSelectCase=selectCase;
+  selectCase=function(id){
+    priorSelectCase(id);
+    if(id==='warning'){
+      state.guidedWorkflowMessage='Warning engine selected. Choose Start Challenger Timeline or select a stage in the timeline board.';
+      save();
+      renderAll();
+    }
   };
 
-  const priorRenderResult=renderResult;
-  renderResult=function(){
-    priorRenderResult();
-    if(!(state.result&&state.result.type==="warning"))return;
-    const box=document.getElementById("result");
-    if(!box)return;
-    box.insertAdjacentHTML("afterbegin", panelHtml("result"));
-    bindVisualButtons("result");
+  const priorSelectChapterFocus=selectChapterFocus;
+  selectChapterFocus=function(id,loadRoute){
+    if(id==='ch2'&&loadRoute){state.chapterFocusId='ch2';state.warningStageIndex=0;startOrLoadChallenger(true);return}
+    priorSelectChapterFocus(id,loadRoute)
   };
+
+  function renderGuidedTop(){
+    const status=document.getElementById('guidedStatusBar');
+    const quick=document.getElementById('guidedQuickStart');
+    if(!status||!quick)return;
+    const caseObj=selected();
+    const p=activePreset();
+    const stage=isWarn()?stageAt():null;
+    const activeStep=isWarn()?(state.result&&state.result.type==='warning'?4:3):1;
+    status.innerHTML=`<div class="status-step ${activeStep===1?'active':''}"><strong>1. Select engine</strong><span class="small">Current: ${esc(caseObj.title)}</span></div><div class="status-step ${activeStep===2?'active':''}"><strong>2. Choose case/stage</strong><span class="small">${isWarn()?esc(shortTitle(stage.title)):(caseObj.type==='coordination'?'Choose scenario':'Prepare grid/case')}</span></div><div class="status-step ${activeStep===3?'active':''}"><strong>3. Run analysis</strong><span class="small">Preset: ${esc(p.label)}</span></div><div class="status-step ${activeStep===4?'active':''}"><strong>4. Interpret result</strong><span class="small">Export or discuss the public result.</span></div>`;
+    quick.innerHTML=`<strong>Guided teaching path</strong><p class="small">Use the chapter map as a lesson launcher, then use Simulation Studio as the active classroom workspace.</p><div class="button-row"><button class="action" id="startChallengerBtn" type="button">Start Challenger Timeline</button><button class="action secondary" id="selectCoordinationBtn" type="button">Select Coordination Engine</button><button class="action secondary" id="selectSchellingBtn" type="button">Select Schelling Engine</button></div>${state.guidedWorkflowMessage?`<div class="notice good"><strong>Current workflow message</strong><p>${esc(state.guidedWorkflowMessage)}</p></div>`:''}`;
+    const start=document.getElementById('startChallengerBtn'); if(start)start.onclick=()=>startOrLoadChallenger(true);
+    const coord=document.getElementById('selectCoordinationBtn'); if(coord)coord.onclick=()=>selectCase('coordination');
+    const sch=document.getElementById('selectSchellingBtn'); if(sch)sch.onclick=()=>selectCase('schelling');
+  }
 
   const priorRenderCases=renderCases;
   renderCases=function(){
     priorRenderCases();
-    document.querySelectorAll(".case-card").forEach(card=>{
-      if(!card.querySelector(".case-open-hint")){
-        const type=card.dataset.case==="coordination"?"Open coordination cases":card.dataset.case==="warning"?"Open warning timeline":"Open Schelling engine";
-        card.insertAdjacentHTML("beforeend",`<span class="case-open-hint">${esc(type)}</span>`);
-      }
+    document.querySelectorAll('.case-card').forEach(card=>{
+      const id=card.dataset.case;
+      const label=id==='warning'?'Select engine: opens guided timeline':id==='coordination'?'Select engine: then choose scenario':id==='schelling'?'Select engine: initialize grid':'Select engine';
+      if(!card.querySelector('.selector-hint'))card.insertAdjacentHTML('beforeend',`<span class="selector-hint">${esc(label)}</span>`);
     });
+  };
+
+  const priorRenderWorkspace=renderWorkspace;
+  renderWorkspace=function(){
+    if(!isWarn()){priorRenderWorkspace();return}
+    const w=document.getElementById('workspace'); if(!w)return;
+    const st=stageAt();
+    const r=state.result&&state.result.type==='warning'?state.result:null;
+    w.innerHTML=`<div class="notice good"><strong>Guided Challenger workspace active.</strong><p>This is the active screen for Chapter 2 warning-under-pressure work. Use the board below: select a stage, load stage values, run analysis, then interpret the public result.</p></div>${guidedStageBoard('workspace')}<div class="workflow-help"><strong>Teaching sequence</strong><p><strong>Traditional reading:</strong> Did the warning agent speak clearly and courageously enough?</p><p><strong>EBB reading:</strong> Did the institution have the designed capacity to hear, protect, route, document, and act on warning under pressure?</p></div><div class="guardrail-box"><strong>Guardrail</strong><p>This is a simplified public teaching model, not a full historical accident investigation and not a private Field Scan.</p></div>`;
+    bindBoard('workspace');
+  };
+
+  const priorRenderResult=renderResult;
+  renderResult=function(){
+    const box=document.getElementById('result');
+    if(state.result&&state.result.type==='warning'){
+      const r=state.result;
+      const classic=r.mode==='classic';
+      const top=`<div class="notice ${r.label.includes('crisis')||r.label.includes('failure')?'warn':'good'}"><strong>${esc(r.label)}</strong><p>${esc(r.explanation)}</p></div><div class="metrics"><div class="metric"><span class="small">${classic?'Traditional pathway score':'Warning pathway integrity'}</span><strong>${r.support}</strong></div><div class="metric"><span class="small">Failure / public-risk pressure</span><strong>${r.risk}</strong></div><div class="metric"><span class="small">Repair potential</span><strong>${r.repair===null?'omitted':r.repair}</strong></div></div>`;
+      box.innerHTML=`${top}${guidedStageBoard('result')}${classic?'<div class="notice warn"><strong>Traditional warning frame</strong><p>This view shows evidence, urgency, and public risk, but it does not yet explain why warning can fail even when raw capacity is high.</p></div>':'<div class="notice"><strong>Expanded field frame</strong><p>This view asks whether the institution can hear, route, protect, and act on warning under pressure.</p></div>'}`;
+      bindBoard('result');
+      return;
+    }
+    priorRenderResult();
+  };
+
+  const priorRenderButtons=renderButtons;
+  renderButtons=function(){
+    priorRenderButtons();
+    const run=document.getElementById('runBtn');
+    const reset=document.getElementById('resetCaseBtn');
+    if(isWarn()){
+      if(run)run.textContent='Run Stage Analysis';
+      if(reset)reset.textContent='Reset Warning Stage';
+    }else if(selected().type==='coordination'){
+      if(run)run.textContent='Run coordination analysis';
+    }
+  };
+
+  const priorRenderAll=renderAll;
+  renderAll=function(){
+    priorRenderAll();
+    renderGuidedTop();
+    const panel=document.getElementById('timelinePanel');
+    const ch=activeChapterAlignment&&activeChapterAlignment();
+    if(panel&&ch&&ch.id==='ch2'){
+      const st=stageAt();
+      panel.innerHTML=`<div class="notice good"><strong>Chapter 2 guided route:</strong> Challenger / Boisjoly Suppression Gap Timeline<p>Use this as the lesson launcher. Click <strong>Start Challenger Timeline</strong> to open the active workspace at Stage 1, or select a later stage first.</p></div>${guidedStageBoard('timeline')}<div class="guided-actions"><button class="action" id="timelineStartChallenger" type="button">Start Challenger Timeline</button><button class="action secondary" id="timelineLoadStage" type="button">Load Selected Stage into Studio</button></div>`;
+      bindBoard('timeline');
+      const start=document.getElementById('timelineStartChallenger'); if(start)start.onclick=()=>startOrLoadChallenger(true);
+      const load=document.getElementById('timelineLoadStage'); if(load)load.onclick=()=>startOrLoadChallenger(false);
+    }
   };
 
   const priorSummary=summary;
   summary=function(){
     const base=priorSummary();
-    if(!isWarn() && !(state.result&&state.result.type==="warning"))return base;
-    return base+"\n\nVisible visual timeline fallback: active. The warning module includes a non-canvas display for first noticing, pressure, suppression gap, tragedy threshold, testimony/public memory, and repair design.";
+    if(!isWarn()&&!(state.result&&state.result.type==='warning'))return base;
+    const st=stageAt();
+    const m=resultMetrics();
+    return base+`\n\nGuided Challenger Workflow\nActive stage: ${st?st.title:'none'}\nSuppression gap: ${m.gap}\nEvidence uptake: ${m.uptake}\nWarning pathway: ${m.pathway}\nFailure pressure: ${m.failure}\nTeaching note: The board is the active classroom screen; no canvas or video display is required.`;
   };
 })();
 
