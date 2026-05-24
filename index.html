@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Capability Lab v2.0D.2d — Chapter 5 Moral Commons Routing Update</title>
+<title>Capability Lab v2.0D.3 — Three-Layer Architecture and Navigator Bridge Patch</title>
 <style>
 :root{
   --bg:#f7f7f4;--panel:#fff;--ink:#1f2933;--muted:#5f6b7a;--line:#d8ded7;
@@ -161,6 +161,29 @@ textarea,input[type=text]{width:100%;border:1px solid var(--line);border-radius:
 .chapter5-guide-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin-top:10px}
 .chapter5-guide-box{border:1px solid var(--line);border-radius:14px;background:#fbfcfb;padding:12px}
 .chapter5-guide-box strong{display:block;margin-bottom:5px}
+
+.three-layer-panel{border:2px solid var(--accent);border-radius:18px;background:linear-gradient(180deg,#ffffff,#f5faf6);padding:16px;margin:12px 0;box-shadow:var(--shadow)}
+.three-layer-panel h3{margin:0 0 6px}.three-layer-panel p{margin-top:6px}
+.layer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px;margin-top:12px}
+.layer-card{border:1px solid var(--line);background:#fff;border-radius:16px;padding:13px}
+.layer-card strong{display:block;margin-bottom:5px}
+.layer-card.public{border-left:6px solid var(--accent)}
+.layer-card.discussion{border-left:6px solid var(--warn)}
+.layer-card.private{border-left:6px solid var(--good)}
+.layer-boundary-note{border-left:5px solid var(--accent);background:#f8fbf8;border-radius:14px;padding:12px;margin-top:12px}
+.navigator-bridge-panel{border:2px solid var(--good);border-radius:18px;background:linear-gradient(180deg,#ffffff,#f3faf5);padding:15px;margin:14px 0;box-shadow:var(--shadow)}
+.navigator-bridge-panel h3{margin:0 0 6px}
+.bridge-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(225px,1fr));gap:10px;margin-top:10px}
+.bridge-box{border:1px solid var(--line);background:#fff;border-radius:14px;padding:12px}
+.bridge-box strong{display:block;margin-bottom:5px}
+.navigator-prompt-box{border:1px solid var(--line);background:#fff;border-radius:14px;padding:12px;margin-top:10px}
+.navigator-prompt-text{white-space:pre-wrap;background:#fbfcfb;border:1px solid var(--line);border-radius:12px;padding:10px;font-size:.92rem;line-height:1.45}
+.copy-feedback{display:inline-block;margin-left:8px;color:var(--good);font-size:.85rem;font-weight:800}
+.teacher-script-panel{border:1px solid var(--line);border-left:6px solid var(--accent);border-radius:18px;background:#fff;padding:14px;margin:12px 0;box-shadow:var(--shadow)}
+.script-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin-top:10px}
+.script-step{border:1px solid var(--line);background:#fbfcfb;border-radius:14px;padding:12px}
+.script-step span{display:inline-block;border:1px solid var(--line);border-radius:999px;background:var(--soft);color:var(--muted);font-size:.78rem;font-weight:800;padding:2px 8px;margin-bottom:6px}
+.private-warning{border:1px dashed var(--good);background:#f7fbf8;border-radius:14px;padding:10px;margin-top:10px}
 .hidden{display:none!important}.footer{margin-top:28px;color:var(--muted);font-size:.88rem;text-align:center}
 
 .chapter-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:10px}
@@ -179,7 +202,7 @@ textarea,input[type=text]{width:100%;border:1px solid var(--line);border-radius:
 <body>
 <div class="wrap">
 <header class="hero">
-  <div class="eyebrow">Capability Lab v2.0D.2d</div>
+  <div class="eyebrow">Capability Lab v2.0D.3</div>
   <h1>Case-First Simulation Studio</h1>
   <p class="subtitle">Schelling and Coordination Under Heat are active classroom engines. This pass aligns the public case layer with the Chapters 1–5 teaching guide and adds a reusable timeline player for PRF landscapes, Challenger/SAGE, evidence-policy comparison, Schelling prediction, and care-under-pressure demonstrations.</p>
   <div class="sequence"><span>Schelling active</span><span>Coordination active</span><span>Teaching presets</span><span>Collapsible glossary</span><span>Moral commons dashboard</span><span>Chapter routing</span><span>Timeline player</span><span>Public/private boundary</span><span>Export</span></div>
@@ -338,12 +361,12 @@ textarea,input[type=text]{width:100%;border:1px solid var(--line);border-radius:
   </div>
 </section>
 </main>
-<p class="footer">Capability Lab v2.0D.2d. Public simulation work only.</p>
+<p class="footer">Capability Lab v2.0D.3. Public simulation work only.</p>
 </div>
 
 <script>
 "use strict";
-const KEY="capability_lab_v2_0d2d_state";
+const KEY="capability_lab_v2_0d3_state";
 const defaults={activeTab:"start",caseId:"schelling",presetId:"traditional",coordScenarioId:"emergency_team",vars:{},result:null,schelling:{initialized:false,size:18,grid:[],unsatisfied:[],step:0,totalMoves:0,stats:null},lensNotes:"",hiddenCostNotes:"",failedCondition:"",repairProposal:"",bridgeStatement:""};
 
 const cases=[
@@ -459,10 +482,10 @@ function val(k,d=50){return Object.prototype.hasOwnProperty.call(state.vars,k)?N
 function runPlaceholder(){state.result={type:"placeholder",label:"Placeholder shell",message:"This module will be activated in a later build.",support:0,risk:0,repair:null};save();renderAll()}
 function gridCells(){const uns=new Set(state.schelling.unsatisfied);return state.schelling.grid.map((v,i)=>{let cls=v==="A"?"a":v==="B"?"b":v==="S"?"shared":"empty";if(uns.has(i))cls+=" unsat";return`<div class="cell ${cls}" title="${uns.has(i)?"Unsatisfied":v||"Open"}"></div>`}).join("")}
 function renderForms(){["lensNotes","hiddenCostNotes","failedCondition","repairProposal","bridgeStatement"].forEach(id=>{const el=document.getElementById(id);if(el&&el.value!==state[id])el.value=state[id]||""})}
-function summary(){const c=selected(),p=activePreset(),r=state.result,lines=[];lines.push("Capability Lab v2.0D.2d Reflection Summary","========================================","",`Selected case: ${c.title}`,`Preset: ${p.label}`,"",`Preset reveals: ${p.reveals||""}`,`Preset hides: ${p.hides||""}`,`Teaching comparison: ${p.compare||""}`,"");if(isSchelling()&&state.vars.similarityThreshold!==undefined)lines.push(`Similarity threshold interpretation: ${displayVar("similarityThreshold",state.vars.similarityThreshold)} of occupied neighbors must be similar for local satisfaction.`,"");if(r){lines.push(`Outcome: ${r.label}`,`Support / coordination score: ${r.support}`,`Risk score: ${r.risk}`,`Repair score: ${r.repair===null?"omitted":r.repair}`);if(r.type==="schelling"&&r.stats)lines.push(`Schelling move attempts: ${r.stats.step}`,`Average similarity: ${r.stats.avgSimilarity}`,`Unsatisfied percent: ${r.stats.unsatisfiedPct}`,`Stability: ${r.stats.stability}`,`Agent relocations: ${r.stats.totalMoves}`);if(r.type==="coordination"&&r.stats){lines.push(`Coordination mode: ${r.mode}`,`Technical coordination: ${r.stats.technicalCoordination}`,`Pressure risk: ${r.stats.pressureRisk}`,`Trust: ${r.stats.trust}`,`Shared goal clarity: ${r.stats.sharedGoalClarity}`,`Information clarity: ${r.stats.informationClarity}`,`Institutional heat: ${r.stats.institutionalHeat}`);if(r.mode==="expanded")lines.push(`Protected voice: ${r.stats.protectedVoice}`,`Fairness: ${r.stats.fairness}`,`Repair capacity: ${r.stats.repairCapacity}`,`Power asymmetry: ${r.stats.powerAsymmetry}`,`Credibility gap: ${r.stats.credibilityGap}`,`Care burden: ${r.stats.careBurden}`,`Translation effort: ${r.stats.translationEffort}`,`Public memory: ${r.stats.publicMemory}`,`Dark coherence warning: ${r.dark.active?"active":"not active"}`)}}else lines.push("No simulation result recorded.");lines.push("","Lens notes:",state.lensNotes||"[No notes]","","Hidden-cost notes:",state.hiddenCostNotes||"[No notes]","","Failed condition:",state.failedCondition||"[Not specified]","","Repair proposal:",state.repairProposal||"[No proposal]","","Bridge statement:",state.bridgeStatement||"[No statement]");return lines.join("\n")}
-function download(){const blob=new Blob([summary()],{type:"text/plain;charset=utf-8"}),url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="capability_lab_v2_0d2d_summary.txt";document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url)}
+function summary(){const c=selected(),p=activePreset(),r=state.result,lines=[];lines.push("Capability Lab v2.0D.3 Reflection Summary","========================================","",`Selected case: ${c.title}`,`Preset: ${p.label}`,"",`Preset reveals: ${p.reveals||""}`,`Preset hides: ${p.hides||""}`,`Teaching comparison: ${p.compare||""}`,"");if(isSchelling()&&state.vars.similarityThreshold!==undefined)lines.push(`Similarity threshold interpretation: ${displayVar("similarityThreshold",state.vars.similarityThreshold)} of occupied neighbors must be similar for local satisfaction.`,"");if(r){lines.push(`Outcome: ${r.label}`,`Support / coordination score: ${r.support}`,`Risk score: ${r.risk}`,`Repair score: ${r.repair===null?"omitted":r.repair}`);if(r.type==="schelling"&&r.stats)lines.push(`Schelling move attempts: ${r.stats.step}`,`Average similarity: ${r.stats.avgSimilarity}`,`Unsatisfied percent: ${r.stats.unsatisfiedPct}`,`Stability: ${r.stats.stability}`,`Agent relocations: ${r.stats.totalMoves}`);if(r.type==="coordination"&&r.stats){lines.push(`Coordination mode: ${r.mode}`,`Technical coordination: ${r.stats.technicalCoordination}`,`Pressure risk: ${r.stats.pressureRisk}`,`Trust: ${r.stats.trust}`,`Shared goal clarity: ${r.stats.sharedGoalClarity}`,`Information clarity: ${r.stats.informationClarity}`,`Institutional heat: ${r.stats.institutionalHeat}`);if(r.mode==="expanded")lines.push(`Protected voice: ${r.stats.protectedVoice}`,`Fairness: ${r.stats.fairness}`,`Repair capacity: ${r.stats.repairCapacity}`,`Power asymmetry: ${r.stats.powerAsymmetry}`,`Credibility gap: ${r.stats.credibilityGap}`,`Care burden: ${r.stats.careBurden}`,`Translation effort: ${r.stats.translationEffort}`,`Public memory: ${r.stats.publicMemory}`,`Dark coherence warning: ${r.dark.active?"active":"not active"}`)}}else lines.push("No simulation result recorded.");lines.push("","Lens notes:",state.lensNotes||"[No notes]","","Hidden-cost notes:",state.hiddenCostNotes||"[No notes]","","Failed condition:",state.failedCondition||"[Not specified]","","Repair proposal:",state.repairProposal||"[No proposal]","","Bridge statement:",state.bridgeStatement||"[No statement]");return lines.join("\n")}
+function download(){const blob=new Blob([summary()],{type:"text/plain;charset=utf-8"}),url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="capability_lab_v2_0d3_summary.txt";document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url)}
 async function copySummary(){try{await navigator.clipboard.writeText(summary());alert("Reflection summary copied.")}catch(e){alert("Clipboard copy failed. Use download instead.")}}
-function resetLocal(){if(!confirm("Reset local Capability Lab v2.0D.2d data?"))return;localStorage.removeItem(KEY);state=normalize(clone(defaults));save();renderAll()}
+function resetLocal(){if(!confirm("Reset local Capability Lab v2.0D.3 data?"))return;localStorage.removeItem(KEY);state=normalize(clone(defaults));save();renderAll()}
 function diagnostics(){const items=[];const add=(n,ok,d)=>items.push({n,ok,d});try{add("App shell present",!!document.querySelector(".wrap"),"Main container found.");add("Tabs found",document.querySelectorAll(".tab").length===7,document.querySelectorAll(".tab").length+" tabs found.");add("Cases loaded",cases.length===3,cases.length+" cases loaded.");add("Schelling presets loaded",presets.schelling.length===4,presets.schelling.length+" Schelling presets loaded.");add("Coordination presets loaded",presets.coordination.length===4,presets.coordination.length+" Coordination presets loaded.");const old=clone(state);state.caseId="schelling";state.presetId="traditional";state.vars=clone(activePreset().vars);state.schelling=clone(defaults.schelling);initSchelling();add("Schelling initialize",state.schelling.initialized,state.schelling.grid.length+" cells initialized.");const before=state.schelling.step;stepSchelling();add("Schelling one-agent move",state.schelling.step===before+1,"Move counter advanced.");state=normalize(old);state.caseId="coordination";state.presetId="traditional";state.vars=clone(activePreset().vars);runCoordination();add("Coordination traditional engine",state.result&&state.result.type==="coordination"&&state.result.mode==="classic",state.result?state.result.label:"none");state.presetId="stress";state.vars=clone(activePreset().vars);runCoordination();add("Coordination expanded engine",state.result&&state.result.type==="coordination"&&state.result.mode==="expanded",state.result?state.result.label:"none");state=normalize(old);add("Summary builds",summary().length>100,summary().length+" characters generated.");const tk=KEY+"_test";localStorage.setItem(tk,"ok");add("Local storage works",localStorage.getItem(tk)==="ok","Write/read succeeded.");localStorage.removeItem(tk)}catch(e){add("Runtime exception",false,e.message||String(e))}save();renderAll();document.getElementById("diagPanel").innerHTML=`<strong>Runtime self-test complete:</strong> ${items.filter(x=>x.ok).length} passed, ${items.filter(x=>!x.ok).length} failed.<div class="diags">${items.map(x=>`<div class="diag ${x.ok?"pass":"fail"}"><strong>${esc(x.n)}:</strong> ${x.ok?"Pass":"Needs attention"}<br><span class="small">${esc(x.d)}</span></div>`).join("")}</div>`}
 function displayVar(k,v){if(k==="similarityThreshold")return `${v}%${thresholdPhrase(v)}`;return String(v)}
 function thresholdPhrase(v){const n=Number(v);if(n>=30&&n<=36)return" — roughly 1/3";if(n>=40&&n<=46)return" — about 3/7 to nearly 1/2";if(n>=48&&n<=52)return" — about 1/2";if(n>=23&&n<=27)return" — about 1/4";if(n>=60&&n<=67)return" — about 2/3";return""}
@@ -491,7 +514,7 @@ function scenarioDetailHtml(s){return `<div class="scenario-detail"><div class="
 function coordinationResult(){const classic=mode()==="classic",scenario=activeCoordScenario();const trust=val("trust"),goal=val("sharedGoalClarity"),info=val("informationClarity"),heat=val("institutionalHeat"),voice=val("protectedVoice",50),fair=val("fairness",50),repair=val("repairCapacity",50),power=val("powerAsymmetry",50),cred=val("credibilityGap",50),care=val("careBurden",50),translation=val("translationEffort",50),memory=val("publicMemory",50);const technical=clamp(Math.round(trust*.30+goal*.24+info*.24+(100-heat)*.14+voice*.08),0,100);const pressure=clamp(Math.round(heat*.44+(100-trust)*.22+(100-info)*.20+(100-goal)*.14),0,100);let support,risk,repairPotential,moral=null;if(classic){support=technical;risk=pressure;repairPotential=null}else{support=clamp(Math.round(trust*.10+goal*.08+info*.10+voice*.17+fair*.14+repair*.13+translation*.10+memory*.10+(100-heat)*.04+(100-power)*.07+(100-cred)*.04+(100-care)*.03),0,100);risk=clamp(Math.round(heat*.18+power*.17+cred*.15+care*.13+(100-voice)*.16+(100-fair)*.10+(100-repair)*.07+(100-memory)*.04),0,100);repairPotential=clamp(Math.round(repair*.32+voice*.18+fair*.14+translation*.13+memory*.13+info*.10),0,100);moral={trust:Math.round(trust),truthfulInformation:Math.round(info),protectedVoice:Math.round(voice),fairBurden:Math.round((fair+(100-care)+(100-power))/3),translation:Math.round(translation),repair:Math.round(repair),publicMemory:Math.round(memory)}}let label,explanation;if(classic){if(support>=70&&risk<45){label="Traditional coordination: stable cooperation";explanation="In this scenario, the technical conditions for cooperation are strong."}else if(support>=55&&risk<65){label="Traditional coordination: fragile cooperation";explanation="In this scenario, cooperation is possible, but pressure or limited clarity may make it unstable."}else if(risk>=70){label="Traditional coordination: pressure-driven breakdown risk";explanation="In this scenario, heat and uncertainty are high enough that technical cooperation may fail."}else{label="Traditional coordination: unsettled cooperation";explanation="The technical conditions are mixed. The traditional model does not yet ask whether cooperation is fair, voiced, or repairable."}}else{const dark=technical>=60&&risk>=65;if(dark){label="Dark coherence risk";explanation="The scenario may look coordinated, but pressure, asymmetry, credibility gaps, or hidden burden may be producing compliance rather than ethical cooperation."}else if(support>=70&&risk<45&&repairPotential>=65){label="Constructive coordination";explanation="In this scenario, cooperation is supported by trust, information, protected voice, fairness, repair, translation, and public memory."}else if(support>=55&&risk<60){label="Fragile but workable coordination";explanation="The scenario can proceed, but some moral commons remain under strain."}else if(risk>=70&&support<55){label="Coercive coordination / breakdown risk";explanation="The scenario is likely producing pressure, silence, or compliance rather than shared agency."}else if(support<50&&repairPotential>=60){label="Repair path available";explanation="Current coordination is weak, but repair resources are present enough to redesign the situation."}else{label="Unsettled coordination under heat";explanation="The scenario is mixed. Students should identify which moral commons are weakest."}}return{type:"coordination",mode:classic?"classic":"expanded",label,explanation,support,risk,repair:repairPotential,preset:activePreset().label,scenario:{id:scenario.id,title:scenario.title,problem:scenario.problem,traditional:scenario.traditional,expanded:scenario.expanded,question:scenario.startingQuestion,discussion:scenario.discussion},stats:{trust,sharedGoalClarity:goal,informationClarity:info,institutionalHeat:heat,protectedVoice:voice,fairness:fair,repairCapacity:repair,powerAsymmetry:power,credibilityGap:cred,careBurden:care,translationEffort:translation,publicMemory:memory,technicalCoordination:technical,pressureRisk:pressure},moralCommons:moral,dark:{active:!classic&&technical>=60&&risk>=65,message:classic?"":"Visible agreement may be produced by pressure, asymmetry, or credibility filtering rather than shared agency."}}}
 function renderCoordinationResult(box,r){const classic=r.mode==="classic";const scenario=r.scenario||activeCoordScenario();let scenarioBox=`<div class="notice"><strong>Scenario: ${esc(scenario.title)}</strong><p>${esc(scenario.problem||"")}</p><p><strong>Starting question:</strong> ${esc(scenario.question||"")}</p></div>`;let top;if(classic){top=`<div class="metrics"><div class="metric"><span class="small">Technical coordination score</span><strong>${r.support}</strong></div><div class="metric"><span class="small">Pressure risk</span><strong>${r.risk}</strong></div><div class="metric"><span class="small">Ethical repair variables</span><strong>omitted</strong></div></div><div class="notice"><strong>What this means</strong><p>The Traditional result asks whether this scenario is technically likely to coordinate. It does not evaluate whether cooperation is fair, voiced, coercive, or repairable.</p></div>`}else{top=`<div class="metrics"><div class="metric"><span class="small">Agency-support score</span><strong>${r.support}</strong></div><div class="metric"><span class="small">Coercion / dark-coherence risk</span><strong>${r.risk}</strong></div><div class="metric"><span class="small">Repair potential</span><strong>${r.repair}</strong></div></div><div class="notice"><strong>What this means</strong><p>The Expanded result asks what kind of cooperation this scenario is producing: shared agency, fragile coordination, repairable strain, coercive compliance, or dark coherence.</p></div>${coordCommonsHtml(r)}`}const dark=r.dark&&r.dark.active?`<div class="notice warn"><strong>Dark coherence warning</strong><p>${esc(r.dark.message)}</p></div>`:"";box.innerHTML=`<div class="notice ${r.label.includes("Dark")||r.label.includes("breakdown")||r.label.includes("coercive")||r.label.includes("pressure-driven")?"warn":"good"}"><strong>${esc(r.label)}</strong><p>${esc(r.explanation)}</p></div>${scenarioBox}${top}${dark}`}
 function renderCoordinationWorkspace(w){const p=activePreset(),s=activeCoordScenario();if(!state.result||state.result.type!=="coordination"){w.innerHTML=`<div class="notice"><strong>Coordination workspace ready.</strong><p><strong>Active scenario:</strong> ${esc(s.title)}. Choose a preset and run the coordination analysis. The Traditional preset asks whether cooperation is technically likely. Expanded presets ask whether cooperation is ethically healthy.</p></div><div class="model-box"><strong>Scenario frame</strong><p>${esc(s.context)}</p><p><strong>Problem:</strong> ${esc(s.problem)}</p></div><div class="model-box"><strong>Interpretive frame</strong><p><strong>${esc(p.label)}</strong>: ${esc(p.note)}</p></div>`;return}const r=state.result,stats=r.stats,classic=r.mode==="classic",sc=r.scenario||s;w.innerHTML=`<div class="grid"><div class="card s6"><h3>${classic?"Technical coordination frame":"Expanded ethical coordination frame"}</h3><p><strong>Scenario:</strong> ${esc(sc.title)}</p><div class="metrics"><div class="metric"><span class="small">Technical cooperation</span><strong>${stats.technicalCoordination}</strong></div><div class="metric"><span class="small">Pressure risk</span><strong>${stats.pressureRisk}</strong></div>${classic?"":`<div class="metric"><span class="small">Voice integrity</span><strong>${stats.protectedVoice}</strong></div><div class="metric"><span class="small">Credibility gap</span><strong>${stats.credibilityGap}</strong></div>`}</div></div><div class="card s6"><h3>Teaching questions</h3><ol class="question-list">${(sc.discussion||[]).map(q=>`<li>${esc(q)}</li>`).join("")}</ol></div><div class="card s12"><h3>Interpretive caution</h3><p>${classic?esc(sc.traditional):esc(sc.expanded)}</p></div></div>`}
-function summary(){const c=selected(),p=activePreset(),r=state.result,lines=[];lines.push("Capability Lab v2.0D.2d Reflection Summary","========================================","",`Selected case: ${c.title}`,`Preset: ${p.label}`);if(isCoordination()){const s=activeCoordScenario();lines.push(`Coordination scenario: ${s.title}`,`Scenario problem: ${s.problem}`,`Starting question: ${s.startingQuestion}`)}lines.push("",`Preset reveals: ${p.reveals||""}`,`Preset hides: ${p.hides||""}`,`Teaching comparison: ${p.compare||""}`,"");if(isSchelling()&&state.vars.similarityThreshold!==undefined)lines.push(`Similarity threshold interpretation: ${displayVar("similarityThreshold",state.vars.similarityThreshold)} of occupied neighbors must be similar for local satisfaction.`,"");if(r){lines.push(`Outcome: ${r.label}`,`Support / coordination score: ${r.support}`,`Risk score: ${r.risk}`,`Repair score: ${r.repair===null?"omitted":r.repair}`);if(r.type==="schelling"&&r.stats)lines.push(`Schelling move attempts: ${r.stats.step}`,`Average similarity: ${r.stats.avgSimilarity}`,`Unsatisfied percent: ${r.stats.unsatisfiedPct}`,`Stability: ${r.stats.stability}`,`Agent relocations: ${r.stats.totalMoves}`);if(r.type==="coordination"&&r.stats){lines.push(`Coordination mode: ${r.mode}`,`Technical coordination: ${r.stats.technicalCoordination}`,`Pressure risk: ${r.stats.pressureRisk}`,`Trust: ${r.stats.trust}`,`Shared goal clarity: ${r.stats.sharedGoalClarity}`,`Information clarity: ${r.stats.informationClarity}`,`Institutional heat: ${r.stats.institutionalHeat}`);if(r.mode==="expanded")lines.push(`Protected voice: ${r.stats.protectedVoice}`,`Fairness: ${r.stats.fairness}`,`Repair capacity: ${r.stats.repairCapacity}`,`Power asymmetry: ${r.stats.powerAsymmetry}`,`Credibility gap: ${r.stats.credibilityGap}`,`Care burden: ${r.stats.careBurden}`,`Translation effort: ${r.stats.translationEffort}`,`Public memory: ${r.stats.publicMemory}`,`Dark coherence warning: ${r.dark.active?"active":"not active"}`);if(r.scenario)lines.push("","Scenario discussion questions:",...(r.scenario.discussion||[]).map(q=>`- ${q}`))}}else lines.push("No simulation result recorded.");lines.push("","Lens notes:",state.lensNotes||"[No notes]","","Hidden-cost notes:",state.hiddenCostNotes||"[No notes]","","Failed condition:",state.failedCondition||"[Not specified]","","Repair proposal:",state.repairProposal||"[No proposal]","","Bridge statement:",state.bridgeStatement||"[No statement]");return lines.join("\n")}
+function summary(){const c=selected(),p=activePreset(),r=state.result,lines=[];lines.push("Capability Lab v2.0D.3 Reflection Summary","========================================","",`Selected case: ${c.title}`,`Preset: ${p.label}`);if(isCoordination()){const s=activeCoordScenario();lines.push(`Coordination scenario: ${s.title}`,`Scenario problem: ${s.problem}`,`Starting question: ${s.startingQuestion}`)}lines.push("",`Preset reveals: ${p.reveals||""}`,`Preset hides: ${p.hides||""}`,`Teaching comparison: ${p.compare||""}`,"");if(isSchelling()&&state.vars.similarityThreshold!==undefined)lines.push(`Similarity threshold interpretation: ${displayVar("similarityThreshold",state.vars.similarityThreshold)} of occupied neighbors must be similar for local satisfaction.`,"");if(r){lines.push(`Outcome: ${r.label}`,`Support / coordination score: ${r.support}`,`Risk score: ${r.risk}`,`Repair score: ${r.repair===null?"omitted":r.repair}`);if(r.type==="schelling"&&r.stats)lines.push(`Schelling move attempts: ${r.stats.step}`,`Average similarity: ${r.stats.avgSimilarity}`,`Unsatisfied percent: ${r.stats.unsatisfiedPct}`,`Stability: ${r.stats.stability}`,`Agent relocations: ${r.stats.totalMoves}`);if(r.type==="coordination"&&r.stats){lines.push(`Coordination mode: ${r.mode}`,`Technical coordination: ${r.stats.technicalCoordination}`,`Pressure risk: ${r.stats.pressureRisk}`,`Trust: ${r.stats.trust}`,`Shared goal clarity: ${r.stats.sharedGoalClarity}`,`Information clarity: ${r.stats.informationClarity}`,`Institutional heat: ${r.stats.institutionalHeat}`);if(r.mode==="expanded")lines.push(`Protected voice: ${r.stats.protectedVoice}`,`Fairness: ${r.stats.fairness}`,`Repair capacity: ${r.stats.repairCapacity}`,`Power asymmetry: ${r.stats.powerAsymmetry}`,`Credibility gap: ${r.stats.credibilityGap}`,`Care burden: ${r.stats.careBurden}`,`Translation effort: ${r.stats.translationEffort}`,`Public memory: ${r.stats.publicMemory}`,`Dark coherence warning: ${r.dark.active?"active":"not active"}`);if(r.scenario)lines.push("","Scenario discussion questions:",...(r.scenario.discussion||[]).map(q=>`- ${q}`))}}else lines.push("No simulation result recorded.");lines.push("","Lens notes:",state.lensNotes||"[No notes]","","Hidden-cost notes:",state.hiddenCostNotes||"[No notes]","","Failed condition:",state.failedCondition||"[Not specified]","","Repair proposal:",state.repairProposal||"[No proposal]","","Bridge statement:",state.bridgeStatement||"[No statement]");return lines.join("\n")}
 function diagnostics(){const items=[];const add=(n,ok,d)=>items.push({n,ok,d});try{add("App shell present",!!document.querySelector(".wrap"),"Main container found.");add("Tabs found",document.querySelectorAll(".tab").length===7,document.querySelectorAll(".tab").length+" tabs found.");add("Cases loaded",cases.length===3,cases.length+" cases loaded.");add("Coordination scenarios loaded",coordinationScenarios.length>=6,coordinationScenarios.length+" scenario cards loaded.");add("Schelling presets loaded",presets.schelling.length===4,presets.schelling.length+" Schelling presets loaded.");add("Coordination presets loaded",presets.coordination.length===4,presets.coordination.length+" Coordination presets loaded.");const old=clone(state);state.caseId="coordination";state.coordScenarioId="policy_rollout";state.presetId="stress";state.vars=presetVarsFor(activePreset(),selected());runCoordination();add("Scenario-specific coordination values",state.result&&state.result.scenario&&state.result.scenario.id==="policy_rollout",state.result?state.result.scenario.title:"none");state=normalize(old);state.caseId="schelling";state.presetId="traditional";state.vars=presetVarsFor(activePreset(),selected());state.schelling=clone(defaults.schelling);initSchelling();add("Schelling initialize",state.schelling.initialized,state.schelling.grid.length+" cells initialized.");const before=state.schelling.step;stepSchelling();add("Schelling one-agent move",state.schelling.step===before+1,"Move counter advanced.");state=normalize(old);add("Summary builds",summary().length>100,summary().length+" characters generated.");const tk=KEY+"_test";localStorage.setItem(tk,"ok");add("Local storage works",localStorage.getItem(tk)==="ok","Write/read succeeded.");localStorage.removeItem(tk)}catch(e){add("Runtime exception",false,e.message||String(e))}state=normalize(state);save();renderAll();document.getElementById("diagPanel").innerHTML=`<strong>Runtime self-test complete:</strong> ${items.filter(x=>x.ok).length} passed, ${items.filter(x=>!x.ok).length} failed.<div class="diags">${items.map(x=>`<div class="diag ${x.ok?"pass":"fail"}"><strong>${esc(x.n)}:</strong> ${x.ok?"Pass":"Needs attention"}<br><span class="small">${esc(x.d)}</span></div>`).join("")}</div>`}
 
 
@@ -1011,7 +1034,7 @@ Selected case:`);
 
   const priorResetLocal=resetLocal;
   resetLocal=function(){
-    if(!confirm("Reset local Capability Lab v2.0D.2d data?"))return;
+    if(!confirm("Reset local Capability Lab v2.0D.3 data?"))return;
     localStorage.removeItem(KEY);
     state=normalize(clone(defaults));
     save();
@@ -1917,6 +1940,141 @@ Selected case:`);
       return base+"\n\nChapter 5 Routing Update\nChapter 5 is Social Contract, Justice, and the Moral Commons.\nRoute: Coordination Under Heat → Civic Coordination and the Moral Commons → Repair preset.\nPrimary emotional anchor: John Hope Franklin, showing the gap between formal rights and actual capability.\nSecondary functional-equivalence case: Maathai / Green Belt Movement.\nFather Hanna is removed from Chapter 5 and reserved for Chapter 13.\n";
     }
     return base;
+  };
+})();
+
+
+/* v2.0D.3 — Three-Layer Architecture and Navigator Bridge Patch.
+   This makes the EBB project structure explicit:
+   1. Capability Lab: public simulation / shared object.
+   2. Classroom Discussion: shared interpretation and moral language.
+   3. Navigator Coach: private, student-controlled application.
+*/
+(function(){
+  const navigatorBridgeBank={
+    ch1:{
+      label:"Chapter 1 — Who You Already Are",
+      labShows:"The public Lab shows that attention, intuition, trust, and shared language shape what agents can notice together.",
+      discussion:"What does it mean to begin ethical reasoning from where we actually are, without forcing private disclosure?",
+      navigator:"This private Navigator conversation is about your starting point as an ethical agent. You do not need to share anything too personal. Begin by naming one ordinary situation where your first reaction and your later reflection were not the same. What did your OS1 response notice first, and what did OS2 reflection add?",
+      script:["Open with the public/private boundary.","Use a public coordination case, not personal disclosure.","Ask what students noticed first.","Bridge to private Navigator work as optional structured application."]
+    },
+    ch2:{
+      label:"Chapter 2 — Suppression Gap and Moral Lens",
+      labShows:"The Warning engine shows how raw capacity can remain high while perceived capacity collapses under pressure, authority weighting, credibility gaps, or burden reversal.",
+      discussion:"Where did the warning pathway fail: evidence, voice, credibility, burden of proof, documentation, or repair?",
+      navigator:"This private Navigator conversation is about the suppression gap. Choose a low-risk situation where someone had a useful perception, concern, or warning, but the setting made it hard for that concern to be heard. What was the raw capacity? What reduced perceived capacity? What repair condition would have helped?",
+      script:["Start the Challenger timeline.","Run one stage analysis.","Name the suppression gap in public terms.","Bridge to a private low-risk example in the Navigator."]
+    },
+    ch3:{
+      label:"Chapter 3 — Ethical Lenses and Evidence Policy",
+      labShows:"The Evidence Policy preview shows how the same facts can be filtered differently when authority, rank, schedule pressure, or empirical calibration controls evidence uptake.",
+      discussion:"What did the evidence policy make visible, and what did it hide?",
+      navigator:"This private Navigator conversation is about evidence policy in your own reasoning. Choose a public issue or ordinary disagreement. What evidence did you trust first? Was that trust based on authority, personal experience, group loyalty, data quality, consequences, care, or duty? What would change if you recalibrated the evidence policy?",
+      script:["Load Chapter 3 Evidence Policy Preview.","Run the decision-point analysis.","Compare authority-weighted and evidence-calibrated uptake.","Bridge to private evidence-policy mapping."]
+    },
+    ch4:{
+      label:"Chapter 4 — Emergence, Complexity, and Responsibility",
+      labShows:"The Schelling engine shows that local rules can generate macro-patterns no one directly intended.",
+      discussion:"If no one intended the final pattern, does responsibility disappear, or does responsibility shift toward system design?",
+      navigator:"This private Navigator conversation is about emergent patterns. Identify one recurring pattern in your school, work, family, or community life that no one person seems to control. What local rules, habits, incentives, or avoidance patterns keep reproducing it? What design change might shift the pattern?",
+      script:["Ask students to predict before running Schelling.","Run the traditional model.","Name the prediction gap.","Bridge to a private emergent-pattern map."]
+    },
+    ch5:{
+      label:"Chapter 5 — Social Contract, Justice, and the Moral Commons",
+      labShows:"The civic coordination case shows how formal rights can fail to become actual capabilities unless voice, fair burden, translation, trust, public memory, and repair are built into the moral commons.",
+      discussion:"How can different PRF communities support the same shared task for different authentic reasons?",
+      navigator:"This private Navigator conversation is about the gap between formal rights and actual capability. Choose a public institution, school setting, work setting, or civic process. What formal right or promise exists? What conditions are missing that would make the right usable? What shared task could different people support for different authentic reasons?",
+      script:["Introduce John Hope Franklin as the rights/capability anchor.","Run Civic Coordination with Repair preset.","Connect Maathai to functional equivalence.","Bridge to a private capability-condition map."]
+    },
+    coord:{
+      label:"Coordination Under Heat — Public Review",
+      labShows:"The coordination engine shows that cooperation can be constructive, fragile, coercive, repairable, or darkly coherent depending on voice, fairness, translation, trust, public memory, and repair.",
+      discussion:"Can a group appear successful while hiding unfair burden, silence, or discounted voice?",
+      navigator:"This private Navigator conversation is about coordination under pressure. Choose one group situation that is safe to examine. What made cooperation easier? What made it harder? Whose voice, burden, or knowledge was discounted? What repair would make coordination more ethical?",
+      script:["Choose one public coordination scenario.","Run Stress or Repair preset.","Ask whether technical cooperation equals ethical coordination.","Bridge to private coordination repair mapping."]
+    }
+  };
+
+  function chapterId(){
+    if(state.classroomMode==="ch2"||state.classroomMode==="ch3"||state.classroomMode==="ch4"||state.classroomMode==="ch5")return state.classroomMode;
+    if(state.chapterFocusId&&navigatorBridgeBank[state.chapterFocusId])return state.chapterFocusId;
+    if(state.caseId==="schelling")return "ch4";
+    if(state.caseId==="warning")return state.presetId==="stress"?"ch3":"ch2";
+    if(state.caseId==="coordination"&&state.coordScenarioId==="civic_coordination")return "ch5";
+    if(state.caseId==="coordination")return "coord";
+    return "ch1";
+  }
+  function currentBridge(){
+    return navigatorBridgeBank[chapterId()]||navigatorBridgeBank.ch1;
+  }
+  function roleIsStudent(){
+    return state.reviewRole==="student";
+  }
+  function threeLayerPanelHtml(){
+    const b=currentBridge();
+    const mode=roleIsStudent()?"Student Review Mode":"Instructor Mode";
+    return `<div class="three-layer-panel" id="threeLayerPanel"><h3>EBB Three-Layer Learning Architecture</h3><p class="small">The Lab should make public structures visible without asking students to disclose private life content. The Navigator bridge carries the same vocabulary into private, student-controlled application.</p><div class="layer-grid"><div class="layer-card public"><strong>1. Capability Lab</strong><p>Public simulation and shared classroom object. Use cases, sliders, stages, and results that everyone can discuss together.</p></div><div class="layer-card discussion"><strong>2. Classroom Discussion</strong><p>Shared interpretation. Ask what the model showed, what it hid, who is affected, and what repair or design would improve the moral field.</p></div><div class="layer-card private"><strong>3. Navigator Coach</strong><p>Private structured application. Students may apply the concept to their own lives without disclosing private content in the public Lab.</p></div></div><div class="layer-boundary-note"><strong>Current bridge:</strong> ${esc(b.label)}<br><strong>Mode:</strong> ${esc(mode)}<br><span class="small">Boundary rule: public Lab observations are shareable; private Navigator reflections remain student-controlled.</span></div></div>`;
+  }
+  function teacherScriptHtml(){
+    const b=currentBridge();
+    return `<div class="teacher-script-panel" id="teacherScriptPanel"><h3>${roleIsStudent()?"Review Path":"Teacher-Facing Classroom Script"}</h3><div class="script-steps">${b.script.map((step,i)=>`<div class="script-step"><span>Step ${i+1}</span><p>${esc(step)}</p></div>`).join("")}</div></div>`;
+  }
+  function bridgeHtml(){
+    const b=currentBridge();
+    const studentNote=roleIsStudent()
+      ? `<div class="private-warning"><strong>Student privacy reminder:</strong> do not enter private details into this public Lab page. Use the Navigator prompt only in the private Coach space or in your own notes.</div>`
+      : `<div class="private-warning"><strong>Instructor reminder:</strong> invite students to apply the framework privately. Do not require public disclosure of personal Field Scan, PRF, journal, or Navigator content.</div>`;
+    return `<div class="navigator-bridge-panel" id="navigatorBridgePanel"><h3>Post-Run Bridge: Lab → Discussion → Navigator</h3><div class="bridge-grid"><div class="bridge-box"><strong>What the public Lab showed</strong><p>${esc(b.labShows)}</p></div><div class="bridge-box"><strong>Classroom discussion question</strong><p>${esc(b.discussion)}</p></div><div class="bridge-box"><strong>Private Navigator purpose</strong><p>Carry the public structure into a private, low-risk application without requiring classroom disclosure.</p></div></div><div class="navigator-prompt-box"><strong>Copy-ready Navigator Coach opening prompt</strong><div class="navigator-prompt-text" id="navigatorPromptText">${esc(b.navigator)}</div><div class="classroom-actions"><button class="action secondary" id="copyNavigatorPromptBtn" type="button">Copy Navigator Prompt</button><span id="copyNavigatorPromptFeedback" class="copy-feedback"></span></div></div>${studentNote}</div>`;
+  }
+  function renderThreeLayerArchitecture(){
+    const quick=document.getElementById("guidedQuickStart");
+    if(!quick)return;
+    let mount=document.getElementById("threeLayerMount");
+    if(!mount){
+      quick.insertAdjacentHTML("afterend",`<div id="threeLayerMount"></div>`);
+      mount=document.getElementById("threeLayerMount");
+    }
+    mount.innerHTML=threeLayerPanelHtml()+teacherScriptHtml();
+  }
+  function bindCopyNavigatorPrompt(){
+    const btn=document.getElementById("copyNavigatorPromptBtn");
+    if(!btn)return;
+    btn.onclick=async ()=>{
+      const text=(document.getElementById("navigatorPromptText")||{}).textContent||"";
+      const fb=document.getElementById("copyNavigatorPromptFeedback");
+      try{
+        await navigator.clipboard.writeText(text);
+        if(fb)fb.textContent="Copied.";
+      }catch(e){
+        if(fb)fb.textContent="Select and copy manually.";
+      }
+    };
+  }
+
+  const priorRenderResult=renderResult;
+  renderResult=function(){
+    priorRenderResult();
+    const box=document.getElementById("result");
+    if(!box)return;
+    if(state.result && !document.getElementById("navigatorBridgePanel")){
+      box.insertAdjacentHTML("beforeend",bridgeHtml());
+      bindCopyNavigatorPrompt();
+    }
+  };
+
+  const priorRenderAll=renderAll;
+  renderAll=function(){
+    priorRenderAll();
+    renderThreeLayerArchitecture();
+    if(state.result)bindCopyNavigatorPrompt();
+  };
+
+  const priorSummary=summary;
+  summary=function(){
+    const base=priorSummary();
+    const b=currentBridge();
+    return base+`\n\nEBB Three-Layer Bridge\nPublic Lab showed: ${b.labShows}\nClassroom discussion question: ${b.discussion}\nNavigator Coach prompt: ${b.navigator}\nBoundary reminder: Capability Lab is public; Navigator reflection is private and student-controlled.\n`;
   };
 })();
 
